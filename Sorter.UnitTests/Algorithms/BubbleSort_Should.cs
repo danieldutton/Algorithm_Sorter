@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Sorter.UnitTests.Algorithms
 {
@@ -11,7 +6,13 @@ namespace Sorter.UnitTests.Algorithms
     public class BubbleSort_Should
     {
         [Test]
-        public void Foo()
+        public void Sort_FireAStartedEventOnce()
+        {
+            
+        }
+
+        [Test]
+        public void Sort_FireACompletedEventOnce()
         {
             
         }

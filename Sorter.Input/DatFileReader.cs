@@ -15,6 +15,15 @@ namespace Sorter.Input
         private readonly List<TType> _tempDataList = new List<TType>();
 
 
+        public DatFileReader()
+        {            
+        }
+
+        public DatFileReader(TextReader textReader)
+        {
+            _textReader = textReader;
+        }
+
         public TType[] Read(params string[] filePaths)
         {
             if(filePaths == null) throw new ArgumentNullException("filePaths"); 

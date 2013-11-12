@@ -13,11 +13,12 @@ namespace Sorter.UnitTests.Input
         [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowAnArgumentNullExceptionIfFilePathsParamIsNull()
         {
-            //var fakeStreamReader = new Mock<TextReader>();
+            var fakeStreamReader = new Mock<TextReader>();
+            fakeStreamReader.Setup(r => r.ReadLine()).Returns("1 2 3 4 5 6 7 8");
 
-            //var datFileReader = new DatFileReader<int>(fakeStreamReader.Object);
+            var datFileReader = new DatFileReader<int>(fakeStreamReader.Object);
 
-            //datFileReader.Read(null);
+            datFileReader.Read(null);
         }
   
     }
