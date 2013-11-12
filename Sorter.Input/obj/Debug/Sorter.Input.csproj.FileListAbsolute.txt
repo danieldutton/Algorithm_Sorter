@@ -3,3 +3,8 @@ C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Input\bin\Deb
 C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Input\obj\Debug\Sorter.Input.csprojResolveAssemblyReference.cache
 C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Input\obj\Debug\Sorter.Input.dll
 C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Input\obj\Debug\Sorter.Input.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\bin\Debug\Sorter.Input.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\bin\Debug\Sorter.Input.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\obj\Debug\Sorter.Input.csprojResolveAssemblyReference.cache
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\obj\Debug\Sorter.Input.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\obj\Debug\Sorter.Input.pdb

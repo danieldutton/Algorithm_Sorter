@@ -12,7 +12,7 @@ namespace Sorter.Algorithms.Routines
         public event EventHandler<EventArgs> Completed;
 
 
-        public abstract void Sort<TData>(TData[] data) where TData : IConvertible;
+        public abstract int[] Sort(int[] data); 
 
 
         protected virtual void OnStarted()

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Sorter.Input;
+using Sorter.Input.Interfaces;
+using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Sorter.Presentation
@@ -16,7 +16,9 @@ namespace Sorter.Presentation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            IFileReader<int> fileReader = new DatFileReader<int>(); 
+            Application.Run(new Form1(fileReader));
         }
     }
 }

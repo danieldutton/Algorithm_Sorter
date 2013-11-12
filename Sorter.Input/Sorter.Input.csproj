@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatFileFileReader.cs" />
+    <Compile Include="DatFileReader.cs" />
     <Compile Include="Exceptions\FileReadException.cs" />
     <Compile Include="Interfaces\IFileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

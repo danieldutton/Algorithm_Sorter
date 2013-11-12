@@ -32,16 +32,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventArg\SortingEventArgs.cs" />
     <Compile Include="Interfaces\IProgressReportable.cs" />
-    <Compile Include="Interfaces\ISortRoutine.cs" />
     <Compile Include="Routines\BubbleSort.cs" />
     <Compile Include="Routines\HeapSort.cs" />
     <Compile Include="Routines\InsertionSort.cs" />

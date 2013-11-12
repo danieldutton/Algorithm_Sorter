@@ -4,7 +4,7 @@ namespace Sorter.Algorithms.Routines
 {
     public sealed class QuickSort : SortRoutine
     {
-        public override void Sort<TData>(TData[] data)
+        public override int[] Sort(int[] data)
         {
             throw new NotImplementedException();
         }

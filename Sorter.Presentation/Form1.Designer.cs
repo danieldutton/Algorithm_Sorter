@@ -68,12 +68,13 @@
             this._btnBrowseSrcFile.TabIndex = 3;
             this._btnBrowseSrcFile.Text = "button1";
             this._btnBrowseSrcFile.UseVisualStyleBackColor = true;
+            this._btnBrowseSrcFile.Click += new System.EventHandler(this._btnBrowseSrcFile_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(218, 93);
             this.Controls.Add(this._btnBrowseSrcFile);
             this.Controls.Add(this._lblFileToSort);
             this.Controls.Add(this._comboBxAlgorithm);

@@ -1,8 +1,8 @@
-﻿using System;
-using System.IO;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Sorter.Input;
+using System;
+using System.IO;
 
 namespace Sorter.UnitTests.Input
 {
@@ -15,9 +15,10 @@ namespace Sorter.UnitTests.Input
         {
             var fakeStreamReader = new Mock<TextReader>();
 
-            var datFileReader = new DatFileFileReader<int>(fakeStreamReader.Object);
+            var datFileReader = new DatFileReader<int>(fakeStreamReader.Object);
 
             datFileReader.Read(null);
         }
+  
     }
 }

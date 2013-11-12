@@ -11,3 +11,16 @@ C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.UnitTests\bin
 C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.UnitTests\bin\Debug\nunit.framework.xml
 C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.dll
 C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.UnitTests.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.UnitTests.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Moq.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\nunit.framework.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Algorithms.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Input.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Algorithms.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Input.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Moq.xml
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\nunit.framework.xml
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.pdb

@@ -8,9 +8,14 @@ namespace Sorter.Input.Exceptions
         {           
         }
 
-        public FileReadException(string message) : base(message)
-        {
-            
+        public FileReadException(string message) 
+            : base(message)
+        {            
+        }
+
+        public FileReadException(string message, Exception innerException)
+            : base(message, innerException)
+        {        
         }
     }
 }
