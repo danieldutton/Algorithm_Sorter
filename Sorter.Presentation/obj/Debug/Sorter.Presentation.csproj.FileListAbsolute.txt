@@ -1,0 +1,9 @@
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\bin\Debug\Sorter.Presentation.exe.config
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\bin\Debug\Sorter.Presentation.exe
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\bin\Debug\Sorter.Presentation.pdb
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.csprojResolveAssemblyReference.cache
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.Form1.resources
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.Properties.Resources.resources
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.csproj.GenerateResource.Cache
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.exe
+C:\Users\Danny\documents\visual studio 2012\Projects\Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.pdb
