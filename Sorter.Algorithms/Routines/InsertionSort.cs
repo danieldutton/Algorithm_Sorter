@@ -6,6 +6,8 @@ namespace Sorter.Algorithms.Routines
     {
         public override int[] Sort(int[] data)
         {
+            OnStarted();
+
             for (int j = 0; j < data.Length; j++)
             {
                 int key = data[j];
@@ -21,6 +23,8 @@ namespace Sorter.Algorithms.Routines
 
                 data[i + 1] = key;
             }
+
+            OnCompleted();
 
             return data;
         }

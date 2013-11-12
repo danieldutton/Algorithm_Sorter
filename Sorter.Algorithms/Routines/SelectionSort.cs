@@ -4,6 +4,8 @@
     {
         public override int[] Sort(int[] data)
         {
+            OnStarted();
+
             int i, j;
             int min, temp;
 
@@ -19,6 +21,9 @@
                 data[i] = data[min];
                 data[min] = temp;
             }
+
+            OnCompleted();
+            
             return data;
         }
     }

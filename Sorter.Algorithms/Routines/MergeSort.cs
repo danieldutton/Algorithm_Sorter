@@ -4,9 +4,14 @@
     {
         public override int[] Sort(int[] data)
         {
+            OnStarted();
+
             if (data.Length == 1)
-                return data;
-            
+            {
+                OnCompleted();
+                return data;   
+            }
+                            
             int middle = data.Length / 2;
             int[] left = new int[middle];
             
@@ -43,6 +48,9 @@
                     rightptr++;
                 }
             }
+
+            OnCompleted();
+
             return sorted;
         }
     }

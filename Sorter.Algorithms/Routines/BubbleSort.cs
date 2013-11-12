@@ -4,6 +4,8 @@
     {
         public override int[] Sort(int[] data)
         {
+            OnStarted();
+
             int temp = 0;
 
             for (int write = 0; write < data.Length; write++)
@@ -18,6 +20,9 @@
                     }
                 }
             }
+
+            OnCompleted();
+
             return data;
         }
     }

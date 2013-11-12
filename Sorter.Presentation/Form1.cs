@@ -19,7 +19,6 @@ namespace Sorter.Presentation
         private void _btnBrowseSrcFile_Click(object sender, EventArgs e)
         {
             var openFileDialog = ConstructOpenFileDialog();
-            openFileDialog.ShowDialog();
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {

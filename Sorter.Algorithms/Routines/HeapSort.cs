@@ -4,6 +4,8 @@
     {
         public override int[] Sort(int[] data)
         {
+            OnStarted();
+
             for (int i = (data.Length - 1) / 2; i >= 0; i--)
                 Adjust(data, i, data.Length - 1);
 
@@ -14,6 +16,9 @@
                 data[i] = temp;
                 Adjust(data, 0, i - 1);
             }
+
+            OnCompleted();
+
             return data;
         }
 
