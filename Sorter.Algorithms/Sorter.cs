@@ -1,5 +1,4 @@
-﻿using System;
-using Sorter.Algorithms.Routines;
+﻿using Sorter.Algorithms.Routines;
 
 namespace Sorter.Algorithms
 {
@@ -12,9 +11,9 @@ namespace Sorter.Algorithms
             _sortRoutine = sortRoutine;
         }
 
-        public void Sort<TData>(TData[] dataToSort) where TData : IConvertible
+        public int[] Sort(int[] dataToSort)
         {
-            _sortRoutine.Sort(dataToSort);
+            return _sortRoutine.Sort(dataToSort);
         }
     }
 }
