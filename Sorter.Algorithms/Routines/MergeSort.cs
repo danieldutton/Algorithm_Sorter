@@ -21,6 +21,7 @@
             {
                 right[i] = data[i + middle];
             }
+            
             left = Sort(left);
             right = Sort(right);
 
@@ -28,6 +29,7 @@
             int rightptr = 0;
 
             int[] sorted = new int[data.Length];
+            
             for (int k = 0; k < data.Length; k++)
             {
                 if (rightptr == right.Length || ((leftptr < left.Length) && (left[leftptr] <= right[rightptr])))
