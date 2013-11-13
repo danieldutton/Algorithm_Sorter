@@ -4,18 +4,19 @@ namespace Sorter.Algorithms.EventArg
 {
     public sealed class SortCompleteEventArgs : EventArgs
     {
-        public double StartTimeInMs { get; private set; }
+        public double StartTimeMilliSec { get; private set; }
 
-        public double StopTimeInMs { get; private set; }
+        public double StopTimeMilliSec { get; private set; }
 
-        public double ElapsedTimeInMs { get; private set; }
+        public double ElapsedTimeMilliSec { get; private set; }
 
 
-        public SortCompleteEventArgs(double startTime, double stopTime, double elapsedTime)
+        public SortCompleteEventArgs(double startTimeMilliSec, double stopTimeMilliSec, 
+                                     double elapsedTimeMilliSec)
         {
-            StartTimeInMs = startTime;
-            StopTimeInMs = stopTime;
-            ElapsedTimeInMs = elapsedTime;
+            StartTimeMilliSec = startTimeMilliSec;
+            StopTimeMilliSec = stopTimeMilliSec;
+            ElapsedTimeMilliSec = elapsedTimeMilliSec;
         }
     }
 }

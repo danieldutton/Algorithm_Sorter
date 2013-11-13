@@ -99,7 +99,7 @@ namespace Sorter.Presentation
 
         private void sortRoutine_Completed(object sender, SortCompleteEventArgs e)
         {
-            MessageBox.Show(e.ElapsedTimeInMs.ToString());
+            MessageBox.Show(e.ElapsedTimeMilliSec.ToString());
         }
     }
 }

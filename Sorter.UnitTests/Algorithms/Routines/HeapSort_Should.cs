@@ -121,9 +121,9 @@ namespace Sorter.UnitTests.Algorithms.Routines
 
             await sut.SortAsync(_tenUnsortedInts);
 
-            Assert.AreEqual(Mother.GetTestStartTime(), sortCompleteEventArgs.StartTimeInMs);
-            Assert.AreEqual(Mother.GetTestStopTime(), sortCompleteEventArgs.StopTimeInMs);
-            Assert.AreEqual(Mother.GetTestElapsedTime(), sortCompleteEventArgs.ElapsedTimeInMs);
+            Assert.AreEqual(Mother.GetTestStartTime(), sortCompleteEventArgs.StartTimeMilliSec);
+            Assert.AreEqual(Mother.GetTestStopTime(), sortCompleteEventArgs.StopTimeMilliSec);
+            Assert.AreEqual(Mother.GetTestElapsedTime(), sortCompleteEventArgs.ElapsedTimeMilliSec);
         }
 
         [Test]

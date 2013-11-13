@@ -1,10 +1,11 @@
 ﻿using Sorter.Algorithms.EventArg;
+using Sorter.Algorithms.Interfaces;
 using Sorter.Timer;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public sealed class HeapSort : SortRoutine
+    public sealed class HeapSort : SortRoutine, ISwappable
     {
         public HeapSort(ITimer timer) : base(timer)
         {
@@ -18,14 +19,14 @@ namespace Sorter.Algorithms.Routines
             await Task.Run(() =>
                 {
                     for (int i = (data.Length - 1) / 2; i >= 0; i--)
-                        Adjust(data, i, data.Length - 1);
+                        Swap(data, i, data.Length - 1);
 
                     for (int i = data.Length - 1; i >= 1; i--)
                     {
                         int temp = data[0];
                         data[0] = data[i];
                         data[i] = temp;
-                        Adjust(data, 0, i - 1);
+                        Swap(data, 0, i - 1);
                     }
                 });
 
@@ -35,29 +36,31 @@ namespace Sorter.Algorithms.Routines
             return data;
         }
 
-        private void Adjust(int[] list, int i, int len)
-        {
-            int temp = list[i];
-            int j = i * 2 + 1;
 
-            while (j <= len)
+        public int[] Swap(int[] data, int left, int right)
+        {
+            int temp = data[left];
+            int j = left * 2 + 1;
+
+            while (j <= right)
             {
-                if (j < len)
-                    if (list[j].CompareTo(list[j + 1]) < 0)
+                if (j < right)
+                    if (data[j].CompareTo(data[j + 1]) < 0)
                         j = j + 1;
 
-                if (temp.CompareTo(list[j]) < 0)
+                if (temp.CompareTo(data[j]) < 0)
                 {
-                    list[i] = list[j];
-                    i = j;
-                    j = 2 * i + 1;
+                    data[left] = data[j];
+                    left = j;
+                    j = 2 * left + 1;
                 }
                 else
                 {
-                    j = len + 1;
+                    j = right + 1;
                 }
             }
-            list[i] = temp;
+            data[left] = temp;
+            return data;
         }
     }
 }
