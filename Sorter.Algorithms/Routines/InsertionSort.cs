@@ -1,9 +1,15 @@
 ﻿using System.Threading.Tasks;
+using Sorter.Algorithms.EventArg;
+using Sorter.Timer;
 
 namespace Sorter.Algorithms.Routines
 {
     public sealed class InsertionSort : SortRoutine
     {
+        public InsertionSort(ITimer timer) : base(timer)
+        {
+        }
+
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
@@ -27,7 +33,7 @@ namespace Sorter.Algorithms.Routines
                     }
                 });
 
-            OnCompleted();
+            OnCompleted(new SortingCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
 
             return data;
         }

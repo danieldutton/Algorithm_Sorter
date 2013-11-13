@@ -1,4 +1,5 @@
 ﻿using System;
+using Sorter.Algorithms.EventArg;
 
 namespace Sorter.Algorithms.Interfaces
 {
@@ -8,7 +9,7 @@ namespace Sorter.Algorithms.Interfaces
 
         event EventHandler<TEventArgs> InProgress;
 
-        event EventHandler<TEventArgs> Completed;
+        event EventHandler<SortingCompleteEventArgs> Completed;
     }
 
 

@@ -1,13 +1,22 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sorter.Algorithms.EventArg;
+using Sorter.Timer;
 
 namespace Sorter.Algorithms.Routines
 {
     public sealed class BubbleSort : SortRoutine
     {
+        public BubbleSort(ITimer timer) : base(timer)
+        {
+        }
+
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
+
+            Timer.Start();
 
             await Task.Run(() =>
                 {
@@ -24,10 +33,11 @@ namespace Sorter.Algorithms.Routines
                         }
                     }
                 });
-            
 
-            OnCompleted();
-            MessageBox.Show("Bubble Sort Completed");
+            Timer.Stop();
+            
+            OnCompleted(new SortingCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
+            MessageBox.Show("Bubble Sort Completed" + " " + Timer.ElapsedTime);
             return data;
         }
     }

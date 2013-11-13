@@ -1,23 +1,27 @@
 ﻿using System;
 
-namespace Sorter.Algorithms.EventArg
+namespace Sorter.Timer
 {
-    public class SortingEventArgs : EventArgs
+    public class StopWatch : ITimer
     {
         public double StartTime { get; private set; }
 
         public double StopTime { get; private set; }
+
 
         public double ElapsedTime
         {
             get { return StopTime - StartTime; }
         }
 
-
-        public SortingEventArgs(double startTime, double stopTime)
+        public void Start()
         {
-            StartTime = startTime;
-            StopTime = stopTime;
+            StartTime = DateTime.Now.TimeOfDay.TotalMilliseconds;
+        }
+
+        public void Stop()
+        {
+            StopTime = DateTime.Now.TimeOfDay.TotalMilliseconds;
         }
     }
 }

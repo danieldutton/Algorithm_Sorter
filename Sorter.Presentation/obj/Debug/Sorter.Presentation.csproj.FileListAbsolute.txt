@@ -22,3 +22,5 @@ C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\S
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\Sorter.Utilities.pdb
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\Sorter.Algorithms.dll
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\Sorter.Algorithms.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\Sorter.Timer.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\Sorter.Timer.pdb

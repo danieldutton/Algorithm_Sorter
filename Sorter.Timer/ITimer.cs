@@ -2,14 +2,14 @@
 {
     public interface ITimer
     {
-        double StartTime { get; set; }
+        double StartTime { get; }
 
-        double StopTime { get; set; }
+        double StopTime { get; }
 
         double ElapsedTime { get; }
 
-        double Start();
+        void Start();
 
-        double Stop();
+        void Stop();
     }
 }

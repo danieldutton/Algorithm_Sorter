@@ -26,3 +26,5 @@ C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\obj\Debug\Sort
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.pdb
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Utilities.dll
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Utilities.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Timer.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Timer.pdb

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
+using Sorter.Timer;
 
 namespace Sorter.Algorithms.Routines
 {
@@ -10,10 +12,15 @@ namespace Sorter.Algorithms.Routines
        
         public event EventHandler<EventArgs> InProgress;
 
-        public event EventHandler<EventArgs> Completed;
+        public event EventHandler<SortingCompleteEventArgs> Completed;
+       
+        protected ITimer Timer;
 
-        
 
+        protected SortRoutine(ITimer timer)
+        {
+            Timer = timer;
+        }
 
         public abstract Task<int[]> SortAsync(int[] data); 
 
@@ -30,10 +37,11 @@ namespace Sorter.Algorithms.Routines
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-        protected virtual void OnCompleted()
+        protected virtual void OnCompleted(SortingCompleteEventArgs e)
         {
-            EventHandler<EventArgs> handler = Completed;
-            if (handler != null) handler(this, EventArgs.Empty);
-        }        
+            EventHandler<SortingCompleteEventArgs> handler = Completed;
+            if (handler != null) handler(this, e);
+        }
+      
     }
 }

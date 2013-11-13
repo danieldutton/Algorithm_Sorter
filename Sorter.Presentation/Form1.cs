@@ -1,5 +1,6 @@
 ﻿using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
+using Sorter.Timer;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -64,36 +65,36 @@ namespace Sorter.Presentation
         {
             var alg = _comboBxAlgorithm.SelectedValue as string;
 
-            if ("BubbleSort".Equals("BubbleSort"))
+            if ("BubbleSrt".Equals("BubbleSort"))
             {
                 //Need to fire this off on a different task
-                var sortRoutine = new BubbleSort();
+                var sortRoutine = new BubbleSort(new StopWatch());
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if ("HeapSor".Equals("HeapSort"))
             {
-                var sortRoutine = new HeapSort();
+                var sortRoutine = new HeapSort(new StopWatch());
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if (alg != null && alg.Equals("InsertionSort"))
             {
-                var sortRoutine = new InsertionSort();
+                var sortRoutine = new InsertionSort(new StopWatch());
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if (alg != null && alg.Equals("MergeSort"))
             {
-                var sortRoutine = new MergeSort();
+                var sortRoutine = new MergeSort(new StopWatch());
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if (alg != null && alg.Equals("QuickSort"))
             {
-                var sortRoutine = new QuickSort();
+                var sortRoutine = new QuickSort(new StopWatch());
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
 
-            if (alg != null && alg.Equals("SelectionSort"))
+            if ("SelectionSort".Equals("SelectionSort"))
             {
-                var sortRoutine = new SelectionSort();
+                var sortRoutine = new SelectionSort(new StopWatch());
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
         } 
