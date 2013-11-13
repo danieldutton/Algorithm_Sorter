@@ -1,7 +1,7 @@
 ﻿namespace Sorter.Input.Interfaces
 {
-    public interface IFileReader<out TType>
+    public interface IFileReader<out TTypeToRead>
     {
-        TType[] Read(params string[] filePaths);
+        TTypeToRead[] Read(params string[] filePaths);
     }
 }
