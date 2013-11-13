@@ -1,11 +1,10 @@
-﻿using System;
-using Sorter.Utilities.DateTimes;
+﻿using Sorter.Utilities.DateTimes;
 
 namespace Sorter.Timer
 {
     public class Timer : ITimer
     {
-        private ICurrentTimeProvider _currentTimeProvider;
+        private readonly ICurrentTimeProvider _currentTimeProvider;
 
         public double StartTime { get; set; }
 
@@ -21,12 +20,12 @@ namespace Sorter.Timer
 
         public void Start()
         {
-            StartTime = DateTime.Now.TimeOfDay.TotalMilliseconds;
+            StartTime = _currentTimeProvider.CurrentTimeInMilliseconds();
         }
 
         public void Stop()
         {
-            StopTime = DateTime.Now.TimeOfDay.TotalMilliseconds;
+            StopTime = _currentTimeProvider.CurrentTimeInMilliseconds();
         }
     }
 }

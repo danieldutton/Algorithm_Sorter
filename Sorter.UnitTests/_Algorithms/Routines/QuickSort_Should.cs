@@ -5,10 +5,10 @@ using Sorter.Algorithms.Routines;
 using Sorter.Timer;
 using System.Linq;
 
-namespace Sorter.UnitTests.Algorithms.Routines
+namespace Sorter.UnitTests._Algorithms.Routines
 {
     [TestFixture]
-    public class HeapSort_Should
+    public class QuickSort_Should
     {
         private int[] _tenUnsortedInts;
 
@@ -26,7 +26,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         {
             bool wasFired = false;
             var fakeTimer = new Mock<ITimer>();
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
             sut.Started += (o, e) => wasFired = true;
 
             sut.SortAsync(_tenUnsortedInts);
@@ -38,7 +38,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         public void SortAsync_CallTimerStartMethodExactlyOnce()
         {
             var fakeTimer = new Mock<ITimer>();
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -50,7 +50,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -62,7 +62,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         {
             bool wasFired = false;
             var fakeTimer = new Mock<ITimer>();
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
             sut.Completed += (o, e) => wasFired = true;
 
             await sut.SortAsync(_tenUnsortedInts);
@@ -75,7 +75,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.Setup(x => x.Start());
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -87,7 +87,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -99,7 +99,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -115,7 +115,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
             fakeTimer.SetupGet(x => x.StopTime).Returns(Mother.GetTestStopTime());
             fakeTimer.SetupGet(x => x.ElapsedTime).Returns(Mother.GetTestElapsedTime);
 
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
             SortCompleteEventArgs sortCompleteEventArgs = null;
             sut.Completed += (o, e) => sortCompleteEventArgs = e;
 
@@ -132,7 +132,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
 
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
 
             int[] result = await sut.SortAsync(_tenUnsortedInts);
 
@@ -145,7 +145,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
 
-            var sut = new HeapSort(fakeTimer.Object);
+            var sut = new QuickSort(fakeTimer.Object);
 
             int[] result = await sut.SortAsync(_oneHundredUnsortedInts);
 

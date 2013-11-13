@@ -3,3 +3,5 @@ C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Timer\bin\Debug\Sorter.T
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Timer\obj\Debug\Sorter.Timer.csprojResolveAssemblyReference.cache
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Timer\obj\Debug\Sorter.Timer.dll
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Timer\obj\Debug\Sorter.Timer.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Timer\bin\Debug\Sorter.Utilities.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Timer\bin\Debug\Sorter.Utilities.pdb

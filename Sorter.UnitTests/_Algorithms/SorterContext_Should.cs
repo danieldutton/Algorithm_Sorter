@@ -5,7 +5,7 @@ using Sorter.Algorithms.Routines;
 using Sorter.Timer;
 using System;
 
-namespace Sorter.UnitTests.Algorithms
+namespace Sorter.UnitTests._Algorithms
 {
     public class SorterContext_Should
     {
