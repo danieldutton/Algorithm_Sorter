@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
 using Sorter.Timer;
+using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {

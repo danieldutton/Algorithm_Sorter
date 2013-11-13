@@ -23,5 +23,6 @@ namespace Sorter.Algorithms
 
             return _sortRoutine.SortAsync(dataToSort);
         }
+
     }
 }

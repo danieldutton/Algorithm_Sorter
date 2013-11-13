@@ -10,8 +10,6 @@ namespace Sorter.UnitTests.Algorithms.Routines
     [TestFixture]
     public class SelectionSort_Should
     {
-        //BOUNDARY CONDITIONS - IF NO DATA TO SORT ETC
-
         private int[] _tenUnsortedInts;
 
         private int[] _oneHundredUnsortedInts;
