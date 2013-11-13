@@ -2,7 +2,7 @@
 
 namespace Sorter.Algorithms.EventArg
 {
-    public class SortingCompleteEventArgs : EventArgs
+    public sealed class SortCompleteEventArgs : EventArgs
     {
         public double StartTimeInMs { get; private set; }
 
@@ -11,7 +11,7 @@ namespace Sorter.Algorithms.EventArg
         public double ElapsedTimeInMs { get; private set; }
 
 
-        public SortingCompleteEventArgs(double startTime, double stopTime, double elapsedTime)
+        public SortCompleteEventArgs(double startTime, double stopTime, double elapsedTime)
         {
             StartTimeInMs = startTime;
             StopTimeInMs = stopTime;

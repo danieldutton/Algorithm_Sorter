@@ -1,18 +1,18 @@
-﻿using System;
-using System.Threading.Tasks;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
 using Sorter.Timer;
+using System;
+using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public abstract class SortRoutine : IProgressReportable<EventArgs>
+    public abstract class SortRoutine : IProgressable<EventArgs, EventArgs, SortCompleteEventArgs>
     {
         public event EventHandler<EventArgs> Started;
        
         public event EventHandler<EventArgs> InProgress;
 
-        public event EventHandler<SortingCompleteEventArgs> Completed;
+        public event EventHandler<SortCompleteEventArgs> Completed;
        
         protected ITimer Timer;
 
@@ -37,9 +37,9 @@ namespace Sorter.Algorithms.Routines
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-        protected virtual void OnCompleted(SortingCompleteEventArgs e)
+        protected virtual void OnCompleted(SortCompleteEventArgs e)
         {
-            EventHandler<SortingCompleteEventArgs> handler = Completed;
+            EventHandler<SortCompleteEventArgs> handler = Completed;
             if (handler != null) handler(this, e);
         }
       

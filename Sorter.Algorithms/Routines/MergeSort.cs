@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
 using Sorter.Timer;
+using System;
+using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
@@ -13,55 +13,57 @@ namespace Sorter.Algorithms.Routines
 
         public override async Task<int[]> SortAsync(int[] data)
         {
-            OnStarted();
-            Timer.Start();
+            //OnStarted();
+            //Timer.Start();
 
-            await Task.Run(() =>
-                {
-                    int middle = data.Length / 2;
-                    int[] left = new int[middle];
+            //int[] sorted = null;
 
-                    for (int i = 0; i < middle; i++)
-                    {
-                        left[i] = data[i];
-                    }
+            //await Task.Run(() =>
+            //    {
+            //        int middle = data.Length / 2;
+            //        int[] left = new int[middle];
 
-                    int[] right = new int[data.Length - middle];
+            //        for (int i = 0; i < middle; i++)
+            //        {
+            //            left[i] = data[i];
+            //        }
 
-                    for (int i = 0; i < data.Length - middle; i++)
-                    {
-                        right[i] = data[i + middle];
-                    }
+            //        int[] right = new int[data.Length - middle];
 
-                    left = SortAsync(left);
-                    right = SortAsync(right);
+            //        for (int i = 0; i < data.Length - middle; i++)
+            //        {
+            //            right[i] = data[i + middle];
+            //        }
 
-                    int leftptr = 0;
-                    int rightptr = 0;
+            //        left = SortAsync(left);
+            //        right = SortAsync(right);
 
-                    int[] sorted = new int[data.Length];
+            //        int leftptr = 0;
+            //        int rightptr = 0;
 
-                    for (int k = 0; k < data.Length; k++)
-                    {
-                        if (rightptr == right.Length || ((leftptr < left.Length) && (left[leftptr] <= right[rightptr])))
-                        {
-                            sorted[k] = left[leftptr];
-                            leftptr++;
-                        }
-                        else if (leftptr == left.Length || ((rightptr < right.Length) && (right[rightptr] <= left[leftptr])))
-                        {
-                            sorted[k] = right[rightptr];
-                            rightptr++;
-                        }
-                    }
-                });
+            //        sorted = new int[data.Length];
 
-            Timer.Stop();
-            OnCompleted(new SortingCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
+            //        for (int k = 0; k < data.Length; k++)
+            //        {
+            //            if (rightptr == right.Length || ((leftptr < left.Length) && (left[leftptr] <= right[rightptr])))
+            //            {
+            //                sorted[k] = left[leftptr];
+            //                leftptr++;
+            //            }
+            //            else if (leftptr == left.Length || ((rightptr < right.Length) && (right[rightptr] <= left[leftptr])))
+            //            {
+            //                sorted[k] = right[rightptr];
+            //                rightptr++;
+            //            }
+            //        }
+            //    });
 
-            return sorted;
+            //Timer.Stop();
+            //OnCompleted(new SortCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
 
+            //return sorted;
             throw new NotImplementedException();
+
         }
     }
 }

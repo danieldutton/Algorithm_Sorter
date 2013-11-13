@@ -5,13 +5,11 @@ using Sorter.Algorithms.Routines;
 using Sorter.Timer;
 using System.Linq;
 
-namespace Sorter.UnitTests.Algorithms
+namespace Sorter.UnitTests.Algorithms.Routines
 {
     [TestFixture]
-    public class SelectionSort_Should
+    public class InsertionSort_Should
     {
-        //BOUNDARY CONDITIONS - IF NO DATA TO SORT ETC
-
         private int[] _tenUnsortedInts;
 
         private int[] _oneHundredUnsortedInts;
@@ -27,8 +25,8 @@ namespace Sorter.UnitTests.Algorithms
         public void SortAsync_FireAStartedEvent()
         {
             bool wasFired = false;
-            var fakeTimer = new Mock<ITimer>();          
-            var sut = new SelectionSort(fakeTimer.Object);
+            var fakeTimer = new Mock<ITimer>();
+            var sut = new InsertionSort(fakeTimer.Object);
             sut.Started += (o, e) => wasFired = true;
 
             sut.SortAsync(_tenUnsortedInts);
@@ -40,7 +38,7 @@ namespace Sorter.UnitTests.Algorithms
         public void SortAsync_CallTimerStartMethodExactlyOnce()
         {
             var fakeTimer = new Mock<ITimer>();
-            var sut = new SelectionSort(fakeTimer.Object);
+            var sut = new InsertionSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -51,12 +49,12 @@ namespace Sorter.UnitTests.Algorithms
         public void SortAsync_CallTimerStopMethodExactlyOnce()
         {
             var fakeTimer = new Mock<ITimer>();
-            fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());            
-            var sut = new SelectionSort(fakeTimer.Object);
-            
+            fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
+            var sut = new InsertionSort(fakeTimer.Object);
+
             sut.SortAsync(_tenUnsortedInts);
 
-            fakeTimer.Verify(x => x.Stop(), Times.Once());   
+            fakeTimer.Verify(x => x.Stop(), Times.Once());
         }
 
         [Test]
@@ -64,12 +62,12 @@ namespace Sorter.UnitTests.Algorithms
         {
             bool wasFired = false;
             var fakeTimer = new Mock<ITimer>();
-            var sut = new SelectionSort(fakeTimer.Object);
+            var sut = new InsertionSort(fakeTimer.Object);
             sut.Completed += (o, e) => wasFired = true;
 
             await sut.SortAsync(_tenUnsortedInts);
 
-            Assert.IsTrue(wasFired);    
+            Assert.IsTrue(wasFired);
         }
 
         [Test]
@@ -77,7 +75,7 @@ namespace Sorter.UnitTests.Algorithms
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.Setup(x => x.Start());
-            var sut = new SelectionSort(fakeTimer.Object);
+            var sut = new InsertionSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -89,7 +87,7 @@ namespace Sorter.UnitTests.Algorithms
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new SelectionSort(fakeTimer.Object);
+            var sut = new InsertionSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -101,7 +99,7 @@ namespace Sorter.UnitTests.Algorithms
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new SelectionSort(fakeTimer.Object);
+            var sut = new InsertionSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
@@ -112,18 +110,18 @@ namespace Sorter.UnitTests.Algorithms
         public async void SortAsync_FireACompletedEventWithTheCorrectEventArgsData()
         {
             var fakeTimer = new Mock<ITimer>();
-            
+
             fakeTimer.SetupGet(x => x.StartTime).Returns(Mother.GetTestStartTime());
             fakeTimer.SetupGet(x => x.StopTime).Returns(Mother.GetTestStopTime());
             fakeTimer.SetupGet(x => x.ElapsedTime).Returns(Mother.GetTestElapsedTime);
 
-            var sut = new SelectionSort(fakeTimer.Object);            
-            SortingCompleteEventArgs sortCompleteEventArgs = null;
-            sut.Completed += (o,e) => sortCompleteEventArgs = e;
+            var sut = new InsertionSort(fakeTimer.Object);
+            SortCompleteEventArgs sortCompleteEventArgs = null;
+            sut.Completed += (o, e) => sortCompleteEventArgs = e;
 
             await sut.SortAsync(_tenUnsortedInts);
 
-            Assert.AreEqual(Mother.GetTestStartTime(),sortCompleteEventArgs.StartTimeInMs);
+            Assert.AreEqual(Mother.GetTestStartTime(), sortCompleteEventArgs.StartTimeInMs);
             Assert.AreEqual(Mother.GetTestStopTime(), sortCompleteEventArgs.StopTimeInMs);
             Assert.AreEqual(Mother.GetTestElapsedTime(), sortCompleteEventArgs.ElapsedTimeInMs);
         }
@@ -133,12 +131,12 @@ namespace Sorter.UnitTests.Algorithms
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            
-            var sut = new SelectionSort(fakeTimer.Object);
+
+            var sut = new InsertionSort(fakeTimer.Object);
 
             int[] result = await sut.SortAsync(_tenUnsortedInts);
 
-            Assert.IsTrue(Mother.GetTenSortedIntegers().SequenceEqual(result));    
+            Assert.IsTrue(Mother.GetTenSortedIntegers().SequenceEqual(result));
         }
 
         [Test]
@@ -147,7 +145,7 @@ namespace Sorter.UnitTests.Algorithms
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
 
-            var sut = new SelectionSort(fakeTimer.Object);
+            var sut = new InsertionSort(fakeTimer.Object);
 
             int[] result = await sut.SortAsync(_oneHundredUnsortedInts);
 

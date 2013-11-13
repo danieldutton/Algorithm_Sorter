@@ -35,8 +35,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventArg\SortingCompleteEventArgs.cs" />
-    <Compile Include="Interfaces\IProgressReportable.cs" />
+    <Compile Include="EventArg\SortCompleteEventArgs.cs" />
+    <Compile Include="Interfaces\IProgressable.cs" />
     <Compile Include="Routines\BubbleSort.cs" />
     <Compile Include="Routines\HeapSort.cs" />
     <Compile Include="Routines\InsertionSort.cs" />
@@ -44,7 +44,7 @@
     <Compile Include="Routines\QuickSort.cs" />
     <Compile Include="Routines\SelectionSort.cs" />
     <Compile Include="Routines\SortRoutine.cs" />
-    <Compile Include="Sorter.cs" />
+    <Compile Include="SorterContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

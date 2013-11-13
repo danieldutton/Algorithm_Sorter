@@ -45,12 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\BubbleSort_Should.cs" />
-    <Compile Include="Algorithms\HeapSort_Should.cs" />
-    <Compile Include="Algorithms\InsertionSort_Should.cs" />
-    <Compile Include="Algorithms\MergeSort_Should.cs" />
-    <Compile Include="Algorithms\QuickSort_Should.cs" />
-    <Compile Include="Algorithms\SelectionSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\BubbleSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\HeapSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\InsertionSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\MergeSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\QuickSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\SelectionSort_Should.cs" />
+    <Compile Include="Algorithms\SorterContext_Should.cs" />
     <Compile Include="Input\DatFileReader_Should.cs" />
     <Compile Include="Mother.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

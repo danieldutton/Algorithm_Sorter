@@ -5,7 +5,7 @@ using Sorter.Algorithms.Routines;
 using Sorter.Timer;
 using System.Linq;
 
-namespace Sorter.UnitTests.Algorithms
+namespace Sorter.UnitTests.Algorithms.Routines
 {
     [TestFixture]
     public class MergeSort_Should
@@ -116,7 +116,7 @@ namespace Sorter.UnitTests.Algorithms
             fakeTimer.SetupGet(x => x.ElapsedTime).Returns(Mother.GetTestElapsedTime);
 
             var sut = new MergeSort(fakeTimer.Object);
-            SortingCompleteEventArgs sortCompleteEventArgs = null;
+            SortCompleteEventArgs sortCompleteEventArgs = null;
             sut.Completed += (o, e) => sortCompleteEventArgs = e;
 
             await sut.SortAsync(_tenUnsortedInts);

@@ -1,4 +1,5 @@
-﻿using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms;
+using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
 using Sorter.Timer;
@@ -14,7 +15,9 @@ namespace Sorter.Presentation
     {
         private readonly IFileReader<int> _iFileReader;
 
-        private int[] _data;
+        private SorterContext _sorter;
+
+        private int[] _dataToSort;
 
         public Form1(IFileReader<int> fileReader)
         {
@@ -27,17 +30,16 @@ namespace Sorter.Presentation
         private void _btnBrowseSrcFile_Click(object sender, EventArgs e)
         {
             var openFileDialog = ConstructOpenFileDialog();
-            string[] files = null;
             string[] safeFiles = null;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                files = openFileDialog.FileNames;
+                string[] files = openFileDialog.FileNames;
                 safeFiles = openFileDialog.SafeFileNames;
-                _data = _iFileReader.Read(files);
+                _dataToSort = _iFileReader.Read(files);
             }
             listBox1.DataSource = safeFiles;
-            _data = _iFileReader.Read();
-            _lblObjectCount.Text = _data.Length.ToString();
+            _dataToSort = _iFileReader.Read();
+            _lblObjectCount.Text = _dataToSort.Length.ToString();
             _btnSort.Enabled = true;
         }
 
@@ -50,7 +52,7 @@ namespace Sorter.Presentation
                     ShowReadOnly = true,
                     InitialDirectory = @"C:\My Documents",
                 };
-            if(_data != null) _btnSort.Enabled = true;
+            if(_dataToSort != null) _btnSort.Enabled = true;
             return openFileDialog;
         }
 
@@ -68,41 +70,39 @@ namespace Sorter.Presentation
 
             if ("BubbleSrt".Equals("BubbleSort"))
             {
-                //Need to fire this off on a different task
-                var sortRoutine = new BubbleSort(new StopWatch());
-
-                Task<int[]> result = sortRoutine.SortAsync(_data);
+                _sorter = new SorterContext(new BubbleSort(new StopWatch()));
+                Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if ("HeapSor".Equals("HeapSort"))
             {
                 var sortRoutine = new HeapSort(new StopWatch());
-                Task<int[]> result = sortRoutine.SortAsync(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
             if (alg != null && alg.Equals("InsertionSort"))
             {
                 var sortRoutine = new InsertionSort(new StopWatch());
-                Task<int[]> result = sortRoutine.SortAsync(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
             if (alg != null && alg.Equals("MergeSort"))
             {
                 var sortRoutine = new MergeSort(new StopWatch());
-                Task<int[]> result = sortRoutine.SortAsync(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
             if (alg != null && alg.Equals("QuickSort"))
             {
                 var sortRoutine = new QuickSort(new StopWatch());
-                Task<int[]> result = sortRoutine.SortAsync(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
 
             if ("SelectionSort".Equals("SelectionSort"))
             {
                 var sortRoutine = new SelectionSort(new StopWatch());
                 sortRoutine.Completed +=sortRoutine_Completed;
-                Task<int[]> result = sortRoutine.SortAsync(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
         }
 
-        private void sortRoutine_Completed(object sender, SortingCompleteEventArgs e)
+        private void sortRoutine_Completed(object sender, SortCompleteEventArgs e)
         {
             MessageBox.Show(e.ElapsedTimeInMs.ToString());
         }
