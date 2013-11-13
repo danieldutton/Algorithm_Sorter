@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System;
+using Moq;
 using NUnit.Framework;
 using Sorter.Utilities.DateTimes;
 
@@ -57,16 +58,12 @@ namespace Sorter.UnitTests._Timer
         public void ElapsedTime_ProvideTheCorrectTimeDifference()
         {
             var fakeTimeProvider = new Mock<ICurrentTimeProvider>();
+            var sut = new Timer.Timer(fakeTimeProvider.Object)
+                {
+                    StartTime = 725, StopTime = 1000
+                };
 
-            double firstCall = 200;
-
-            fakeTimeProvider.Setup(x => x.CurrentTimeInMilliseconds()).Returns(()=> firstCall).Callback(()=> firstCall+= 270);
-
-            var sut = new Timer.Timer(fakeTimeProvider.Object);
-            sut.Start();
-            sut.Stop();
-
-            Assert.AreEqual(300, sut.ElapsedTime);
+            Assert.AreEqual(275, sut.ElapsedTime);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace Sorter.Timer
         public double StartTime { get; set; }
 
         public double StopTime { get; set; }
-        
-        public double ElapsedTime { get; set; }
+
+        public double ElapsedTime { get { return StopTime - StartTime; } }
 
 
         public Timer(ICurrentTimeProvider currentTimeProvider)
