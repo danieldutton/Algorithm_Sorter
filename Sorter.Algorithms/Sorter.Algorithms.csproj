@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventArg\SortingEventArgs.cs" />
@@ -45,6 +46,12 @@
     <Compile Include="Routines\SortRoutine.cs" />
     <Compile Include="Sorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sorter.Utilities\Sorter.Utilities.csproj">
+      <Project>{da0466e9-59d1-456d-8bb5-1e00935eb7cd}</Project>
+      <Name>Sorter.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sorter.Algorithms.Routines
 {
@@ -8,8 +9,6 @@ namespace Sorter.Algorithms.Routines
         {
             OnStarted();
 
-            int temp = 0;
-
             await Task.Run(() =>
                 {
                     for (int write = 0; write < data.Length; write++)
@@ -18,7 +17,7 @@ namespace Sorter.Algorithms.Routines
                         {
                             if (data[sort] > data[sort + 1])
                             {
-                                temp = data[sort + 1];
+                                int temp = data[sort + 1];
                                 data[sort + 1] = data[sort];
                                 data[sort] = temp;
                             }
@@ -28,7 +27,7 @@ namespace Sorter.Algorithms.Routines
             
 
             OnCompleted();
-
+            MessageBox.Show("Bubble Sort Completed");
             return data;
         }
     }

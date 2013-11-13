@@ -12,6 +12,8 @@ namespace Sorter.Algorithms.Routines
 
         public event EventHandler<EventArgs> Completed;
 
+        
+
 
         public abstract Task<int[]> SortAsync(int[] data); 
 

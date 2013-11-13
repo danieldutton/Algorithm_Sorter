@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
-using Sorter.Algorithms.Routines;
+﻿using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sorter.Presentation
@@ -65,13 +64,13 @@ namespace Sorter.Presentation
         {
             var alg = _comboBxAlgorithm.SelectedValue as string;
 
-            if ("BubbleSor".Equals("BubbleSort"))
+            if ("BubbleSort".Equals("BubbleSort"))
             {
                 //Need to fire this off on a different task
                 var sortRoutine = new BubbleSort();
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
-            if ("HeapSort".Equals("HeapSort"))
+            if ("HeapSor".Equals("HeapSort"))
             {
                 var sortRoutine = new HeapSort();
                 Task<int[]> result = sortRoutine.SortAsync(_data);
