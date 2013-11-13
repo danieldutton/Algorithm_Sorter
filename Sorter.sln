@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter.Utilities", "Sorter.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter.Timer", "Sorter.Timer\Sorter.Timer.csproj", "{47353097-FE58-41F4-BC0C-E42A45540ACE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{5BF97E25-410C-425A-A645-1FE2F7D676EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{47353097-FE58-41F4-BC0C-E42A45540ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47353097-FE58-41F4-BC0C-E42A45540ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47353097-FE58-41F4-BC0C-E42A45540ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF97E25-410C-425A-A645-1FE2F7D676EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF97E25-410C-425A-A645-1FE2F7D676EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF97E25-410C-425A-A645-1FE2F7D676EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF97E25-410C-425A-A645-1FE2F7D676EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

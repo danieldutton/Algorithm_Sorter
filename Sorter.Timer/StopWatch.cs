@@ -4,15 +4,12 @@ namespace Sorter.Timer
 {
     public class StopWatch : ITimer
     {
-        public double StartTime { get; private set; }
+        public double StartTime { get; set; }
 
-        public double StopTime { get; private set; }
+        public double StopTime { get; set; }
+        
+        public double ElapsedTime { get; set; }
 
-
-        public double ElapsedTime
-        {
-            get { return StopTime - StartTime; }
-        }
 
         public void Start()
         {
