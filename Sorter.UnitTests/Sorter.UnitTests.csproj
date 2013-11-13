@@ -46,6 +46,7 @@
     <Compile Include="Algorithms\Routines\MergeSort_Should.cs" />
     <Compile Include="Algorithms\Routines\QuickSort_Should.cs" />
     <Compile Include="Algorithms\Routines\SelectionSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\ShellSort_Should.cs" />
     <Compile Include="Algorithms\SorterContext_Should.cs" />
     <Compile Include="Input\DatFileReader_Should.cs" />
     <Compile Include="Mother.cs" />

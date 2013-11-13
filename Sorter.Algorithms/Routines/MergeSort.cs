@@ -1,6 +1,6 @@
-﻿using Sorter.Algorithms.EventArg;
+﻿using System;
+using Sorter.Algorithms.EventArg;
 using Sorter.Timer;
-using System;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
@@ -15,53 +15,67 @@ namespace Sorter.Algorithms.Routines
         {
             OnStarted();
             Timer.Start();
-
-            int[] sorted = null;
-
-            await Task.Run(() =>
-                {
-                    int middle = data.Length / 2;
-                    int[] left = new int[middle];
-
-                    for (int i = 0; i < middle; i++)
-                    {
-                        left[i] = data[i];
-                    }
-
-                    int[] right = new int[data.Length - middle];
-
-                    for (int i = 0; i < data.Length - middle; i++)
-                    {
-                        right[i] = data[i + middle];
-                    }
-                   
-                    left = SortAsync(left).Result;
-                    right = SortAsync(right).Result;
-
-                    int leftptr = 0;
-                    int rightptr = 0;
-
-                    sorted = new int[data.Length];
-
-                    for (int k = 0; k < data.Length; k++)
-                    {
-                        if (rightptr == right.Length || ((leftptr < left.Length) && (left[leftptr] <= right[rightptr])))
-                        {
-                            sorted[k] = left[leftptr];
-                            leftptr++;
-                        }
-                        else if (leftptr == left.Length || ((rightptr < right.Length) && (right[rightptr] <= left[leftptr])))
-                        {
-                            sorted[k] = right[rightptr];
-                            rightptr++;
-                        }
-                    }
-                });
+            int[] result = null;
+           
+            //await Task.Run(() =>
+            //    {
+            //        result = MSort(data);
+            //    });
 
             Timer.Stop();
             OnCompleted(new SortCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
 
-            return sorted;
+            return result;
+        }
+
+        public int[] MergeSortAction(int[] input)
+        {
+            int inputArrayLength = input.Length;
+
+            if (inputArrayLength.Equals(1))
+            {
+                return input;
+            }
+
+            int middle = inputArrayLength / 2;
+            int[] left = new int[middle];
+            int[] right = new int[inputArrayLength - middle];
+
+            //for (int i = 0; i < middle; i++)
+            //{
+            //    left[i] = input[i];
+            //}
+
+            //for (int i = 0; i < inputArrayLength - middle; i++)
+            //{
+            //    right[i] = input[i + middle];
+            //}
+
+            Array.Copy(input, 0, left, 0, middle);
+            Array.Copy(input, middle, right, 0, inputArrayLength - middle);
+
+            left = MergeSortAction(left);
+            right = MergeSortAction(right);
+
+            int[] sortedArray = new int[inputArrayLength];
+            int leftp = 0;
+            int rightp = 0;
+
+            for (int count = 0; count < inputArrayLength; count++)
+            {
+                if (rightp == right.Length || (leftp < left.Length && left[leftp] <= right[rightp]))
+                {
+                    sortedArray[count] = left[leftp];
+                    leftp++;
+                }
+                else if (leftp == left.Length || (rightp < right.Length && right[rightp] <= left[leftp]))
+                {
+                    sortedArray[count] = right[rightp];
+                    rightp++;
+                }
+            }
+
+            return sortedArray;
         }
     }
 }
