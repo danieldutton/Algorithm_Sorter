@@ -2,7 +2,6 @@
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
-using Sorter.Timer;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -24,23 +23,39 @@ namespace Sorter.Presentation
             _iFileReader = fileReader;
             InitializeComponent();
             BindClassNames();
-            _btnSort.Enabled = false;
+            DisableStartControls();
         }
 
         private void _btnBrowseSrcFile_Click(object sender, EventArgs e)
         {
             var openFileDialog = ConstructOpenFileDialog();
             string[] safeFiles = null;
+
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string[] files = openFileDialog.FileNames;
                 safeFiles = openFileDialog.SafeFileNames;
                 _dataToSort = _iFileReader.Read(files);
             }
-            listBox1.DataSource = safeFiles;
+
+            PopulateSelectedFilesListBox(safeFiles);
+            
             _dataToSort = _iFileReader.Read();
             _lblObjectCount.Text = _dataToSort.Length.ToString();
             _btnSort.Enabled = true;
+        }
+
+        private void DisableStartControls()
+        {
+            _btnSort.Enabled = false;    
+        }
+
+        private void PopulateSelectedFilesListBox(string[] fileNames)
+        {
+            if (fileNames != null && fileNames.Length >= 0)
+            {
+                _lBoxSelectedFiles.DataSource = fileNames;
+            }
         }
 
         private OpenFileDialog ConstructOpenFileDialog()
@@ -64,9 +79,11 @@ namespace Sorter.Presentation
             _comboBxAlgorithm.DataSource = names;
         }
 
-        private void _btnSort_Click(object sender, EventArgs e)
+        private void StartSort_Click(object sender, EventArgs e)
         {
             var alg = _comboBxAlgorithm.SelectedValue as string;
+
+            if(alg == null) DisplayAlgorithmSelectionError();
 
             if ("BubbleSrt".Equals("BubbleSort"))
             {
@@ -78,12 +95,12 @@ namespace Sorter.Presentation
                 var sortRoutine = new HeapSort(new Timer.Timer());
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
-            if (alg != null && alg.Equals("InsertionSort"))
+            if (alg.Equals("InsertionSort"))
             {
                 var sortRoutine = new InsertionSort(new Timer.Timer());
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
-            if (alg != null && alg.Equals("QuickSort"))
+            if (alg.Equals("QuickSort"))
             {
                 var sortRoutine = new QuickSort(new Timer.Timer());
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
@@ -95,6 +112,11 @@ namespace Sorter.Presentation
                 sortRoutine.Completed +=sortRoutine_Completed;
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
+        }
+
+        private void DisplayAlgorithmSelectionError()
+        {
+            
         }
 
         private void sortRoutine_Completed(object sender, SortCompleteEventArgs e)

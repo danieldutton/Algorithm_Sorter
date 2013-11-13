@@ -1,11 +1,10 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Sorter.Input;
-using System;
-using System.IO;
 using Sorter.Utilities.Readers;
+using System;
 
-namespace Sorter.UnitTests.Input
+namespace Sorter.UnitTests._Input
 {
     [TestFixture]
     public class DatFileReader_Should
@@ -24,14 +23,12 @@ namespace Sorter.UnitTests.Input
         public void Read_CallBuildStreamReaderOncePerFilePath()
         {
             //var fakeStreamBuilder = new Mock<IStreamReaderBuilder>();
-            //fakeStreamBuilder.Setup(x => x.BuildStreamReader(It.IsAny<string>()));
-            //fakeStreamBuilder.Setup(x => x.BuildStreamReader(It.IsAny<string>()).ReadLine()).Returns("1 2 3 4 5");
-
+            //fakeStreamBuilder.SetupProperty(x => x.StreamReader).SetReturnsDefault(()=> new StreamReader(It.IsAny<string>()));
             //var sut = new DatFileReader<int>(fakeStreamBuilder.Object);
 
-            //sut.Read(new[] {"file1", "file2", "file3", "file4", "file5"});
+            //sut.Read(new[] {"test1", "test2", "test3", "test4"});
 
-            //fakeStreamBuilder.Verify(x => x.BuildStreamReader(It.IsAny<string>()), Times.Exactly(4));
+            //fakeStreamBuilder.Verify(x => x.BuildStreamReader(It.IsAny<string>()));
         }
   
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Sorter.Utilities.DateTimes;
 
@@ -65,5 +64,7 @@ namespace Sorter.UnitTests._Timer
 
             Assert.AreEqual(275, sut.ElapsedTime);
         }
+
+        //ToDo Should more extensive test coverage be included for time diff
     }
 }

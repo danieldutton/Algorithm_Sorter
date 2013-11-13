@@ -33,7 +33,7 @@
             this._lblFileToSort = new System.Windows.Forms.Label();
             this._btnBrowseSrcFile = new System.Windows.Forms.Button();
             this._btnSort = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this._lBoxSelectedFiles = new System.Windows.Forms.ListBox();
             this._lblObjectsToSort = new System.Windows.Forms.Label();
             this._lblObjectCount = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -94,15 +94,15 @@
             this._btnSort.TabIndex = 4;
             this._btnSort.Text = "Start SortAsync";
             this._btnSort.UseVisualStyleBackColor = true;
-            this._btnSort.Click += new System.EventHandler(this._btnSort_Click);
+            this._btnSort.Click += new System.EventHandler(this.StartSort_Click);
             // 
-            // listBox1
+            // _lBoxSelectedFiles
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(7, 32);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(128, 56);
-            this.listBox1.TabIndex = 5;
+            this._lBoxSelectedFiles.FormattingEnabled = true;
+            this._lBoxSelectedFiles.Location = new System.Drawing.Point(7, 32);
+            this._lBoxSelectedFiles.Name = "_lBoxSelectedFiles";
+            this._lBoxSelectedFiles.Size = new System.Drawing.Size(128, 56);
+            this._lBoxSelectedFiles.TabIndex = 5;
             // 
             // _lblObjectsToSort
             // 
@@ -171,7 +171,7 @@
             this.panel2.Controls.Add(this._lblFileToSort);
             this.panel2.Controls.Add(this._btnBrowseSrcFile);
             this.panel2.Controls.Add(this._lblObjectCount);
-            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this._lBoxSelectedFiles);
             this.panel2.Controls.Add(this._lblObjectsToSort);
             this.panel2.Location = new System.Drawing.Point(6, 47);
             this.panel2.Name = "panel2";
@@ -222,7 +222,7 @@
         private System.Windows.Forms.Label _lblFileToSort;
         private System.Windows.Forms.Button _btnBrowseSrcFile;
         private System.Windows.Forms.Button _btnSort;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox _lBoxSelectedFiles;
         private System.Windows.Forms.Label _lblObjectsToSort;
         private System.Windows.Forms.Label _lblObjectCount;
         private System.Windows.Forms.TabControl tabControl1;
