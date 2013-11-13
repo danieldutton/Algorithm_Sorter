@@ -19,7 +19,7 @@ namespace Sorter.Sandbox
         
         public static async Task<int[]> DoIt(int[] test)
         {
-            ITimer timer = new StopWatch();
+            ITimer timer = new Timer.Timer();
             var sut = new ShellSort(timer);
             
             int[] result = await sut.SortAsync(test);

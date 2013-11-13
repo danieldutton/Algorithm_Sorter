@@ -70,28 +70,28 @@ namespace Sorter.Presentation
 
             if ("BubbleSrt".Equals("BubbleSort"))
             {
-                _sorter = new SorterContext(new BubbleSort(new StopWatch()));
+                _sorter = new SorterContext(new BubbleSort(new Timer.Timer()));
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if ("HeapSor".Equals("HeapSort"))
             {
-                var sortRoutine = new HeapSort(new StopWatch());
+                var sortRoutine = new HeapSort(new Timer.Timer());
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
             if (alg != null && alg.Equals("InsertionSort"))
             {
-                var sortRoutine = new InsertionSort(new StopWatch());
+                var sortRoutine = new InsertionSort(new Timer.Timer());
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
             if (alg != null && alg.Equals("QuickSort"))
             {
-                var sortRoutine = new QuickSort(new StopWatch());
+                var sortRoutine = new QuickSort(new Timer.Timer());
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
 
             if ("SelectionSort".Equals("SelectionSort"))
             {
-                var sortRoutine = new SelectionSort(new StopWatch());
+                var sortRoutine = new SelectionSort(new Timer.Timer());
                 sortRoutine.Completed +=sortRoutine_Completed;
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
