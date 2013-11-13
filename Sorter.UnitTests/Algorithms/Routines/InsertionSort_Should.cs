@@ -87,7 +87,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new InsertionSort(fakeTimer.Object);
+            var sut = new ShellSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 

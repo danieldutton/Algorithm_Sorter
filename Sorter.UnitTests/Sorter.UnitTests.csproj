@@ -43,7 +43,6 @@
     <Compile Include="Algorithms\Routines\BubbleSort_Should.cs" />
     <Compile Include="Algorithms\Routines\HeapSort_Should.cs" />
     <Compile Include="Algorithms\Routines\InsertionSort_Should.cs" />
-    <Compile Include="Algorithms\Routines\MergeSort_Should.cs" />
     <Compile Include="Algorithms\Routines\QuickSort_Should.cs" />
     <Compile Include="Algorithms\Routines\SelectionSort_Should.cs" />
     <Compile Include="Algorithms\Routines\ShellSort_Should.cs" />

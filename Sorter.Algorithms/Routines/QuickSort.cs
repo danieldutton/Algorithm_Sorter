@@ -1,10 +1,11 @@
 ﻿using Sorter.Algorithms.EventArg;
+using Sorter.Algorithms.Interfaces;
 using Sorter.Timer;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public sealed class QuickSort : SortRoutine
+    public sealed class QuickSort : SortRoutine, ISwappable 
     {
         public QuickSort(ITimer timer) : base(timer)
         {
@@ -17,7 +18,7 @@ namespace Sorter.Algorithms.Routines
 
             int[] result = null;
 
-            await Task.Run(() => result = QSort(data, 0, data.Length - 1));
+            await Task.Run(() => result = Swap(data, 0, data.Length - 1));
 
             Timer.Stop();
             OnCompleted(new SortCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
@@ -25,7 +26,8 @@ namespace Sorter.Algorithms.Routines
             return result;
         }
 
-        private int[] QSort(int[] data, int left, int right)
+
+        public int[] Swap(int[] data, int left, int right)
         {
             int pivot, l_hold, r_hold;
 
@@ -65,12 +67,12 @@ namespace Sorter.Algorithms.Routines
 
             if (left < pivot)
             {
-                QSort(data, left, pivot - 1);
+                Swap(data, left, pivot - 1);
             }
 
             if (right > pivot)
             {
-                QSort(data, pivot + 1, right);
+                Swap(data, pivot + 1, right);
             }
 
             return data;

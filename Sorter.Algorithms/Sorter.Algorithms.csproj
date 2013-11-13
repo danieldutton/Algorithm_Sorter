@@ -36,10 +36,10 @@
   <ItemGroup>
     <Compile Include="EventArg\SortCompleteEventArgs.cs" />
     <Compile Include="Interfaces\IProgressable.cs" />
+    <Compile Include="Interfaces\ISwappable.cs" />
     <Compile Include="Routines\BubbleSort.cs" />
     <Compile Include="Routines\HeapSort.cs" />
     <Compile Include="Routines\InsertionSort.cs" />
-    <Compile Include="Routines\MergeSort.cs" />
     <Compile Include="Routines\QuickSort.cs" />
     <Compile Include="Routines\SelectionSort.cs" />
     <Compile Include="Routines\ShellSort.cs" />

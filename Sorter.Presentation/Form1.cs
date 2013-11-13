@@ -83,11 +83,6 @@ namespace Sorter.Presentation
                 var sortRoutine = new InsertionSort(new StopWatch());
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
-            if (alg != null && alg.Equals("MergeSort"))
-            {
-                var sortRoutine = new MergeSort(new StopWatch());
-                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
-            }
             if (alg != null && alg.Equals("QuickSort"))
             {
                 var sortRoutine = new QuickSort(new StopWatch());
