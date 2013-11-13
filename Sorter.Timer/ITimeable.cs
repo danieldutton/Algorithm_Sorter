@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sorter.Utilities
+namespace Sorter.Timer
 {
-    public class Class1
+    interface ITimeable
     {
     }
 }

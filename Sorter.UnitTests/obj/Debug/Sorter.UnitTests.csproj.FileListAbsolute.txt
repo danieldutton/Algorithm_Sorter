@@ -24,3 +24,5 @@ C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\nuni
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.csprojResolveAssemblyReference.cache
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.dll
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\obj\Debug\Sorter.UnitTests.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Utilities.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.UnitTests\bin\Debug\Sorter.Utilities.pdb

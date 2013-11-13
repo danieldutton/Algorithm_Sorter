@@ -1,27 +1,23 @@
 ﻿using Sorter.Input.Exceptions;
 using Sorter.Input.Interfaces;
+using Sorter.Utilities.Readers;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Sorter.Input
 {
     public sealed class DatFileReader<TType> : IFileReader<TType>
     {
-        private TextReader _textReader;
+        private readonly IStreamReaderBuilder _streamBuilder;
 
-        private TType[] _tempDataArray;
+        private TType[] _dataArray;
 
         private readonly List<TType> _tempDataList = new List<TType>();
 
 
-        public DatFileReader()
-        {            
-        }
-
-        public DatFileReader(TextReader textReader)
+        public DatFileReader(IStreamReaderBuilder streamBuilder)
         {
-            _textReader = textReader;
+            _streamBuilder = streamBuilder;
         }
 
         public TType[] Read(params string[] filePaths)
@@ -34,24 +30,24 @@ namespace Sorter.Input
             {
                 foreach (string filePath in filePaths)
                 {
-                    using (_textReader = new StreamReader(filePath))
-                    {
+                    _streamBuilder.BuildStreamReader(filePath);
+                    
                         string line;
-                        while ((line = _textReader.ReadLine()) != null)
+                        while ((line = _streamBuilder.StreamReader.ReadLine()) != null)
                         {
                             _tempDataList.Add((TType) Convert.ChangeType(line, typeof (TType)));
                         }
-                        _tempDataArray = new TType[_tempDataList.Count];
+                        _dataArray = new TType[_tempDataList.Count];
 
-                        _tempDataList.CopyTo(_tempDataArray);
-                    }
+                        _tempDataList.CopyTo(_dataArray);
+                    
                 }
             }
             catch (Exception e)
             {
                 throw new FileReadException("error");
             }
-            return _tempDataArray;
+            return _dataArray;
         }
     }
 }

@@ -3,6 +3,7 @@ using Sorter.Input.Interfaces;
 using System;
 using System.IO;
 using System.Windows.Forms;
+using Sorter.Utilities.Readers;
 
 namespace Sorter.Presentation
 {
@@ -17,7 +18,8 @@ namespace Sorter.Presentation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            IFileReader<int> fileReader = new DatFileReader<int>(); 
+            IStreamReaderBuilder streamBuilder = new StreamReaderBuilder();
+            IFileReader<int> fileReader = new DatFileReader<int>(streamBuilder); 
             Application.Run(new Form1(fileReader));
         }
     }

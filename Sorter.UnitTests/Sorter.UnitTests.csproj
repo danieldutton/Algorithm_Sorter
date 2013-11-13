@@ -66,6 +66,10 @@
       <Project>{7335ba52-400f-45e3-9c98-d4b8d2565310}</Project>
       <Name>Sorter.Input</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sorter.Utilities\Sorter.Utilities.csproj">
+      <Project>{DA0466E9-59D1-456D-8BB5-1E00935EB7CD}</Project>
+      <Name>Sorter.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
