@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Sorter.Algorithms.Interfaces;
 
 namespace Sorter.Algorithms.Routines
@@ -12,7 +13,7 @@ namespace Sorter.Algorithms.Routines
         public event EventHandler<EventArgs> Completed;
 
 
-        public abstract int[] Sort(int[] data); 
+        public abstract Task<int[]> SortAsync(int[] data); 
 
 
         protected virtual void OnStarted()

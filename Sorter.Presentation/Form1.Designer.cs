@@ -92,7 +92,7 @@
             this._btnSort.Name = "_btnSort";
             this._btnSort.Size = new System.Drawing.Size(75, 23);
             this._btnSort.TabIndex = 4;
-            this._btnSort.Text = "Start Sort";
+            this._btnSort.Text = "Start SortAsync";
             this._btnSort.UseVisualStyleBackColor = true;
             this._btnSort.Click += new System.EventHandler(this._btnSort_Click);
             // 

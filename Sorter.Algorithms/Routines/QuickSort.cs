@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
     public sealed class QuickSort : SortRoutine
     {
-        public override int[] Sort(int[] data)
+        public override async Task<int[]> SortAsync(int[] data)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using Sorter.Algorithms.Routines;
+﻿using System.Threading.Tasks;
+using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -68,33 +69,33 @@ namespace Sorter.Presentation
             {
                 //Need to fire this off on a different task
                 var sortRoutine = new BubbleSort();
-                int[] result = sortRoutine.Sort(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if ("HeapSort".Equals("HeapSort"))
             {
                 var sortRoutine = new HeapSort();
-                sortRoutine.Sort(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if (alg != null && alg.Equals("InsertionSort"))
             {
                 var sortRoutine = new InsertionSort();
-                sortRoutine.Sort(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if (alg != null && alg.Equals("MergeSort"))
             {
                 var sortRoutine = new MergeSort();
-                sortRoutine.Sort(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if (alg != null && alg.Equals("QuickSort"))
             {
                 var sortRoutine = new QuickSort();
-                sortRoutine.Sort(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_data);
             }
 
             if (alg != null && alg.Equals("SelectionSort"))
             {
                 var sortRoutine = new SelectionSort();
-                sortRoutine.Sort(_data);
+                Task<int[]> result = sortRoutine.SortAsync(_data);
             }
         } 
     }

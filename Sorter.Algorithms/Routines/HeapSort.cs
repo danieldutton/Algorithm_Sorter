@@ -1,21 +1,26 @@
-﻿namespace Sorter.Algorithms.Routines
+﻿using System.Threading.Tasks;
+
+namespace Sorter.Algorithms.Routines
 {
     public sealed class HeapSort : SortRoutine
     {
-        public override int[] Sort(int[] data)
+        public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
 
-            for (int i = (data.Length - 1) / 2; i >= 0; i--)
-                Adjust(data, i, data.Length - 1);
+            await Task.Run(() =>
+                {
+                    for (int i = (data.Length - 1) / 2; i >= 0; i--)
+                        Adjust(data, i, data.Length - 1);
 
-            for (int i = data.Length - 1; i >= 1; i--)
-            {
-                int temp = data[0];
-                data[0] = data[i];
-                data[i] = temp;
-                Adjust(data, 0, i - 1);
-            }
+                    for (int i = data.Length - 1; i >= 1; i--)
+                    {
+                        int temp = data[0];
+                        data[0] = data[i];
+                        data[i] = temp;
+                        Adjust(data, 0, i - 1);
+                    }
+                });
 
             OnCompleted();
 

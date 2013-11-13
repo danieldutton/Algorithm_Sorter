@@ -1,4 +1,5 @@
-﻿using Sorter.Algorithms.Routines;
+﻿using System.Threading.Tasks;
+using Sorter.Algorithms.Routines;
 
 namespace Sorter.Algorithms
 {
@@ -11,9 +12,9 @@ namespace Sorter.Algorithms
             _sortRoutine = sortRoutine;
         }
 
-        public int[] Sort(int[] dataToSort)
+        public Task<int[]> Sort(int[] dataToSort)
         {
-            return _sortRoutine.Sort(dataToSort);
+            return _sortRoutine.SortAsync(dataToSort);
         }
     }
 }
