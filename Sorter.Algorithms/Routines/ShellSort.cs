@@ -17,7 +17,7 @@ namespace Sorter.Algorithms.Routines
 
             await Task.Run(() =>
                 {
-                    int i, j, increment, temp, x = 0;
+                    int i, j, increment, temp, x = data.Length;
 
                     increment = 3;
 

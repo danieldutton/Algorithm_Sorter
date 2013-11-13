@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>0ecdf5db-5b67-4c8b-bf4f-3ae1355bda0b</ProjectGuid>
+    <ProjectGuid>{B0A0E876-6F32-475F-8424-BFA32229F97F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sorter.Sandbox</RootNamespace>
@@ -46,6 +46,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sorter.Algorithms\Sorter.Algorithms.csproj">
+      <Project>{67e1d0a1-b72c-42a7-a478-15709a366c82}</Project>
+      <Name>Sorter.Algorithms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sorter.Timer\Sorter.Timer.csproj">
+      <Project>{47353097-fe58-41f4-bc0c-e42a45540ace}</Project>
+      <Name>Sorter.Timer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
