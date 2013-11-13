@@ -1,16 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
 using Sorter.Timer;
+using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
     public sealed class SelectionSort : SortRoutine
     {
-        public SelectionSort(ITimer timer) : base(timer)
-        {
-        }
+        public SelectionSort(ITimer timer) : base(timer){}
 
         public override async Task<int[]> SortAsync(int[] data)
         {
@@ -33,8 +29,9 @@ namespace Sorter.Algorithms.Routines
                     }
                 });
             Timer.Stop();
+            
             OnCompleted(new SortingCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
-            MessageBox.Show("Selection Sort Finished" + " Time:" + Timer.ElapsedTime);
+
             return data;
         }
     }

@@ -1,4 +1,5 @@
-﻿using Sorter.Algorithms.Routines;
+﻿using Sorter.Algorithms.EventArg;
+using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
 using Sorter.Timer;
 using System;
@@ -69,6 +70,7 @@ namespace Sorter.Presentation
             {
                 //Need to fire this off on a different task
                 var sortRoutine = new BubbleSort(new StopWatch());
+
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
             if ("HeapSor".Equals("HeapSort"))
@@ -95,8 +97,14 @@ namespace Sorter.Presentation
             if ("SelectionSort".Equals("SelectionSort"))
             {
                 var sortRoutine = new SelectionSort(new StopWatch());
+                sortRoutine.Completed +=sortRoutine_Completed;
                 Task<int[]> result = sortRoutine.SortAsync(_data);
             }
-        } 
+        }
+
+        private void sortRoutine_Completed(object sender, SortingCompleteEventArgs e)
+        {
+            MessageBox.Show(e.ElapsedTimeInMs.ToString());
+        }
     }
 }

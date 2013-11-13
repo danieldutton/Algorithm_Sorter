@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Sorter.Algorithms.EventArg;
+using Sorter.Timer;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sorter.Algorithms.EventArg;
-using Sorter.Timer;
 
 namespace Sorter.Algorithms.Routines
 {
