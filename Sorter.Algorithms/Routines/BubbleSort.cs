@@ -1,7 +1,6 @@
 ﻿using Sorter.Algorithms.EventArg;
 using Sorter.Timer;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Sorter.Algorithms.Routines
 {
@@ -14,7 +13,6 @@ namespace Sorter.Algorithms.Routines
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
-
             Timer.Start();
 
             await Task.Run(() =>
@@ -36,7 +34,7 @@ namespace Sorter.Algorithms.Routines
             Timer.Stop();
             
             OnCompleted(new SortingCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
-            MessageBox.Show("Bubble Sort Completed" + " " + Timer.ElapsedTime);
+
             return data;
         }
     }

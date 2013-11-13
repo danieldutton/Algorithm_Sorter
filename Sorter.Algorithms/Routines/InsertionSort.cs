@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
 using Sorter.Timer;
+using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
@@ -13,6 +13,7 @@ namespace Sorter.Algorithms.Routines
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
+            Timer.Start();
 
             await Task.Run(() =>
                 {
@@ -33,6 +34,7 @@ namespace Sorter.Algorithms.Routines
                     }
                 });
 
+            Timer.Stop();
             OnCompleted(new SortingCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
 
             return data;

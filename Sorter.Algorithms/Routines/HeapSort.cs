@@ -13,6 +13,7 @@ namespace Sorter.Algorithms.Routines
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
+            Timer.Start();
 
             await Task.Run(() =>
                 {
@@ -29,6 +30,7 @@ namespace Sorter.Algorithms.Routines
                 });
 
             OnCompleted(new SortingCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
+            Timer.Stop();
 
             return data;
         }
