@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Sorter.Algorithms;
+﻿using Sorter.Algorithms;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -25,6 +25,8 @@ namespace Sorter.Presentation
             InitializeComponent();
             BindClassNames();
             DisableStartControls();
+            EnableBrowseDataPanel();
+            DisableAlgorithmPanel();
         }
 
         private void _btnBrowseSrcFile_Click(object sender, EventArgs e)
@@ -39,16 +41,30 @@ namespace Sorter.Presentation
                 _dataToSort = _iFileReader.Read(files);
             }
 
+            if (_dataToSort == null) return;
+
             PopulateSelectedFilesListBox(safeFiles);
             
             _dataToSort = _iFileReader.Read();
             _lblObjectCount.Text = _dataToSort.Length.ToString();
-            _btnSort.Enabled = true;
+            DisableBrowseDataPanel();
+            EnableAlgorithmPanel();
         }
 
         private void DisableStartControls()
         {
             _btnSort.Enabled = false;    
+        }
+
+        private void EnableAlgorithmPanel()
+        {
+            _lblInstructionsAlgo.Enabled = true;
+
+        }
+
+        private void DisableAlgorithmPanel()
+        {
+            _btnSort.Enabled = false;
         }
 
         private void PopulateSelectedFilesListBox(string[] fileNames)
@@ -122,9 +138,25 @@ namespace Sorter.Presentation
             
         }
 
+        public void EnableBrowseDataPanel()
+        {
+            _panelBrowseData.Enabled = true;
+        }
+
+        public void DisableBrowseDataPanel()
+        {
+            _panelBrowseData.Enabled = false;
+        }
+
+
         private void sortRoutine_Completed(object sender, SortCompleteEventArgs e)
         {
             MessageBox.Show(e.ElapsedTimeMilliSec.ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
