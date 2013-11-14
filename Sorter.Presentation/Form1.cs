@@ -1,4 +1,5 @@
-﻿using Sorter.Algorithms;
+﻿using System.Collections.Generic;
+using Sorter.Algorithms;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
@@ -73,10 +74,12 @@ namespace Sorter.Presentation
 
         private void BindClassNames()
         {
-            Assembly alg = typeof(string).Assembly;
-            var names = alg.GetTypes().Select(type => type.FullName).ToList();
+            Assembly assembly = Assembly.LoadFrom("Sorter.Algorithms.dll");
+            IEnumerable<Type> result = assembly.GetTypes().Where(x => x.IsSubclassOf((typeof(SortRoutine))));
 
-            _comboBxAlgorithm.DataSource = names;
+            var classNames = result.Select(className => className.Name).ToList();
+            
+            _comboBxAlgorithm.DataSource = classNames;
         }
 
         private void StartSort_Click(object sender, EventArgs e)

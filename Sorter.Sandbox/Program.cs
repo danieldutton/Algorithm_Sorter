@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sorter.Algorithms.Routines;
-using Sorter.Timer;
 
 namespace Sorter.Sandbox
 {
@@ -12,18 +10,20 @@ namespace Sorter.Sandbox
     {
         static void Main(string[] args)
         {
-            int[] test = new[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            int[] actual = DoIt(test).Result; 
+            Assembly assembly = Assembly.LoadFrom("Sorter.Algorithms.dll");
+            var result = assembly.GetTypes().Where(x => x.IsSubclassOf((typeof (SortRoutine))));
+
+            List<string> classNames = new List<string>();
+            foreach (var className in result)
+            {
+                classNames.Add(className.Name);
+            }
+
+            foreach (var className in classNames)
+            {
+                Console.WriteLine(className);
+            }
             Console.ReadLine();
-        }
-        
-        public static async Task<int[]> DoIt(int[] test)
-        {
-            ITimer timer = new Timer.Timer();
-            var sut = new ShellSort(timer);
-            
-            int[] result = await sut.SortAsync(test);
-            return result;
-        }
+        }  
     }
 }
