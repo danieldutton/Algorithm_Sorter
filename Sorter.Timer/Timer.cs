@@ -12,10 +12,12 @@ namespace Sorter.Timer
 
         public double ElapsedTime { get { return StopTime - StartTime; } }
 
+
         public Timer()
         {
             _currentTimeProvider = new CurrentTimeProvider();
         }
+
 
         public Timer(ICurrentTimeProvider currentTimeProvider)
         {

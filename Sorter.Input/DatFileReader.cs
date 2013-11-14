@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace Sorter.Input
 {
-    public sealed class DatFileReader<TType> : IFileReader<TType>
+    public sealed class DatFileReader<TTypeToRead> : IFileReader<TTypeToRead>
     {
         private readonly IStreamReaderBuilder _streamBuilder;
 
-        private TType[] _dataArray;
+        private TTypeToRead[] _dataArray;
 
-        private readonly List<TType> _tempDataList = new List<TType>();
+        private readonly List<TTypeToRead> _tempDataList = new List<TTypeToRead>();
 
 
         public DatFileReader(IStreamReaderBuilder streamBuilder)
@@ -20,9 +20,9 @@ namespace Sorter.Input
             _streamBuilder = streamBuilder;
         }
 
-        public TType[] Read(params string[] filePaths)
+        public TTypeToRead[] Read(params string[] filePaths)
         {
-            if(filePaths == null) throw new ArgumentNullException("filePaths"); 
+            if(filePaths == null) throw new ArgumentNullException("filePaths");
    
             _tempDataList.Clear();
 
@@ -35,9 +35,9 @@ namespace Sorter.Input
                         string line;
                         while ((line = _streamBuilder.StreamReader.ReadLine()) != null)
                         {
-                            _tempDataList.Add((TType) Convert.ChangeType(line, typeof (TType)));
+                            _tempDataList.Add((TTypeToRead) Convert.ChangeType(line, typeof (TTypeToRead)));
                         }
-                        _dataArray = new TType[_tempDataList.Count];
+                        _dataArray = new TTypeToRead[_tempDataList.Count];
 
                         _tempDataList.CopyTo(_dataArray);
                     
@@ -45,7 +45,7 @@ namespace Sorter.Input
             }
             catch (Exception e)
             {
-                throw new FileReadException("error");
+                throw new FileReadException("error", e);
             }
             return _dataArray;
         }
