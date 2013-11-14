@@ -124,6 +124,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
             Assert.AreEqual(Mother.GetTestStartTime(), sortCompleteEventArgs.StartTimeMilliSec);
             Assert.AreEqual(Mother.GetTestStopTime(), sortCompleteEventArgs.StopTimeMilliSec);
             Assert.AreEqual(Mother.GetTestElapsedTime(), sortCompleteEventArgs.ElapsedTimeMilliSec);
+            Assert.AreEqual(10, sortCompleteEventArgs.ItemSortCount);
         }
 
         [Test]

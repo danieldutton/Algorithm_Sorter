@@ -30,7 +30,7 @@ namespace Sorter.Algorithms.Routines
                     }
                 });
 
-            OnCompleted(new SortCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime));
+            OnCompleted(new SortCompleteEventArgs(Timer.StartTime, Timer.StopTime, Timer.ElapsedTime, data.Length));
             Timer.Stop();
 
             return data;

@@ -10,13 +10,16 @@ namespace Sorter.Algorithms.EventArg
 
         public double ElapsedTimeMilliSec { get; private set; }
 
+        public int ItemSortCount { get; private set; }
+
 
         public SortCompleteEventArgs(double startTimeMilliSec, double stopTimeMilliSec, 
-                                     double elapsedTimeMilliSec)
+                                     double elapsedTimeMilliSec, int itemSortCount)
         {
             StartTimeMilliSec = startTimeMilliSec;
             StopTimeMilliSec = stopTimeMilliSec;
             ElapsedTimeMilliSec = elapsedTimeMilliSec;
+            ItemSortCount = itemSortCount;
         }
     }
 }
