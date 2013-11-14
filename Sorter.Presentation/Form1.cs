@@ -1,6 +1,7 @@
 ﻿using Sorter.Algorithms;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
+using Sorter.Input.Exceptions;
 using Sorter.Input.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,55 +20,53 @@ namespace Sorter.Presentation
 
         private int[] _dataToSort;
 
+
         public Form1(IFileReader<int> fileReader)
         {
             _iFileReader = fileReader;
+            
             InitializeComponent();
-            BindClassNames();
-            DisableStartControls();
-            EnableBrowseDataPanel();
-            DisableAlgorithmPanel();
+            BindAlgorithmNamesToComboBox();
+            DisableSelectionStep2();
+            DisableSelectionStep3();
         }
 
-        private void _btnBrowseSrcFile_Click(object sender, EventArgs e)
+
+        private void BrowseForFilesToSort_Click(object sender, EventArgs e)
         {
-            var openFileDialog = ConstructOpenFileDialog();
+            OpenFileDialog openFileDialog = BuildOpenFileDialog();
+            
             string[] safeFiles = null;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string[] files = openFileDialog.FileNames;
                 safeFiles = openFileDialog.SafeFileNames;
-                _dataToSort = _iFileReader.Read(files);
+                string[] filePaths = openFileDialog.FileNames;
+                _dataToSort = ReadDataToSort(filePaths);
             }
 
-            if (_dataToSort == null) return;
-
-            PopulateSelectedFilesListBox(safeFiles);
+            PopulateListBoxWithFileNamesToSort(safeFiles);
             
-            _dataToSort = _iFileReader.Read();
             _lblObjectCount.Text = _dataToSort.Length.ToString();
-            DisableBrowseDataPanel();
-            EnableAlgorithmPanel();
+            
+            DisableSelectionStep1();
+            EnableSelectionStep2();
+            EnableSelectionStep3();
         }
 
-        private void DisableStartControls()
+        private OpenFileDialog BuildOpenFileDialog()
         {
-            _btnSort.Enabled = false;    
+            var openFileDialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                Filter = "dat files(*.dat)|*.dat",
+                ShowReadOnly = true,
+                InitialDirectory = @"C:\My Documents",
+            };
+            return openFileDialog;
         }
 
-        private void EnableAlgorithmPanel()
-        {
-            _lblInstructionsAlgo.Enabled = true;
-
-        }
-
-        private void DisableAlgorithmPanel()
-        {
-            _btnSort.Enabled = false;
-        }
-
-        private void PopulateSelectedFilesListBox(string[] fileNames)
+        private void PopulateListBoxWithFileNamesToSort(string[] fileNames)
         {
             if (fileNames != null && fileNames.Length >= 0)
             {
@@ -75,20 +74,21 @@ namespace Sorter.Presentation
             }
         }
 
-        private OpenFileDialog ConstructOpenFileDialog()
+        private int[] ReadDataToSort(params string[] filePaths)
         {
-            var openFileDialog = new OpenFileDialog
-                {
-                    Multiselect = true,
-                    Filter = "dat files(*.dat)|*.dat",
-                    ShowReadOnly = true,
-                    InitialDirectory = @"C:\My Documents",
-                };
-            if(_dataToSort != null) _btnSort.Enabled = true;
-            return openFileDialog;
+            try
+            {
+                _dataToSort = _iFileReader.Read(filePaths);
+            }
+            catch (FileReadException)
+            {
+                MessageBox.Show("Error reading data");
+            }
+
+            return _dataToSort;
         }
 
-        private void BindClassNames()
+        private void BindAlgorithmNamesToComboBox()
         {
             Assembly assembly = Assembly.LoadFrom("Sorter.Algorithms.dll");
             IEnumerable<Type> result = assembly.GetTypes().Where(x => x.IsSubclassOf((typeof(SortRoutine))));
@@ -100,9 +100,9 @@ namespace Sorter.Presentation
 
         private void StartSort_Click(object sender, EventArgs e)
         {
-            var alg = _comboBxAlgorithm.SelectedValue as string;
+            DisableSelectionStep2();
 
-            if(alg == null) DisplayAlgorithmSelectionError();
+            var alg = _comboBxAlgorithm.SelectedValue as string;
 
             if ("BubbleSrt".Equals("BubbleSort"))
             {
@@ -128,35 +128,45 @@ namespace Sorter.Presentation
             if ("SelectionSort".Equals("SelectionSort"))
             {
                 var sortRoutine = new SelectionSort(new Timer.Timer());
-                sortRoutine.Completed +=sortRoutine_Completed;
+                sortRoutine.Completed +=SortRoutine_Completed;
                 Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
             }
         }
 
-        private void DisplayAlgorithmSelectionError()
+
+        private void EnableSelectionStep1()
         {
-            
+            _btnBrowseSrcFile.Enabled = true;
         }
 
-        public void EnableBrowseDataPanel()
+        private void DisableSelectionStep1()
         {
-            _panelBrowseData.Enabled = true;
+            _btnBrowseSrcFile.Enabled = false;
         }
 
-        public void DisableBrowseDataPanel()
+        private void EnableSelectionStep2()
         {
-            _panelBrowseData.Enabled = false;
+            _comboBxAlgorithm.Enabled = true;
         }
 
+        private void DisableSelectionStep2()
+        {
+            _comboBxAlgorithm.Enabled = false;
+        }
 
-        private void sortRoutine_Completed(object sender, SortCompleteEventArgs e)
+        private void EnableSelectionStep3()
+        {
+            _btnSort.Enabled = true;
+        }
+
+        private void DisableSelectionStep3()
+        {
+            _btnSort.Enabled = false;    
+        }
+
+        private void SortRoutine_Completed(object sender, SortCompleteEventArgs e)
         {
             MessageBox.Show(e.ElapsedTimeMilliSec.ToString());
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
