@@ -31,7 +31,6 @@ namespace Sorter.Presentation
             DisableSelectionStep3();
         }
 
-
         private void BrowseForFilesToSort_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = BuildOpenFileDialog();
@@ -166,7 +165,17 @@ namespace Sorter.Presentation
 
         private void SortRoutine_Completed(object sender, SortCompleteEventArgs e)
         {
-            MessageBox.Show(e.ElapsedTimeMilliSec.ToString());
+            if (e == null) return;
+
+            LaunchSortResultsForm(e);
+        }
+
+        private void LaunchSortResultsForm(SortCompleteEventArgs e)
+        {
+            var sortResults = new SortResults();
+            
+            sortResults.BuildResults(e);
+            sortResults.ShowDialog();
         }
     }
 }

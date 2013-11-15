@@ -38,6 +38,7 @@
             this._lblItemSortCountValue = new System.Windows.Forms.Label();
             this._lblSortType = new System.Windows.Forms.Label();
             this._lblSortTypeValue = new System.Windows.Forms.Label();
+            this._btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _lblStartTime
@@ -130,11 +131,22 @@
             this._lblSortTypeValue.TabIndex = 9;
             this._lblSortTypeValue.Text = "test";
             // 
+            // _btnClose
+            // 
+            this._btnClose.Location = new System.Drawing.Point(158, 115);
+            this._btnClose.Name = "_btnClose";
+            this._btnClose.Size = new System.Drawing.Size(75, 23);
+            this._btnClose.TabIndex = 10;
+            this._btnClose.Text = "Close";
+            this._btnClose.UseVisualStyleBackColor = true;
+            this._btnClose.Click += new System.EventHandler(this.CloseDialog_Click);
+            // 
             // SortResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(297, 140);
+            this.Controls.Add(this._btnClose);
             this.Controls.Add(this._lblSortTypeValue);
             this.Controls.Add(this._lblSortType);
             this.Controls.Add(this._lblItemSortCountValue);
@@ -164,5 +176,6 @@
         private System.Windows.Forms.Label _lblItemSortCountValue;
         private System.Windows.Forms.Label _lblSortType;
         private System.Windows.Forms.Label _lblSortTypeValue;
+        private System.Windows.Forms.Button _btnClose;
     }
 }
