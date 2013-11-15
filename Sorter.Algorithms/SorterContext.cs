@@ -13,15 +13,25 @@ namespace Sorter.Algorithms
             _sortRoutine = sortRoutine;
         }
 
-        public Task<int[]> Sort(int[] dataToSort)
+        public async Task<int[]> Sort(int[] dataToSort)
         {
             if(dataToSort == null) 
                 throw new ArgumentNullException("dataToSort");
             
             if(dataToSort.Length == 1) 
                 throw new ArgumentOutOfRangeException("dataToSort");
+            int[] result = null;
+            
+            try
+            {
+                result = await _sortRoutine.SortAsync(dataToSort);
+            }
+            catch (Exception e)
+            {
+                
+            }
 
-            return _sortRoutine.SortAsync(dataToSort);
+            return result;
         }
 
     }
