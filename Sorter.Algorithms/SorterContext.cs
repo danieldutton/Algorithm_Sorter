@@ -22,14 +22,7 @@ namespace Sorter.Algorithms
                 throw new ArgumentOutOfRangeException("dataToSort");
             int[] result = null;
             
-            try
-            {
-                result = await _sortRoutine.SortAsync(dataToSort);
-            }
-            catch (Exception e)
-            {
-                
-            }
+            result = await _sortRoutine.SortAsync(dataToSort);
 
             return result;
         }

@@ -27,6 +27,7 @@ namespace Sorter.Presentation
             
             InitializeComponent();
             BindAlgorithmNamesToComboBox();
+            EnableSelectionStep1();
             DisableSelectionStep2();
             DisableSelectionStep3();
         }
@@ -44,7 +45,8 @@ namespace Sorter.Presentation
                 _dataToSort = ReadDataToSort(filePaths);
             }
 
-            PopulateListBoxWithFileNamesToSort(safeFiles);
+            if (_dataToSort == null) return;
+                PopulateListBoxWithFileNamesToSort(safeFiles);
             
             _lblObjectCount.Text = _dataToSort.Length.ToString();
             
@@ -75,14 +77,7 @@ namespace Sorter.Presentation
 
         private int[] ReadDataToSort(params string[] filePaths)
         {
-            try
-            {
-                _dataToSort = _iFileReader.Read(filePaths);
-            }
-            catch (FileReadException)
-            {
-                MessageBox.Show("Error reading data");
-            }
+            _dataToSort = _iFileReader.Read(filePaths);
 
             return _dataToSort;
         }
@@ -90,10 +85,11 @@ namespace Sorter.Presentation
         private void BindAlgorithmNamesToComboBox()
         {
             Assembly assembly = Assembly.LoadFrom("Sorter.Algorithms.dll");
-            IEnumerable<Type> result = assembly.GetTypes().Where(x => x.IsSubclassOf((typeof(SortRoutine))));
+            IEnumerable<Type> result = assembly.GetTypes().AsParallel().Where(x => x.IsSubclassOf((typeof(SortRoutine))));
 
-            var classNames = result.Select(className => className.Name).ToList();
+            List<string> classNames = result.Select(className => className.Name).ToList();
             
+            if(classNames.Count >= 0)
             _comboBxAlgorithm.DataSource = classNames;
         }
 
@@ -101,37 +97,56 @@ namespace Sorter.Presentation
         {
             DisableSelectionStep2();
 
-            var alg = _comboBxAlgorithm.SelectedValue as string;
-
-            if ("BubbleSrt".Equals("BubbleSort"))
+            if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
             {
-                _sorter = new SorterContext(new BubbleSort(new Timer.Timer()));
+                var bubbleSort = new BubbleSort(new Timer.Timer());
+                bubbleSort.Completed += (o, args) => DisplayResultsOfSort(args);
+                _sorter = new SorterContext(bubbleSort);
+                
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
-            if ("HeapSor".Equals("HeapSort"))
+            if (_comboBxAlgorithm.SelectedValue.Equals("HeapSort"))
             {
-                var sortRoutine = new HeapSort(new Timer.Timer());
-                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
+                var heapSort = new HeapSort(new Timer.Timer());
+                heapSort.Completed += (o, args) => DisplayResultsOfSort(args);
+                _sorter = new SorterContext(heapSort);
+                
+                Task<int[]> result = _sorter.Sort(_dataToSort);
             }
-            if (alg.Equals("InsertionSort"))
+            if (_comboBxAlgorithm.SelectedValue.Equals("InsertionSort"))
             {
-                var sortRoutine = new InsertionSort(new Timer.Timer());
-                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
+                var insertionSort = new InsertionSort(new Timer.Timer());
+                insertionSort.Completed += (o, args) => DisplayResultsOfSort(args);
+                
+                _sorter = new SorterContext(insertionSort);
+                
+                Task<int[]> result = _sorter.Sort(_dataToSort);
             }
-            if (alg.Equals("QuickSort"))
+            if (_comboBxAlgorithm.SelectedValue.Equals("QuickSort"))
             {
-                var sortRoutine = new QuickSort(new Timer.Timer());
-                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
+                var quickSort = new QuickSort(new Timer.Timer());
+                quickSort.Completed += (o, args) => DisplayResultsOfSort(args);
+                _sorter = new SorterContext(quickSort);
+                
+                Task<int[]> result = _sorter.Sort(_dataToSort);
             }
-
-            if ("SelectionSort".Equals("SelectionSort"))
+            if (_comboBxAlgorithm.SelectedValue.Equals("SelectionSort"))
             {
-                var sortRoutine = new SelectionSort(new Timer.Timer());
-                sortRoutine.Completed +=SortRoutine_Completed;
-                Task<int[]> result = sortRoutine.SortAsync(_dataToSort);
+                var selectionSort = new SelectionSort(new Timer.Timer());
+                selectionSort.Completed += (o, args) => DisplayResultsOfSort(args);
+                _sorter = new SorterContext(selectionSort);
+                
+                Task<int[]> result = _sorter.Sort(_dataToSort);
+            }
+            if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
+            {
+                var shellSort = new ShellSort(new Timer.Timer());
+                shellSort.Completed += (o, args) => DisplayResultsOfSort(args);
+                _sorter = new SorterContext(shellSort);
+                
+                Task<int[]> result = _sorter.Sort(_dataToSort);
             }
         }
-
 
         private void EnableSelectionStep1()
         {
@@ -146,11 +161,13 @@ namespace Sorter.Presentation
         private void EnableSelectionStep2()
         {
             _comboBxAlgorithm.Enabled = true;
+            _btnCancelSort.Enabled = true;
         }
 
         private void DisableSelectionStep2()
         {
             _comboBxAlgorithm.Enabled = false;
+            _btnCancelSort.Enabled = false;
         }
 
         private void EnableSelectionStep3()
@@ -163,19 +180,23 @@ namespace Sorter.Presentation
             _btnSort.Enabled = false;    
         }
 
-        private void SortRoutine_Completed(object sender, SortCompleteEventArgs e)
-        {
-            if (e == null) return;
-
-            LaunchSortResultsForm(e);
-        }
-
-        private void LaunchSortResultsForm(SortCompleteEventArgs e)
+        private void DisplayResultsOfSort(SortCompleteEventArgs e)
         {
             var sortResults = new SortResults();
             
             sortResults.BuildResults(e);
             sortResults.ShowDialog();
+        }
+
+        private void ResetApplication_Click(object sender, EventArgs e)
+        {
+            EnableSelectionStep1();
+            DisableSelectionStep2();
+            DisableSelectionStep3();
+
+            _lBoxSelectedFiles.Items.Clear();
+            _dataToSort = null;
+            _comboBxAlgorithm.SelectedIndex = 1;
         }
     }
 }
