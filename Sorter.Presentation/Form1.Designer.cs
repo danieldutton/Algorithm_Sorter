@@ -32,18 +32,17 @@
             this._btnBrowseSrcFile = new System.Windows.Forms.Button();
             this._btnSort = new System.Windows.Forms.Button();
             this._lBoxSelectedFiles = new System.Windows.Forms.ListBox();
-            this._lblObjectsToSort = new System.Windows.Forms.Label();
-            this._lblObjectCount = new System.Windows.Forms.Label();
             this._panelButtons = new System.Windows.Forms.Panel();
-            this._btnCancelSort = new System.Windows.Forms.Button();
+            this._btnReset = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this._btnCancelSort = new System.Windows.Forms.Button();
             this._panelBrowseData = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this._panelAlgorithm = new System.Windows.Forms.Panel();
             this._lblInstructionsAlgo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this._btnReset = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this._panelButtons.SuspendLayout();
             this._panelBrowseData.SuspendLayout();
             this._panelAlgorithm.SuspendLayout();
@@ -71,7 +70,7 @@
             // 
             // _btnSort
             // 
-            this._btnSort.Location = new System.Drawing.Point(6, 25);
+            this._btnSort.Location = new System.Drawing.Point(6, 20);
             this._btnSort.Name = "_btnSort";
             this._btnSort.Size = new System.Drawing.Size(62, 23);
             this._btnSort.TabIndex = 4;
@@ -88,26 +87,6 @@
             this._lBoxSelectedFiles.Size = new System.Drawing.Size(185, 69);
             this._lBoxSelectedFiles.TabIndex = 5;
             // 
-            // _lblObjectsToSort
-            // 
-            this._lblObjectsToSort.AutoSize = true;
-            this._lblObjectsToSort.ForeColor = System.Drawing.Color.White;
-            this._lblObjectsToSort.Location = new System.Drawing.Point(75, 98);
-            this._lblObjectsToSort.Name = "_lblObjectsToSort";
-            this._lblObjectsToSort.Size = new System.Drawing.Size(66, 13);
-            this._lblObjectsToSort.TabIndex = 6;
-            this._lblObjectsToSort.Text = "items to sort:";
-            // 
-            // _lblObjectCount
-            // 
-            this._lblObjectCount.AutoSize = true;
-            this._lblObjectCount.ForeColor = System.Drawing.Color.White;
-            this._lblObjectCount.Location = new System.Drawing.Point(138, 99);
-            this._lblObjectCount.Name = "_lblObjectCount";
-            this._lblObjectCount.Size = new System.Drawing.Size(13, 13);
-            this._lblObjectCount.TabIndex = 7;
-            this._lblObjectCount.Text = "0";
-            // 
             // _panelButtons
             // 
             this._panelButtons.BackColor = System.Drawing.Color.Gray;
@@ -115,26 +94,38 @@
             this._panelButtons.Controls.Add(this.button1);
             this._panelButtons.Location = new System.Drawing.Point(4, 129);
             this._panelButtons.Name = "_panelButtons";
-            this._panelButtons.Size = new System.Drawing.Size(375, 35);
+            this._panelButtons.Size = new System.Drawing.Size(375, 33);
             this._panelButtons.TabIndex = 10;
+            // 
+            // _btnReset
+            // 
+            this._btnReset.Location = new System.Drawing.Point(8, 5);
+            this._btnReset.Name = "_btnReset";
+            this._btnReset.Size = new System.Drawing.Size(62, 23);
+            this._btnReset.TabIndex = 6;
+            this._btnReset.Text = "Reset";
+            this._btnReset.UseVisualStyleBackColor = true;
+            this._btnReset.Click += new System.EventHandler(this.ResetApplication_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(307, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(62, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // _btnCancelSort
             // 
-            this._btnCancelSort.Location = new System.Drawing.Point(99, 25);
+            this._btnCancelSort.Location = new System.Drawing.Point(99, 20);
             this._btnCancelSort.Name = "_btnCancelSort";
             this._btnCancelSort.Size = new System.Drawing.Size(61, 23);
             this._btnCancelSort.TabIndex = 6;
             this._btnCancelSort.Text = "Cancel";
             this._btnCancelSort.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(296, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
+            this._btnCancelSort.Click += new System.EventHandler(this.CancelCurrentSortRoutine_Click);
             // 
             // _panelBrowseData
             // 
@@ -142,9 +133,7 @@
             this._panelBrowseData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._panelBrowseData.Controls.Add(this.label1);
             this._panelBrowseData.Controls.Add(this._btnBrowseSrcFile);
-            this._panelBrowseData.Controls.Add(this._lblObjectCount);
             this._panelBrowseData.Controls.Add(this._lBoxSelectedFiles);
-            this._panelBrowseData.Controls.Add(this._lblObjectsToSort);
             this._panelBrowseData.Location = new System.Drawing.Point(4, 4);
             this._panelBrowseData.Name = "_panelBrowseData";
             this._panelBrowseData.Size = new System.Drawing.Size(201, 122);
@@ -169,7 +158,7 @@
             this._panelAlgorithm.Controls.Add(this._comboBxAlgorithm);
             this._panelAlgorithm.Location = new System.Drawing.Point(211, 4);
             this._panelAlgorithm.Name = "_panelAlgorithm";
-            this._panelAlgorithm.Size = new System.Drawing.Size(168, 58);
+            this._panelAlgorithm.Size = new System.Drawing.Size(168, 63);
             this._panelAlgorithm.TabIndex = 8;
             // 
             // _lblInstructionsAlgo
@@ -190,9 +179,9 @@
             this.panel1.Controls.Add(this._btnCancelSort);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this._btnSort);
-            this.panel1.Location = new System.Drawing.Point(211, 68);
+            this.panel1.Location = new System.Drawing.Point(211, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(168, 58);
+            this.panel1.Size = new System.Drawing.Size(168, 56);
             this.panel1.TabIndex = 11;
             // 
             // label2
@@ -200,34 +189,31 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(4, 5);
+            this.label2.Location = new System.Drawing.Point(4, 2);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 15);
             this.label2.TabIndex = 7;
             this.label2.Text = "3.  Click To Sort";
             // 
-            // _btnReset
+            // progressBar1
             // 
-            this._btnReset.Location = new System.Drawing.Point(8, 6);
-            this._btnReset.Name = "_btnReset";
-            this._btnReset.Size = new System.Drawing.Size(62, 23);
-            this._btnReset.TabIndex = 6;
-            this._btnReset.Text = "Reset";
-            this._btnReset.UseVisualStyleBackColor = true;
-            this._btnReset.Click += new System.EventHandler(this.ResetApplication_Click);
+            this.progressBar1.Location = new System.Drawing.Point(5, 166);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(375, 10);
+            this.progressBar1.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(384, 168);
+            this.ClientSize = new System.Drawing.Size(384, 180);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this._panelButtons);
             this.Controls.Add(this._panelAlgorithm);
             this.Controls.Add(this._panelBrowseData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximumSize = new System.Drawing.Size(400, 202);
             this.Name = "Form1";
             this.Text = "Sorter+";
             this._panelButtons.ResumeLayout(false);
@@ -247,8 +233,6 @@
         private System.Windows.Forms.Button _btnBrowseSrcFile;
         private System.Windows.Forms.Button _btnSort;
         private System.Windows.Forms.ListBox _lBoxSelectedFiles;
-        private System.Windows.Forms.Label _lblObjectsToSort;
-        private System.Windows.Forms.Label _lblObjectCount;
         private System.Windows.Forms.Panel _panelButtons;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel _panelBrowseData;
@@ -259,6 +243,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button _btnReset;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

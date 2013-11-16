@@ -78,6 +78,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TestFiles\ran128000.dat" />
+    <None Include="TestFiles\ran256000.dat" />
+    <None Include="TestFiles\ran32000.dat" />
+    <None Include="TestFiles\ran512000.dat" />
+    <None Include="TestFiles\ran64000.dat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
