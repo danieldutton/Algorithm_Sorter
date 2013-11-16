@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public class ShellSort : SortRoutine
+    public sealed class ShellSort : SortRoutine
     {
         public ShellSort(ITimer timer) : base(timer)
         {
@@ -53,7 +53,8 @@ namespace Sorter.Algorithms.Routines
                 });
 
             Timer.Stop();
-            OnCompleted(new SortCompleteEventArgs(Timer.StartTimeInMilliseconds, Timer.StopTimeInMilliseconds, Timer.ElapsedTimeInMilliseconds, data.Length));
+            OnCompleted(new SortCompleteEventArgs(Timer.StartTimeInMilliseconds, Timer.StopTimeInMilliseconds, 
+                                                  Timer.ElapsedTimeInMilliseconds, data.Length));
             return data;
         }
     }

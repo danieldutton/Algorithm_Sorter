@@ -46,13 +46,13 @@ namespace Sorter.UnitTests._Algorithms.Routines
         }
 
         [Test]
-        public void SortAsync_CallTimerStopMethodExactlyOnce()
+        public async void SortAsync_CallTimerStopMethodExactlyOnce()
         {
             var fakeTimer = new Mock<ITimer>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
             var sut = new ShellSort(fakeTimer.Object);
 
-            sut.SortAsync(_tenUnsortedInts);
+            await sut.SortAsync(_tenUnsortedInts);
 
             fakeTimer.Verify(x => x.Stop(), Times.Once());
         }
