@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using Sorter.Utilities.DateTimes;
+using Sorter.Utilities._StopWatch;
 
 namespace Sorter.UnitTests._Timer
 {

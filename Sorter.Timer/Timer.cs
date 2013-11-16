@@ -1,4 +1,4 @@
-﻿using Sorter.Utilities.DateTimes;
+﻿using Sorter.Utilities._StopWatch;
 
 namespace Sorter.Timer
 {

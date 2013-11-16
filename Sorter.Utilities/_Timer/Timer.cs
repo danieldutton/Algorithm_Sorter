@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Sorter.Utilities.DateTimes
+namespace Sorter.Utilities._StopWatch
 {
     public class CurrentTimeProvider : ICurrentTimeProvider
     {
         public double CurrentTimeInMilliseconds()
         {
-            return DateTime.Now.TimeOfDay.Milliseconds;
+            return DateTime.Now.Millisecond;
         }
     }
 }
