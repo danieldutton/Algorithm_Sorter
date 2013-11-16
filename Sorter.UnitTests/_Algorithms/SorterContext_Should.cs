@@ -11,24 +11,24 @@ namespace Sorter.UnitTests._Algorithms
     {
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ThrowAnArgumentNullExceptionIfDataToSortParameterIsNull()
+        public async void ThrowAnArgumentNullExceptionIfDataToSortParameterIsNull()
         {
             var fakeTimer = new Mock<ITimer>();
             var fakeSortRoutine = new Mock<SortRoutine>(fakeTimer.Object);
             var sut = new SorterContext(fakeSortRoutine.Object);
             
-            sut.Sort(null);
+            await sut.Sort(null);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void ThrowAnArgumentOutOfRangeExceptionIfThereIsInsufficientDataToSort()
+        public async void ThrowAnArgumentOutOfRangeExceptionIfThereIsInsufficientDataToSort()
         {
             var fakeTimer = new Mock<ITimer>();
             var fakeSortRoutine = new Mock<SortRoutine>(fakeTimer.Object);
             var sut = new SorterContext(fakeSortRoutine.Object);
 
-            sut.Sort(new []{1});    
+            await sut.Sort(new []{1});    
         }
     }
 }
