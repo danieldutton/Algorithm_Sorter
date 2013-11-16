@@ -79,7 +79,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
 
             sut.SortAsync(_tenUnsortedInts);
 
-            fakeTimer.VerifyGet(x => x.StartTime, Times.Exactly(1));
+            fakeTimer.VerifyGet(x => x.StartTimeInMilliseconds, Times.Exactly(1));
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
 
             sut.SortAsync(_tenUnsortedInts);
 
-            fakeTimer.VerifyGet(x => x.StopTime, Times.Exactly(1));
+            fakeTimer.VerifyGet(x => x.StopTimeInMilliseconds, Times.Exactly(1));
         }
 
         [Test]
@@ -103,7 +103,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
 
             sut.SortAsync(_tenUnsortedInts);
 
-            fakeTimer.VerifyGet(x => x.ElapsedTime, Times.Exactly(1));
+            fakeTimer.VerifyGet(x => x.ElapsedTimeInMilliseconds, Times.Exactly(1));
         }
 
         [Test]
@@ -111,9 +111,9 @@ namespace Sorter.UnitTests._Algorithms.Routines
         {
             var fakeTimer = new Mock<ITimer>();
 
-            fakeTimer.SetupGet(x => x.StartTime).Returns(Mother.GetTestStartTime());
-            fakeTimer.SetupGet(x => x.StopTime).Returns(Mother.GetTestStopTime());
-            fakeTimer.SetupGet(x => x.ElapsedTime).Returns(Mother.GetTestElapsedTime);
+            fakeTimer.SetupGet(x => x.StartTimeInMilliseconds).Returns(Mother.GetTestStartTime());
+            fakeTimer.SetupGet(x => x.StopTimeInMilliseconds).Returns(Mother.GetTestStopTime());
+            fakeTimer.SetupGet(x => x.ElapsedTimeInMilliseconds).Returns(Mother.GetTestElapsedTime);
 
             var sut = new ShellSort(fakeTimer.Object);
             SortCompleteEventArgs sortCompleteEventArgs = null;

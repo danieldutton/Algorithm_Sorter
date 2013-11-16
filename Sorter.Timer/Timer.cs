@@ -1,4 +1,4 @@
-﻿using Sorter.Utilities._StopWatch;
+﻿using Sorter.Utilities._Timer;
 
 namespace Sorter.Timer
 {
@@ -6,11 +6,11 @@ namespace Sorter.Timer
     {
         private readonly ICurrentTimeProvider _currentTimeProvider;
 
-        public double StartTime { get; set; }
+        public int StartTimeInMilliseconds { get; set; }
 
-        public double StopTime { get; set; }
+        public int StopTimeInMilliseconds { get; set; }
 
-        public double ElapsedTime { get { return StopTime - StartTime; } }
+        public int ElapsedTimeInMilliseconds { get { return StopTimeInMilliseconds - StartTimeInMilliseconds; } }
 
 
         public Timer()
@@ -26,12 +26,12 @@ namespace Sorter.Timer
 
         public void Start()
         {
-            StartTime = _currentTimeProvider.CurrentTimeInMilliseconds();
+            StartTimeInMilliseconds = _currentTimeProvider.CurrentTimeInMilliseconds();
         }
 
         public void Stop()
         {
-            StopTime = _currentTimeProvider.CurrentTimeInMilliseconds();
+            StopTimeInMilliseconds = _currentTimeProvider.CurrentTimeInMilliseconds();
         }
     }
 }

@@ -2,11 +2,11 @@
 {
     public interface ITimer
     {
-        double StartTime { get;  }
+        int StartTimeInMilliseconds { get;  }
 
-        double StopTime { get;  }
+        int StopTimeInMilliseconds { get;  }
 
-        double ElapsedTime { get;  }
+        int ElapsedTimeInMilliseconds { get;  }
 
         void Start();
 

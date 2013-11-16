@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using Sorter.Utilities._StopWatch;
+using Sorter.Utilities._Timer;
 
 namespace Sorter.UnitTests._Timer
 {
@@ -27,7 +27,7 @@ namespace Sorter.UnitTests._Timer
 
             sut.Start();
 
-            Assert.AreEqual(200, sut.StartTime);   
+            Assert.AreEqual(200, sut.StartTimeInMilliseconds);   
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace Sorter.UnitTests._Timer
 
             sut.Stop();
 
-            Assert.AreEqual(200, sut.StopTime);
+            Assert.AreEqual(200, sut.StopTimeInMilliseconds);
         }
 
         [Test]
@@ -59,10 +59,10 @@ namespace Sorter.UnitTests._Timer
             var fakeTimeProvider = new Mock<ICurrentTimeProvider>();
             var sut = new Timer.Timer(fakeTimeProvider.Object)
                 {
-                    StartTime = 725, StopTime = 1000
+                    StartTimeInMilliseconds = 725, StopTimeInMilliseconds = 1000
                 };
 
-            Assert.AreEqual(275, sut.ElapsedTime);
+            Assert.AreEqual(275, sut.ElapsedTimeInMilliseconds);
         }
 
         //ToDo Should more extensive test coverage be included for time diff

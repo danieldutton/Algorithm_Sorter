@@ -1,7 +1,7 @@
-﻿namespace Sorter.Utilities._StopWatch
+﻿namespace Sorter.Utilities._Timer
 {
     public interface ICurrentTimeProvider
     {
-        double CurrentTimeInMilliseconds();
+        int CurrentTimeInMilliseconds();
     }
 }

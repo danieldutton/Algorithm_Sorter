@@ -36,19 +36,19 @@
                 };
         }
 
-        public static double GetTestStartTime()
+        public static int GetTestStartTime()
         {
-            return 314.13;
+            return 314;
         }
 
-        public static double GetTestStopTime()
+        public static int GetTestStopTime()
         {
-            return 414.23;
+            return 414;
         }
 
-        public static double GetTestElapsedTime()
+        public static int GetTestElapsedTime()
         {
-            return 100.01;
+            return 100;
         }
     }
 }

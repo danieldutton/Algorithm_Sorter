@@ -37,8 +37,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\IStreamReaderBuilder.cs" />
     <Compile Include="Readers\StreamReaderBuilder.cs" />
-    <Compile Include="_StopWatch\CurrentTimeProvider.cs" />
-    <Compile Include="_StopWatch\ICurrentTimeProvider.cs" />
+    <Compile Include="_Timer\ITimer.cs" />
+    <Compile Include="_Timer\Timer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
