@@ -1,4 +1,5 @@
-﻿using Sorter.Utilities._Timer;
+﻿using System;
+using Sorter.Utilities._Timer;
 
 namespace Sorter.Timer
 {
@@ -10,7 +11,7 @@ namespace Sorter.Timer
 
         public int StopTimeInMilliseconds { get; set; }
 
-        public int ElapsedTimeInMilliseconds { get { return StopTimeInMilliseconds - StartTimeInMilliseconds; } }
+        public int ElapsedTimeInMilliseconds { get { return Math.Max(0, StopTimeInMilliseconds - StartTimeInMilliseconds); } }
 
 
         public Timer()

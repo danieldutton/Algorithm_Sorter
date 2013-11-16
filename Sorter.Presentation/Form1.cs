@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Sorter.Presentation
 {
-    public partial class Form1 : Form
+    internal partial class Form1 : Form
     {
         private readonly IFileReader<int> _iFileReader;
 
@@ -21,7 +21,7 @@ namespace Sorter.Presentation
         private int[] _dataToSort;
 
 
-        public Form1(IFileReader<int> fileReader)
+        internal Form1(IFileReader<int> fileReader)
         {
             _iFileReader = fileReader;
             
@@ -79,9 +79,11 @@ namespace Sorter.Presentation
 
         private void PopulateListBoxWithFileNamesToSort(string[] fileNames)
         {
-            if (fileNames != null && fileNames.Length >= 0)
+            if (fileNames == null) return;
+            
+            foreach (var fileName in fileNames)
             {
-                _lBoxSelectedFiles.DataSource = fileNames;
+                _lBoxSelectedFiles.Items.Add(fileName);
             }
         }
 
@@ -95,6 +97,8 @@ namespace Sorter.Presentation
         private void StartSort_Click(object sender, EventArgs e)
         {
             DisableSelectionStep2();
+
+            _btnCancelSort.Enabled = true; 
 
             if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
             {
@@ -160,12 +164,14 @@ namespace Sorter.Presentation
         private void EnableSelectionStep2()
         {
             _comboBxAlgorithm.Enabled = true;
-            _btnCancelSort.Enabled = true;
+            _btnSort.Enabled = true;
         }
 
         private void DisableSelectionStep2()
         {
             _comboBxAlgorithm.Enabled = false;
+            _btnCancelSort.Enabled = false;
+            _btnSort.Enabled = false;
         }
 
         private void EnableSelectionStep3()
@@ -180,6 +186,8 @@ namespace Sorter.Presentation
 
         private void DisplayResultsOfSort(object sender, SortCompleteEventArgs e)
         {
+            _btnCancelSort.Enabled = false;
+
             var sortResults = new SortResults();
             
             sortResults.BuildResults(e);
@@ -194,7 +202,7 @@ namespace Sorter.Presentation
 
             _lBoxSelectedFiles.Items.Clear();
             _dataToSort = null;
-            _comboBxAlgorithm.SelectedIndex = 1;
+            _comboBxAlgorithm.SelectedIndex = 0;
         }
 
         private void CancelCurrentSortRoutine_Click(object sender, EventArgs e)

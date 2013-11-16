@@ -92,7 +92,7 @@
             this._panelButtons.BackColor = System.Drawing.Color.Gray;
             this._panelButtons.Controls.Add(this._btnReset);
             this._panelButtons.Controls.Add(this.button1);
-            this._panelButtons.Location = new System.Drawing.Point(4, 129);
+            this._panelButtons.Location = new System.Drawing.Point(4, 132);
             this._panelButtons.Name = "_panelButtons";
             this._panelButtons.Size = new System.Drawing.Size(375, 33);
             this._panelButtons.TabIndex = 10;
@@ -158,7 +158,7 @@
             this._panelAlgorithm.Controls.Add(this._comboBxAlgorithm);
             this._panelAlgorithm.Location = new System.Drawing.Point(211, 4);
             this._panelAlgorithm.Name = "_panelAlgorithm";
-            this._panelAlgorithm.Size = new System.Drawing.Size(168, 63);
+            this._panelAlgorithm.Size = new System.Drawing.Size(168, 60);
             this._panelAlgorithm.TabIndex = 8;
             // 
             // _lblInstructionsAlgo
@@ -197,23 +197,24 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(5, 166);
+            this.progressBar1.Location = new System.Drawing.Point(4, 171);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(375, 10);
+            this.progressBar1.Size = new System.Drawing.Size(375, 12);
             this.progressBar1.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(384, 180);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(384, 188);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this._panelButtons);
             this.Controls.Add(this._panelAlgorithm);
             this.Controls.Add(this._panelBrowseData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(400, 222);
             this.Name = "Form1";
             this.Text = "Sorter+";
             this._panelButtons.ResumeLayout(false);

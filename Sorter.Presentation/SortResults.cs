@@ -1,5 +1,6 @@
-﻿using System.Windows.Forms;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
+using System;
+using System.Windows.Forms;
 
 namespace Sorter.Presentation
 {
@@ -12,15 +13,30 @@ namespace Sorter.Presentation
 
         internal void BuildResults(SortCompleteEventArgs e)
         {
-            if (e == null) return;
+            if (e != null)
+            {
+                const string msValue = " ms";
 
-            _lblStartTimeValue.Text = e.StartTimeMilliSec.ToString();
-            _lblStopTimeValue.Text = e.StopTimeMilliSec.ToString();
-            _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString();
-            _lblItemSortCountValue.Text = e.ItemSortCount.ToString();
+                _lblItemSortCountValue.Text = e.ItemSortCount.ToString();
+                _lblStartTimeValue.Text = e.StartTimeMilliSec.ToString() + msValue;
+                _lblStopTimeValue.Text = e.StopTimeMilliSec.ToString() + msValue;
+                _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;   
+            }
+            else
+                DisplayErrorValues();   
         }
 
-        private void CloseDialog_Click(object sender, System.EventArgs e)
+        private void DisplayErrorValues()
+        {
+            const string errorValue = "Error";
+
+            _lblStartTimeValue.Text = errorValue;
+            _lblStopTimeValue.Text = errorValue;
+            _lblElapsedTimeValue.Text = errorValue;
+            _lblItemSortCountValue.Text = errorValue;
+        }
+
+        private void CloseDialog_Click(object sender, EventArgs e)
         {
             Dispose();
         }

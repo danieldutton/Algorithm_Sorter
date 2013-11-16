@@ -80,7 +80,7 @@ namespace Sorter.UnitTests._Input
 
         [Test]
         [ExpectedException(typeof(FileReadException))]
-        public void ThrowAFormatExceptionIfAtLeastOneDataItemHasNoNewLineBreaker()
+        public void ThrowAFormatExceptionIfAtLeastOneDataItemHasNoNewLineBreak()
         {
             var encoding = new UTF8Encoding();
             const string testString = "100 \n 200 \n 300 \n 400 500";
