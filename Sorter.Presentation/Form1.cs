@@ -105,15 +105,18 @@ namespace Sorter.Presentation
                 var bubbleSort = new BubbleSort(new Timer.Timer());
                 bubbleSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(bubbleSort);
-                
+                progressBar1.Style = ProgressBarStyle.Marquee;
+                progressBar1.MarqueeAnimationSpeed = 100;
                 Task<int[]> result = _sorter.Sort(_dataToSort);
+                
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("HeapSort"))
             {
                 var heapSort = new HeapSort(new Timer.Timer());
                 heapSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(heapSort);
-                
+                progressBar1.Style = ProgressBarStyle.Marquee;
+                progressBar1.MarqueeAnimationSpeed = 100;
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("InsertionSort"))
@@ -122,7 +125,8 @@ namespace Sorter.Presentation
                 insertionSort.Completed += DisplayResultsOfSort;
                 
                 _sorter = new SorterContext(insertionSort);
-                
+                progressBar1.Style = ProgressBarStyle.Marquee;
+                progressBar1.MarqueeAnimationSpeed = 100;
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("QuickSort"))
@@ -130,7 +134,8 @@ namespace Sorter.Presentation
                 var quickSort = new QuickSort(new Timer.Timer());
                 quickSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(quickSort);
-                
+                progressBar1.Style = ProgressBarStyle.Marquee;
+                progressBar1.MarqueeAnimationSpeed = 100;
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("SelectionSort"))
@@ -138,7 +143,8 @@ namespace Sorter.Presentation
                 var selectionSort = new SelectionSort(new Timer.Timer());
                 selectionSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(selectionSort);
-                
+                progressBar1.Style = ProgressBarStyle.Marquee;
+                progressBar1.MarqueeAnimationSpeed = 1;
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
@@ -146,7 +152,8 @@ namespace Sorter.Presentation
                 var shellSort = new ShellSort(new Timer.Timer());
                 shellSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(shellSort);
-                
+                progressBar1.Style = ProgressBarStyle.Marquee;
+                progressBar1.MarqueeAnimationSpeed = 100;
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
         }
@@ -187,7 +194,7 @@ namespace Sorter.Presentation
         private void DisplayResultsOfSort(object sender, SortCompleteEventArgs e)
         {
             _btnCancelSort.Enabled = false;
-
+            progressBar1.Style = ProgressBarStyle.Continuous;
             var sortResults = new SortResults();
             
             sortResults.BuildResults(e);
