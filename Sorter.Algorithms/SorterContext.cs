@@ -1,5 +1,6 @@
 ﻿using Sorter.Algorithms.Routines;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms
@@ -13,7 +14,7 @@ namespace Sorter.Algorithms
             _sortRoutine = sortRoutine;
         }
 
-        public async Task<int[]> Sort(int[] dataToSort)
+        public async Task<int[]> Sort(int[] dataToSort, CancellationToken cancellationToken)
         {
             if(dataToSort == null) 
                 throw new ArgumentNullException("dataToSort");
@@ -21,7 +22,7 @@ namespace Sorter.Algorithms
             if(dataToSort.Length == 1) 
                 throw new ArgumentOutOfRangeException("dataToSort");
             
-            int[] result = await _sortRoutine.SortAsync(dataToSort);
+            int[] result = await _sortRoutine.SortAsync(dataToSort, cancellationToken);
 
             return result;
         }

@@ -1,4 +1,5 @@
-﻿using Sorter.Algorithms.EventArg;
+﻿using System.Threading;
+using Sorter.Algorithms.EventArg;
 using Sorter.Utilities._Stopwatch;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Sorter.Algorithms.Routines
     {
         public SelectionSort(IStopwatch stopwatch) : base(stopwatch){}
 
-        public override async Task<int[]> SortAsync(int[] data)
+        public override async Task<int[]> SortAsync(int[] data, CancellationToken cancellationToken)
         {
             OnStarted();           
             Stopwatch.Start();
@@ -20,6 +21,9 @@ namespace Sorter.Algorithms.Routines
 
                     for (i = 0; i < data.Length - 1; i++)
                     {
+                        if (cancellationToken.IsCancellationRequested)
+                            return;
+                        
                         min = i;
                         for (j = i + 1; j < data.Length; j++)
                         {
@@ -30,7 +34,7 @@ namespace Sorter.Algorithms.Routines
                         data[i] = data[min];
                         data[min] = temp;
                     }
-                });
+                }, cancellationToken);
 
             Stopwatch.Stop();
             

@@ -1,4 +1,5 @@
-﻿using Sorter.Algorithms;
+﻿using System.Threading;
+using Sorter.Algorithms;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Exceptions;
@@ -24,6 +25,8 @@ namespace Sorter.Presentation
 
         private int[] _dataToSort;
 
+        private CancellationTokenSource _cancellationTokenSource;
+
         #endregion
 
         #region Constructor(s)
@@ -32,6 +35,7 @@ namespace Sorter.Presentation
         {
             _iFileReader = fileReader;
             _classNameLoader = classNameLoader;
+            _cancellationTokenSource = new CancellationTokenSource();
             
             InitializeComponent();
             BindAlgorithmNamesToComboBox();
@@ -111,11 +115,11 @@ namespace Sorter.Presentation
             return _dataToSort;
         }
         
-        private void StartSorting_Click(object sender, EventArgs e)
+        private async void StartSorting_Click(object sender, EventArgs e)
         {
             DisableSelectionStep2();
             DisableSelectionStep3();
-
+            _btnCancelSort.Enabled = true;
             if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
             {
                 var bubbleSort = new BubbleSort(new SortStopwatch());
@@ -123,9 +127,9 @@ namespace Sorter.Presentation
                 _sorter = new SorterContext(bubbleSort);
                 
                 StartProgressBar();
-                
-                Task<int[]> result = _sorter.Sort(_dataToSort);
-                
+
+                int[]  result = await _sorter.Sort(_dataToSort, _cancellationTokenSource.Token);
+   
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("HeapSort"))
             {
@@ -134,8 +138,8 @@ namespace Sorter.Presentation
                 _sorter = new SorterContext(heapSort);
                 
                 StartProgressBar();
-                
-                Task<int[]> result = _sorter.Sort(_dataToSort);
+
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSource.Token);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("InsertionSort"))
             {
@@ -145,8 +149,8 @@ namespace Sorter.Presentation
                 _sorter = new SorterContext(insertionSort);
                 
                 StartProgressBar();
-                
-                Task<int[]> result = _sorter.Sort(_dataToSort);
+
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSource.Token);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("QuickSort"))
             {
@@ -155,8 +159,8 @@ namespace Sorter.Presentation
                 _sorter = new SorterContext(quickSort);
                 
                 StartProgressBar();
-                
-                Task<int[]> result = _sorter.Sort(_dataToSort);
+
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSource.Token);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("SelectionSort"))
             {
@@ -165,8 +169,8 @@ namespace Sorter.Presentation
                 _sorter = new SorterContext(selectionSort);
                 
                 StartProgressBar();
-                
-                Task<int[]> result = _sorter.Sort(_dataToSort);
+
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSource.Token);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
             {
@@ -174,7 +178,7 @@ namespace Sorter.Presentation
                 shellSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(shellSort);
                 StartProgressBar();
-                Task<int[]> result = _sorter.Sort(_dataToSort);
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSource.Token);
             }
         }
 
@@ -247,7 +251,11 @@ namespace Sorter.Presentation
 
         private void CancelCurrentSort_Click(object sender, EventArgs e)
         {
-
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+            _cancellationTokenSource = new CancellationTokenSource();
+            
+            ResetApplication();
         }
 
         private void ExitApplication_Click(object sender, EventArgs e)

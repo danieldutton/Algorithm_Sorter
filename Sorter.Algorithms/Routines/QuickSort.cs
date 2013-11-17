@@ -1,4 +1,5 @@
-﻿using Sorter.Algorithms.EventArg;
+﻿using System.Threading;
+using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
 using Sorter.Utilities._Stopwatch;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Sorter.Algorithms.Routines
         {
         }
 
-        public override async Task<int[]> SortAsync(int[] data)
+        public override async Task<int[]> SortAsync(int[] data, CancellationToken cancellationToken)
         {
             OnStarted();
             Stopwatch.Start();
