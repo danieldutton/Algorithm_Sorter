@@ -25,8 +25,8 @@ namespace Sorter.UnitTests._Algorithms.Routines
         public void SortAsync_FireAStartedEvent()
         {
             bool wasFired = false;
-            var fakeTimer = new Mock<IStopwatch>();
-            var sut = new BubbleSort(fakeTimer.Object);
+            var fakeStopwatch = new Mock<IStopwatch>();
+            var sut = new BubbleSort(fakeStopwatch.Object);
             sut.Started += (o, e) => wasFired = true;
 
             sut.SortAsync(_tenUnsortedInts);

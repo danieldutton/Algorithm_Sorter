@@ -20,9 +20,8 @@ namespace Sorter.Algorithms
             
             if(dataToSort.Length == 1) 
                 throw new ArgumentOutOfRangeException("dataToSort");
-            int[] result = null;
             
-            result = await _sortRoutine.SortAsync(dataToSort);
+            int[] result = await _sortRoutine.SortAsync(dataToSort);
 
             return result;
         }

@@ -13,8 +13,8 @@ namespace Sorter.UnitTests._Algorithms
         [ExpectedException(typeof(ArgumentNullException))]
         public async void ThrowAnArgumentNullExceptionIfDataToSortParameterIsNull()
         {
-            var fakeTimer = new Mock<IStopwatch>();
-            var fakeSortRoutine = new Mock<SortRoutine>(fakeTimer.Object);
+            var fakeStopwatch = new Mock<IStopwatch>();
+            var fakeSortRoutine = new Mock<SortRoutine>(fakeStopwatch.Object);
             var sut = new SorterContext(fakeSortRoutine.Object);
             
             await sut.Sort(null);
@@ -24,8 +24,8 @@ namespace Sorter.UnitTests._Algorithms
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public async void ThrowAnArgumentOutOfRangeExceptionIfThereIsInsufficientDataToSort()
         {
-            var fakeTimer = new Mock<IStopwatch>();
-            var fakeSortRoutine = new Mock<SortRoutine>(fakeTimer.Object);
+            var fakeStopwatch = new Mock<IStopwatch>();
+            var fakeSortRoutine = new Mock<SortRoutine>(fakeStopwatch.Object);
             var sut = new SorterContext(fakeSortRoutine.Object);
 
             await sut.Sort(new []{1});    
