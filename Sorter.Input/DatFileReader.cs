@@ -44,7 +44,6 @@ namespace Sorter.Input
                 }
             }
 
-            //ToDo - test Exceptions
             catch (FormatException e)
             {
                 throw new FileReadException("Data Corrupt", e);

@@ -2,6 +2,7 @@
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
+using Sorter.Utilities._Stopwatch;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sorter.Utilities._Stopwatch;
 
 namespace Sorter.Presentation
 {
@@ -98,16 +98,16 @@ namespace Sorter.Presentation
         private void StartSort_Click(object sender, EventArgs e)
         {
             DisableSelectionStep2();
-
-            _btnCancelSort.Enabled = true; 
+            DisableSelectionStep3();
 
             if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
             {
                 var bubbleSort = new BubbleSort(new SortStopwatch());
                 bubbleSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(bubbleSort);
-                progressBar1.Style = ProgressBarStyle.Marquee;
-                progressBar1.MarqueeAnimationSpeed = 1;
+                
+                StartProgressBar();
+                
                 Task<int[]> result = _sorter.Sort(_dataToSort);
                 
             }
@@ -116,8 +116,9 @@ namespace Sorter.Presentation
                 var heapSort = new HeapSort(new SortStopwatch());
                 heapSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(heapSort);
-                progressBar1.Style = ProgressBarStyle.Marquee;
-                progressBar1.MarqueeAnimationSpeed = 1;
+                
+                StartProgressBar();
+                
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("InsertionSort"))
@@ -126,8 +127,9 @@ namespace Sorter.Presentation
                 insertionSort.Completed += DisplayResultsOfSort;
                 
                 _sorter = new SorterContext(insertionSort);
-                progressBar1.Style = ProgressBarStyle.Marquee;
-                progressBar1.MarqueeAnimationSpeed = 1;
+                
+                StartProgressBar();
+                
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("QuickSort"))
@@ -135,8 +137,9 @@ namespace Sorter.Presentation
                 var quickSort = new QuickSort(new SortStopwatch());
                 quickSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(quickSort);
-                progressBar1.Style = ProgressBarStyle.Marquee;
-                progressBar1.MarqueeAnimationSpeed = 1;
+                
+                StartProgressBar();
+                
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("SelectionSort"))
@@ -144,8 +147,9 @@ namespace Sorter.Presentation
                 var selectionSort = new SelectionSort(new SortStopwatch());
                 selectionSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(selectionSort);
-                progressBar1.Style = ProgressBarStyle.Marquee;
-                progressBar1.MarqueeAnimationSpeed = 1;
+                
+                StartProgressBar();
+                
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
@@ -153,10 +157,15 @@ namespace Sorter.Presentation
                 var shellSort = new ShellSort(new SortStopwatch());
                 shellSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(shellSort);
-                progressBar1.Style = ProgressBarStyle.Marquee;
-                progressBar1.MarqueeAnimationSpeed = 1;
+                StartProgressBar();
                 Task<int[]> result = _sorter.Sort(_dataToSort);
             }
+        }
+
+        private void StartProgressBar()
+        {
+            _progressBar.Style = ProgressBarStyle.Marquee;
+            _progressBar.MarqueeAnimationSpeed = 1;   
         }
 
         private void EnableSelectionStep1()
@@ -185,19 +194,21 @@ namespace Sorter.Presentation
         private void EnableSelectionStep3()
         {
             _btnSort.Enabled = true;
+            _btnReset.Enabled = true;
         }
 
         private void DisableSelectionStep3()
         {
-            _btnSort.Enabled = false;    
+            _btnSort.Enabled = false;
+            _btnReset.Enabled = false;
         }
 
         private void DisplayResultsOfSort(object sender, SortCompleteEventArgs e)
         {
             _btnCancelSort.Enabled = false;
-            progressBar1.Style = ProgressBarStyle.Continuous;
-            var sortResults = new SortResults();
+            _progressBar.Style = ProgressBarStyle.Continuous;
             
+            var sortResults = new SortResults();           
             sortResults.BuildResults(e);
             sortResults.ShowDialog();
         }

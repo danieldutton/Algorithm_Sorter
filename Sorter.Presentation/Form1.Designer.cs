@@ -42,7 +42,7 @@
             this._lblInstructionsAlgo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this._progressBar = new System.Windows.Forms.ProgressBar();
             this._panelButtons.SuspendLayout();
             this._panelBrowseData.SuspendLayout();
             this._panelAlgorithm.SuspendLayout();
@@ -195,12 +195,12 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "3.  Click To Sort";
             // 
-            // progressBar1
+            // _progressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(4, 171);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(375, 12);
-            this.progressBar1.TabIndex = 12;
+            this._progressBar.Location = new System.Drawing.Point(4, 171);
+            this._progressBar.Name = "_progressBar";
+            this._progressBar.Size = new System.Drawing.Size(375, 12);
+            this._progressBar.TabIndex = 12;
             // 
             // Form1
             // 
@@ -208,7 +208,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(384, 188);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this._progressBar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this._panelButtons);
             this.Controls.Add(this._panelAlgorithm);
@@ -244,7 +244,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button _btnReset;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar _progressBar;
     }
 }
 

@@ -1,9 +1,8 @@
 ﻿using Sorter.Input;
 using Sorter.Input.Interfaces;
-using System;
-using System.IO;
-using System.Windows.Forms;
 using Sorter.Utilities.Readers;
+using System;
+using System.Windows.Forms;
 
 namespace Sorter.Presentation
 {
