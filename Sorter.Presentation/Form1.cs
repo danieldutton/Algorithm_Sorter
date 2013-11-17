@@ -2,13 +2,11 @@
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
-using Sorter.Utilities.Algorithms;
 using Sorter.Utilities._Stopwatch;
+using Sorter.Utilities.Algorithms;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -79,7 +77,7 @@ namespace Sorter.Presentation
             return openFileDialog;
         }
 
-        private void PopulateListBoxWithFileNamesToSort(string[] fileNames)
+        private void PopulateListBoxWithFileNamesToSort(IEnumerable<string> fileNames)
         {
             if (fileNames == null) return;
             
@@ -201,7 +199,7 @@ namespace Sorter.Presentation
         private void DisableSelectionStep3()
         {
             _btnSort.Enabled = false;
-            _btnReset.Enabled = false;
+            //_btnReset.Enabled = false;
         }
 
         private void DisplayResultsOfSort(object sender, SortCompleteEventArgs e)

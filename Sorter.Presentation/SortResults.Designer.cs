@@ -118,7 +118,7 @@
             this.panel8.Controls.Add(this._lblElapsedTimeValue);
             this.panel8.Location = new System.Drawing.Point(96, 32);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(115, 22);
+            this.panel8.Size = new System.Drawing.Size(97, 22);
             this.panel8.TabIndex = 14;
             // 
             // panel9
@@ -127,7 +127,7 @@
             this.panel9.Controls.Add(this._lblItemSortCountValue);
             this.panel9.Location = new System.Drawing.Point(96, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(115, 22);
+            this.panel9.Size = new System.Drawing.Size(97, 22);
             this.panel9.TabIndex = 15;
             // 
             // SortResults
@@ -135,14 +135,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(214, 90);
+            this.ClientSize = new System.Drawing.Size(197, 90);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this._btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximumSize = new System.Drawing.Size(230, 124);
+            this.MaximumSize = new System.Drawing.Size(213, 124);
             this.Name = "SortResults";
             this.Text = "Results";
             this.panel3.ResumeLayout(false);

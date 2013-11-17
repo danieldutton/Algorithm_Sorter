@@ -27,7 +27,7 @@ namespace Sorter.UnitTests.Utilities
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
-        public void Load_ThrowAnArgumentExceptionIfAssemblyNameIsNull()
+        public void Load_ThrowAnArgumentExceptionIfAssemblyNameParamIsNull()
         {
             _sut.Load(null, typeof(SortRoutine));   
         }
