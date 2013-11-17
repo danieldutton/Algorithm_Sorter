@@ -70,9 +70,9 @@
             // 
             // _btnSort
             // 
-            this._btnSort.Location = new System.Drawing.Point(6, 20);
+            this._btnSort.Location = new System.Drawing.Point(7, 29);
             this._btnSort.Name = "_btnSort";
-            this._btnSort.Size = new System.Drawing.Size(62, 23);
+            this._btnSort.Size = new System.Drawing.Size(62, 21);
             this._btnSort.TabIndex = 4;
             this._btnSort.Text = "Sort";
             this._btnSort.UseVisualStyleBackColor = true;
@@ -119,9 +119,9 @@
             // 
             // _btnCancelSort
             // 
-            this._btnCancelSort.Location = new System.Drawing.Point(99, 20);
+            this._btnCancelSort.Location = new System.Drawing.Point(99, 29);
             this._btnCancelSort.Name = "_btnCancelSort";
-            this._btnCancelSort.Size = new System.Drawing.Size(61, 23);
+            this._btnCancelSort.Size = new System.Drawing.Size(61, 21);
             this._btnCancelSort.TabIndex = 6;
             this._btnCancelSort.Text = "Cancel";
             this._btnCancelSort.UseVisualStyleBackColor = true;

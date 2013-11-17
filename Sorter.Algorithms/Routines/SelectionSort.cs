@@ -1,5 +1,5 @@
 ﻿using Sorter.Algorithms.EventArg;
-using Sorter.Utilities._Timer;
+using Sorter.Utilities._Stopwatch;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
@@ -29,8 +29,8 @@ namespace Sorter.Algorithms.Routines
                         data[min] = temp;
                     }
                 });
-            
-            Stopwatch.Start();
+
+            Stopwatch.Stop();
             
             OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length));
 

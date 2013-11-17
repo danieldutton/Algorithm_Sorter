@@ -2,8 +2,8 @@
 using NUnit.Framework;
 using Sorter.Algorithms;
 using Sorter.Algorithms.Routines;
+using Sorter.Utilities._Stopwatch;
 using System;
-using Sorter.Utilities._Timer;
 
 namespace Sorter.UnitTests._Algorithms
 {

@@ -18,8 +18,6 @@ namespace Sorter.Presentation
                 const string msValue = " ms";
 
                 _lblItemSortCountValue.Text = e.ItemSortCount.ToString();
-                _lblStartTimeValue.Text = e.StartTimeMilliSec.ToString() + msValue;
-                _lblStopTimeValue.Text = e.StopTimeMilliSec.ToString() + msValue;
                 _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;   
             }
             else
@@ -30,8 +28,6 @@ namespace Sorter.Presentation
         {
             const string errorValue = "Error";
 
-            _lblStartTimeValue.Text = errorValue;
-            _lblStopTimeValue.Text = errorValue;
             _lblElapsedTimeValue.Text = errorValue;
             _lblItemSortCountValue.Text = errorValue;
         }

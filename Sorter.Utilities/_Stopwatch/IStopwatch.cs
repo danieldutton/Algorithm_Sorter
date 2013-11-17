@@ -1,4 +1,4 @@
-﻿namespace Sorter.Utilities._Timer
+﻿namespace Sorter.Utilities._Stopwatch
 {
     public interface IStopwatch
     {
