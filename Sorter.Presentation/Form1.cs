@@ -71,7 +71,7 @@ namespace Sorter.Presentation
                 Multiselect = true,
                 Filter = "dat files(*.dat)|*.dat",
                 ShowReadOnly = true,
-                InitialDirectory = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"TestFiles"),
+                InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
             };
 
             return openFileDialog;
