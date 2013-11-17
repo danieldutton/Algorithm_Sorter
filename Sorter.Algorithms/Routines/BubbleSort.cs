@@ -37,7 +37,7 @@ namespace Sorter.Algorithms.Routines
 
             Stopwatch.Stop();
             
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length));
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancellationToken.IsCancellationRequested));
 
             return data;
         }

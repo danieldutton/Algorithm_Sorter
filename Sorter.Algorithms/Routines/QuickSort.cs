@@ -22,8 +22,8 @@ namespace Sorter.Algorithms.Routines
             await Task.Run(() => result = Swap(data, 0, data.Length - 1));
 
             Stopwatch.Stop();
-            
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length));
+
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancellationToken.IsCancellationRequested));
 
             return result;
         }

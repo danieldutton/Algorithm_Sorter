@@ -13,23 +13,26 @@ namespace Sorter.Presentation
 
         internal void BuildResults(SortCompleteEventArgs e)
         {
-            if (e != null)
-            {
-                const string msValue = " ms";
-
-                _lblItemSortCountValue.Text = e.ItemSortCount.ToString();
-                _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;   
-            }
+            if(e.WasCancelled) 
+                DisplayCancelledValues(e);
             else
-                DisplayErrorValues();   
+                DisplayCompletedValues(e);   
         }
 
-        private void DisplayErrorValues()
+        private void DisplayCancelledValues(SortCompleteEventArgs e)
         {
-            const string errorValue = "Error";
+            const string msValue = " ms";
 
-            _lblElapsedTimeValue.Text = errorValue;
-            _lblItemSortCountValue.Text = errorValue;
+            _lblItemSortCountValue.Text = "Cancelled";
+            _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;
+        }
+
+        private void DisplayCompletedValues(SortCompleteEventArgs e)
+        {
+            const string msValue = " ms";
+
+            _lblItemSortCountValue.Text = e.ItemSortCount.ToString();
+            _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;    
         }
 
         private void CloseDialog_Click(object sender, EventArgs e)

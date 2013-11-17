@@ -1,6 +1,6 @@
-﻿using System.Threading;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
 using Sorter.Utilities._Stopwatch;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
@@ -57,8 +57,8 @@ namespace Sorter.Algorithms.Routines
                 }, cancellationToken);
 
             Stopwatch.Stop();
-            
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length));
+
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancellationToken.IsCancellationRequested));
             
             return data;
         }
