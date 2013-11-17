@@ -20,8 +20,8 @@ namespace Sorter.Presentation
 
             IStreamReaderBuilder streamBuilder = new StreamReaderBuilder();
             IFileReader<int> fileReader = new DatFileReader<int>(streamBuilder); 
-            IClassNameLoader loader = new ClassNameLoader();
-            Application.Run(new Form1(fileReader, loader));
+            IClassNameLoader classNameLoader = new ClassNameLoader();
+            Application.Run(new SortForm(fileReader, classNameLoader));
         }
     }
 }

@@ -17,9 +17,9 @@ C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\S
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\Sorter.Input.pdb
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\bin\Debug\Sorter.Utilities.pdb
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.csprojResolveAssemblyReference.cache
-C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.Form1.resources
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.Properties.Resources.resources
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.SortResults.resources
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.csproj.GenerateResource.Cache
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.exe
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Presentation\obj\Debug\Sorter.Presentation.SortForm.resources

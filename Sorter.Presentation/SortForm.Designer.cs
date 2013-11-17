@@ -1,6 +1,6 @@
 ﻿namespace Sorter.Presentation
 {
-    partial class Form1
+    partial class SortForm
     {
         /// <summary>
         /// Required designer variable.
@@ -76,7 +76,7 @@
             this._btnSort.TabIndex = 4;
             this._btnSort.Text = "Sort";
             this._btnSort.UseVisualStyleBackColor = true;
-            this._btnSort.Click += new System.EventHandler(this.StartSort_Click);
+            this._btnSort.Click += new System.EventHandler(this.StartSorting_Click);
             // 
             // _lBoxSelectedFiles
             // 
@@ -115,7 +115,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.ExitApplication_Click);
             // 
             // _btnCancelSort
             // 
@@ -125,7 +125,7 @@
             this._btnCancelSort.TabIndex = 6;
             this._btnCancelSort.Text = "Cancel";
             this._btnCancelSort.UseVisualStyleBackColor = true;
-            this._btnCancelSort.Click += new System.EventHandler(this.CancelCurrentSortRoutine_Click);
+            this._btnCancelSort.Click += new System.EventHandler(this.CancelCurrentSort_Click);
             // 
             // _panelBrowseData
             // 

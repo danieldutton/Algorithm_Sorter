@@ -1,19 +1,21 @@
 ﻿using Sorter.Algorithms;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
+using Sorter.Input.Exceptions;
 using Sorter.Input.Interfaces;
 using Sorter.Utilities._Stopwatch;
 using Sorter.Utilities.Algorithms;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sorter.Presentation
 {
-    internal partial class Form1 : Form
+    internal partial class SortForm : Form
     {
+        #region Properties
+
         private readonly IFileReader<int> _iFileReader;
 
         private readonly IClassNameLoader _classNameLoader;
@@ -22,8 +24,11 @@ namespace Sorter.Presentation
 
         private int[] _dataToSort;
 
+        #endregion
 
-        internal Form1(IFileReader<int> fileReader, IClassNameLoader classNameLoader)
+        #region Constructor(s)
+
+        internal SortForm(IFileReader<int> fileReader, IClassNameLoader classNameLoader)
         {
             _iFileReader = fileReader;
             _classNameLoader = classNameLoader;
@@ -34,6 +39,10 @@ namespace Sorter.Presentation
             DisableSelectionStep2();
             DisableSelectionStep3();
         }
+
+        #endregion
+
+        #region Method(s)
 
         private void BindAlgorithmNamesToComboBox()
         {
@@ -53,7 +62,7 @@ namespace Sorter.Presentation
             {
                 safeFiles = openFileDialog.SafeFileNames;
                 string[] filePaths = openFileDialog.FileNames;
-                _dataToSort = ReadDataToSort(filePaths);
+                _dataToSort = ReadSortData(filePaths);
             }
 
             if (_dataToSort == null) return;
@@ -87,14 +96,22 @@ namespace Sorter.Presentation
             }
         }
 
-        private int[] ReadDataToSort(params string[] filePaths)
+        private int[] ReadSortData(params string[] filePaths)
         {
-            _dataToSort = _iFileReader.Read(filePaths);
+            try
+            {
+                _dataToSort = _iFileReader.Read(filePaths);
+            }
+            catch (FileReadException)
+            {
+                MessageBox.Show("Error Reading Data Try Again");               
+                ResetApplication();
+            }
 
             return _dataToSort;
         }
         
-        private void StartSort_Click(object sender, EventArgs e)
+        private void StartSorting_Click(object sender, EventArgs e)
         {
             DisableSelectionStep2();
             DisableSelectionStep3();
@@ -102,7 +119,7 @@ namespace Sorter.Presentation
             if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
             {
                 var bubbleSort = new BubbleSort(new SortStopwatch());
-                bubbleSort.Completed += DisplayResultsOfSort;
+                bubbleSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(bubbleSort);
                 
                 StartProgressBar();
@@ -113,7 +130,7 @@ namespace Sorter.Presentation
             if (_comboBxAlgorithm.SelectedValue.Equals("HeapSort"))
             {
                 var heapSort = new HeapSort(new SortStopwatch());
-                heapSort.Completed += DisplayResultsOfSort;
+                heapSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(heapSort);
                 
                 StartProgressBar();
@@ -123,7 +140,7 @@ namespace Sorter.Presentation
             if (_comboBxAlgorithm.SelectedValue.Equals("InsertionSort"))
             {
                 var insertionSort = new InsertionSort(new SortStopwatch());
-                insertionSort.Completed += DisplayResultsOfSort;
+                insertionSort.Completed += DisplaySortResults;
                 
                 _sorter = new SorterContext(insertionSort);
                 
@@ -134,7 +151,7 @@ namespace Sorter.Presentation
             if (_comboBxAlgorithm.SelectedValue.Equals("QuickSort"))
             {
                 var quickSort = new QuickSort(new SortStopwatch());
-                quickSort.Completed += DisplayResultsOfSort;
+                quickSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(quickSort);
                 
                 StartProgressBar();
@@ -144,7 +161,7 @@ namespace Sorter.Presentation
             if (_comboBxAlgorithm.SelectedValue.Equals("SelectionSort"))
             {
                 var selectionSort = new SelectionSort(new SortStopwatch());
-                selectionSort.Completed += DisplayResultsOfSort;
+                selectionSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(selectionSort);
                 
                 StartProgressBar();
@@ -154,7 +171,7 @@ namespace Sorter.Presentation
             if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
             {
                 var shellSort = new ShellSort(new SortStopwatch());
-                shellSort.Completed += DisplayResultsOfSort;
+                shellSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(shellSort);
                 StartProgressBar();
                 Task<int[]> result = _sorter.Sort(_dataToSort);
@@ -202,7 +219,7 @@ namespace Sorter.Presentation
             //_btnReset.Enabled = false;
         }
 
-        private void DisplayResultsOfSort(object sender, SortCompleteEventArgs e)
+        private void DisplaySortResults(object sender, SortCompleteEventArgs e)
         {
             _btnCancelSort.Enabled = false;
             _progressBar.Style = ProgressBarStyle.Continuous;
@@ -214,6 +231,11 @@ namespace Sorter.Presentation
 
         private void ResetApplication_Click(object sender, EventArgs e)
         {
+            ResetApplication();
+        }
+
+        private void ResetApplication()
+        {
             EnableSelectionStep1();
             DisableSelectionStep2();
             DisableSelectionStep3();
@@ -223,14 +245,16 @@ namespace Sorter.Presentation
             _comboBxAlgorithm.SelectedIndex = 0;
         }
 
-        private void CancelCurrentSortRoutine_Click(object sender, EventArgs e)
+        private void CancelCurrentSort_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ExitApplication_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        #endregion
     }
 }

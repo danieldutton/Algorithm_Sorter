@@ -4,7 +4,7 @@ namespace Sorter.Utilities.Readers
 {
     public class StreamReaderBuilder : IStreamReaderBuilder
     {
-        public StreamReader StreamReader { get; set; }
+        public StreamReader StreamReader { get; private set; }
 
         public void BuildStreamReader(string filePath)
         {
