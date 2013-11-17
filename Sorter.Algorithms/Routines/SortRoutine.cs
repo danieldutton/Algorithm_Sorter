@@ -1,6 +1,6 @@
 ﻿using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
-using Sorter.Timer;
+using Sorter.Utilities._Timer;
 using System;
 using System.Threading.Tasks;
 
@@ -13,13 +13,13 @@ namespace Sorter.Algorithms.Routines
         public event EventHandler<EventArgs> InProgress;
 
         public event EventHandler<SortCompleteEventArgs> Completed;
-       
-        protected ITimer Timer;
+
+        protected IStopwatch Stopwatch;
 
 
-        protected SortRoutine(ITimer timer)
+        protected SortRoutine(IStopwatch stopWatch)
         {
-            Timer = timer;
+            Stopwatch = stopWatch;
         }
 
         public abstract Task<int[]> SortAsync(int[] data); 

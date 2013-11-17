@@ -2,8 +2,8 @@
 using NUnit.Framework;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
-using Sorter.Timer;
 using System.Linq;
+using Sorter.Utilities._Timer;
 
 namespace Sorter.UnitTests._Algorithms.Routines
 {
@@ -25,7 +25,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         public void SortAsync_FireAStartedEvent()
         {
             bool wasFired = false;
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             var sut = new BubbleSort(fakeTimer.Object);
             sut.Started += (o, e) => wasFired = true;
 
@@ -37,7 +37,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public void SortAsync_CallTimerStartMethodExactlyOnce()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             var sut = new BubbleSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
@@ -48,7 +48,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public async void SortAsync_CallTimerStopMethodExactlyOnce()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
             var sut = new BubbleSort(fakeTimer.Object);
 
@@ -61,7 +61,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         public async void SortAsync_FireACompletedEvent()
         {
             bool wasFired = false;
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             var sut = new BubbleSort(fakeTimer.Object);
             sut.Completed += (o, e) => wasFired = true;
 
@@ -73,47 +73,44 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public void SortAsync_CallTimer_StartTime_GetterExactlyOnce()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             fakeTimer.Setup(x => x.Start());
             var sut = new BubbleSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
-            fakeTimer.VerifyGet(x => x.StartTimeInMilliseconds, Times.Exactly(1));
+            fakeTimer.Verify(x => x.Start(), Times.Exactly(1));
         }
 
         [Test]
         public void SortAsync_CallTimer_StopTime_GetterExactlyOnce()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
             var sut = new BubbleSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
-            fakeTimer.VerifyGet(x => x.StopTimeInMilliseconds, Times.Exactly(1));
+            fakeTimer.Verify(x => x.Stop(), Times.Exactly(1));
         }
 
         [Test]
         public void SortAsync_CallTimer_Elapsed_GetterExactlyOnce()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
             var sut = new BubbleSort(fakeTimer.Object);
 
             sut.SortAsync(_tenUnsortedInts);
 
-            fakeTimer.VerifyGet(x => x.ElapsedTimeInMilliseconds, Times.Exactly(1));
+            fakeTimer.VerifyGet(x => x.ElapsedMilliseconds, Times.Exactly(1));
         }
 
         [Test]
         public async void SortAsync_FireACompletedEventWithTheCorrectEventArgsData()
         {
-            var fakeTimer = new Mock<ITimer>();
-
-            fakeTimer.SetupGet(x => x.StartTimeInMilliseconds).Returns(Mother.GetTestStartTime());
-            fakeTimer.SetupGet(x => x.StopTimeInMilliseconds).Returns(Mother.GetTestStopTime());
-            fakeTimer.SetupGet(x => x.ElapsedTimeInMilliseconds).Returns(Mother.GetTestElapsedTime);
+            var fakeTimer = new Mock<IStopwatch>();
+            fakeTimer.SetupGet(x => x.ElapsedMilliseconds).Returns(Mother.GetTestElapsedTime);
 
             var sut = new BubbleSort(fakeTimer.Object);
             SortCompleteEventArgs sortCompleteEventArgs = null;
@@ -130,7 +127,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public async void SortAsync_CorrectlySortDataTenItemsGivenInTheUnsortedArrayArray()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
 
             var sut = new BubbleSort(fakeTimer.Object);
@@ -143,7 +140,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public async void SortAsync_CorrectlySortDataOneHundredItemsGivenInTheUnsortedArrayArray()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             fakeTimer.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
 
             var sut = new BubbleSort(fakeTimer.Object);

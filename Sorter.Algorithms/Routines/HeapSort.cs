@@ -1,20 +1,20 @@
 ﻿using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
-using Sorter.Timer;
+using Sorter.Utilities._Timer;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
     public sealed class HeapSort : SortRoutine, ISwappable
     {
-        public HeapSort(ITimer timer) : base(timer)
+        public HeapSort(IStopwatch stopwatch) : base(stopwatch)
         {
         }
 
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
-            Timer.Start();
+            Stopwatch.Start();
 
             await Task.Run(() =>
                 {
@@ -30,9 +30,8 @@ namespace Sorter.Algorithms.Routines
                     }
                 });
 
-            OnCompleted(new SortCompleteEventArgs(Timer.StartTimeInMilliseconds, Timer.StopTimeInMilliseconds, 
-                                                  Timer.ElapsedTimeInMilliseconds, data.Length));
-            Timer.Stop();
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length));
+            Stopwatch.Stop();
 
             return data;
         }

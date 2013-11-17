@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sorter.Utilities._Timer;
 
 namespace Sorter.Presentation
 {
@@ -102,7 +103,7 @@ namespace Sorter.Presentation
 
             if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
             {
-                var bubbleSort = new BubbleSort(new Timer.Timer());
+                var bubbleSort = new BubbleSort(new Stopwatch());
                 bubbleSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(bubbleSort);
                 progressBar1.Style = ProgressBarStyle.Marquee;
@@ -112,7 +113,7 @@ namespace Sorter.Presentation
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("HeapSort"))
             {
-                var heapSort = new HeapSort(new Timer.Timer());
+                var heapSort = new HeapSort(new Stopwatch());
                 heapSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(heapSort);
                 progressBar1.Style = ProgressBarStyle.Marquee;
@@ -121,7 +122,7 @@ namespace Sorter.Presentation
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("InsertionSort"))
             {
-                var insertionSort = new InsertionSort(new Timer.Timer());
+                var insertionSort = new InsertionSort(new Stopwatch());
                 insertionSort.Completed += DisplayResultsOfSort;
                 
                 _sorter = new SorterContext(insertionSort);
@@ -131,7 +132,7 @@ namespace Sorter.Presentation
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("QuickSort"))
             {
-                var quickSort = new QuickSort(new Timer.Timer());
+                var quickSort = new QuickSort(new Stopwatch());
                 quickSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(quickSort);
                 progressBar1.Style = ProgressBarStyle.Marquee;
@@ -140,7 +141,7 @@ namespace Sorter.Presentation
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("SelectionSort"))
             {
-                var selectionSort = new SelectionSort(new Timer.Timer());
+                var selectionSort = new SelectionSort(new Stopwatch());
                 selectionSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(selectionSort);
                 progressBar1.Style = ProgressBarStyle.Marquee;
@@ -149,7 +150,7 @@ namespace Sorter.Presentation
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
             {
-                var shellSort = new ShellSort(new Timer.Timer());
+                var shellSort = new ShellSort(new Stopwatch());
                 shellSort.Completed += DisplayResultsOfSort;
                 _sorter = new SorterContext(shellSort);
                 progressBar1.Style = ProgressBarStyle.Marquee;

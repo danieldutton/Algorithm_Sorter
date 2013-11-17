@@ -5,9 +5,7 @@ C:\Users\Danny\Documents\Visual Studio 2012\Projects\Sorter\Sorter.Algorithms\ob
 C:\Users\Danny\Documents\Visual Studio 2012\Projects\Sorter\Sorter.Algorithms\obj\Debug\Sorter.Algorithms.pdb
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Algorithms\bin\Debug\Sorter.Algorithms.dll
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Algorithms\bin\Debug\Sorter.Algorithms.pdb
-C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Algorithms\bin\Debug\Sorter.Timer.dll
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Algorithms\bin\Debug\Sorter.Utilities.dll
-C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Algorithms\bin\Debug\Sorter.Timer.pdb
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Algorithms\bin\Debug\Sorter.Utilities.pdb
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Algorithms\obj\Debug\Sorter.Algorithms.csprojResolveAssemblyReference.cache
 C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Algorithms\obj\Debug\Sorter.Algorithms.dll

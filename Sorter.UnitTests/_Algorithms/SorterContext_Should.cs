@@ -2,8 +2,8 @@
 using NUnit.Framework;
 using Sorter.Algorithms;
 using Sorter.Algorithms.Routines;
-using Sorter.Timer;
 using System;
+using Sorter.Utilities._Timer;
 
 namespace Sorter.UnitTests._Algorithms
 {
@@ -13,7 +13,7 @@ namespace Sorter.UnitTests._Algorithms
         [ExpectedException(typeof(ArgumentNullException))]
         public async void ThrowAnArgumentNullExceptionIfDataToSortParameterIsNull()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             var fakeSortRoutine = new Mock<SortRoutine>(fakeTimer.Object);
             var sut = new SorterContext(fakeSortRoutine.Object);
             
@@ -24,7 +24,7 @@ namespace Sorter.UnitTests._Algorithms
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public async void ThrowAnArgumentOutOfRangeExceptionIfThereIsInsufficientDataToSort()
         {
-            var fakeTimer = new Mock<ITimer>();
+            var fakeTimer = new Mock<IStopwatch>();
             var fakeSortRoutine = new Mock<SortRoutine>(fakeTimer.Object);
             var sut = new SorterContext(fakeSortRoutine.Object);
 

@@ -36,17 +36,17 @@
                 };
         }
 
-        public static int GetTestStartTime()
+        public static long GetTestStartTime()
         {
             return 314;
         }
 
-        public static int GetTestStopTime()
+        public static long GetTestStopTime()
         {
             return 414;
         }
 
-        public static int GetTestElapsedTime()
+        public static long GetTestElapsedTime()
         {
             return 100;
         }

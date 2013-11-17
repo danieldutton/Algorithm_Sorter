@@ -1,19 +1,19 @@
 ﻿using Sorter.Algorithms.EventArg;
-using Sorter.Timer;
+using Sorter.Utilities._Timer;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
     public sealed class BubbleSort : SortRoutine
     {
-        public BubbleSort(ITimer timer) : base(timer)
+        public BubbleSort(IStopwatch stopwatch) : base(stopwatch)
         {
         }
 
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
-            Timer.Start();
+            Stopwatch.Start();
 
             await Task.Run(() =>
                 {
@@ -31,10 +31,9 @@ namespace Sorter.Algorithms.Routines
                     }
                 });
 
-            Timer.Stop();
+            Stopwatch.Stop();
             
-            OnCompleted(new SortCompleteEventArgs(Timer.StartTimeInMilliseconds, 
-                Timer.StopTimeInMilliseconds, Timer.ElapsedTimeInMilliseconds, data.Length));
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length));
 
             return data;
         }

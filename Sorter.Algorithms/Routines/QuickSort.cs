@@ -1,28 +1,27 @@
 ﻿using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
-using Sorter.Timer;
+using Sorter.Utilities._Timer;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public sealed class QuickSort : SortRoutine, ISwappable 
+    public sealed class QuickSort : SortRoutine, ISwappable
     {
-        public QuickSort(ITimer timer) : base(timer)
+        public QuickSort(IStopwatch stopwatch) : base(stopwatch)
         {
         }
 
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
-            Timer.Start();
+            Stopwatch.Start();
 
             int[] result = null;
 
             await Task.Run(() => result = Swap(data, 0, data.Length - 1));
 
-            Timer.Stop();
-            OnCompleted(new SortCompleteEventArgs(Timer.StartTimeInMilliseconds, Timer.StopTimeInMilliseconds, 
-                                                  Timer.ElapsedTimeInMilliseconds, data.Length));
+            Stopwatch.Stop();
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length));
 
             return result;
         }

@@ -1,19 +1,19 @@
 ﻿using Sorter.Algorithms.EventArg;
-using Sorter.Timer;
+using Sorter.Utilities._Timer;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
     public sealed class InsertionSort : SortRoutine
     {
-        public InsertionSort(ITimer timer) : base(timer)
+        public InsertionSort(IStopwatch stopwatch) : base(stopwatch)
         {
         }
 
         public override async Task<int[]> SortAsync(int[] data)
         {
             OnStarted();
-            Timer.Start();
+            Stopwatch.Start();
 
             await Task.Run(() =>
                 {
@@ -34,9 +34,8 @@ namespace Sorter.Algorithms.Routines
                     }
                 });
 
-            Timer.Stop();
-            OnCompleted(new SortCompleteEventArgs(Timer.StartTimeInMilliseconds, Timer.StopTimeInMilliseconds, 
-                                                  Timer.ElapsedTimeInMilliseconds, data.Length));
+            Stopwatch.Stop();
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length));
 
             return data;
         }

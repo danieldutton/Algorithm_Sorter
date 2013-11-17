@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sorter.Timer\Sorter.Timer.csproj">
-      <Project>{47353097-fe58-41f4-bc0c-e42a45540ace}</Project>
-      <Name>Sorter.Timer</Name>
+    <ProjectReference Include="..\Sorter.Utilities\Sorter.Utilities.csproj">
+      <Project>{da0466e9-59d1-456d-8bb5-1e00935eb7cd}</Project>
+      <Name>Sorter.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
