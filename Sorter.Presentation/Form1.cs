@@ -2,6 +2,7 @@
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Interfaces;
+using Sorter.Utilities.Algorithms;
 using Sorter.Utilities._Stopwatch;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,17 @@ namespace Sorter.Presentation
     {
         private readonly IFileReader<int> _iFileReader;
 
+        private readonly IClassNameLoader _classNameLoader;
+
         private SorterContext _sorter;
 
         private int[] _dataToSort;
 
 
-        internal Form1(IFileReader<int> fileReader)
+        internal Form1(IFileReader<int> fileReader, IClassNameLoader classNameLoader)
         {
             _iFileReader = fileReader;
+            _classNameLoader = classNameLoader;
             
             InitializeComponent();
             BindAlgorithmNamesToComboBox();
@@ -35,10 +39,7 @@ namespace Sorter.Presentation
 
         private void BindAlgorithmNamesToComboBox()
         {
-            Assembly assembly = Assembly.LoadFrom("Sorter.Algorithms.dll");
-            IEnumerable<Type> result = assembly.GetTypes().Where(x => x.IsSubclassOf((typeof(SortRoutine))));
-
-            List<string> classNames = result.Select(className => className.Name).ToList();
+            List<string> classNames = _classNameLoader.Load("Sorter.Algorithms.dll", typeof (SortRoutine));
 
             if (classNames.Count >= 0)
                 _comboBxAlgorithm.DataSource = classNames;

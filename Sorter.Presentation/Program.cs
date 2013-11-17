@@ -1,5 +1,6 @@
 ﻿using Sorter.Input;
 using Sorter.Input.Interfaces;
+using Sorter.Utilities.Algorithms;
 using Sorter.Utilities.Readers;
 using System;
 using System.Windows.Forms;
@@ -19,7 +20,8 @@ namespace Sorter.Presentation
 
             IStreamReaderBuilder streamBuilder = new StreamReaderBuilder();
             IFileReader<int> fileReader = new DatFileReader<int>(streamBuilder); 
-            Application.Run(new Form1(fileReader));
+            IClassNameLoader loader = new ClassNameLoader();
+            Application.Run(new Form1(fileReader, loader));
         }
     }
 }
