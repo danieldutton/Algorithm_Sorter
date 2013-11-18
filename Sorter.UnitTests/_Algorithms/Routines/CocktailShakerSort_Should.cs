@@ -2,14 +2,14 @@
 using NUnit.Framework;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
-using Sorter.Utilities.Async;
 using Sorter.Utilities._Stopwatch;
+using Sorter.Utilities.Async;
 using System.Linq;
 
 namespace Sorter.UnitTests._Algorithms.Routines
 {
     [TestFixture]
-    public class InsertionSort_Should
+    public class CocktailShakerSort_Should
     {
         private int[] _tenUnsortedInts;
 
@@ -30,7 +30,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         {
             bool wasFired = false;
             var fakeStopwatch = new Mock<IStopwatch>();
-            var sut = new InsertionSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(fakeStopwatch.Object);
             sut.Started += (o, e) => wasFired = true;
 
             sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
@@ -42,7 +42,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         public void SortAsync_CallStopwatchStartMethodExactlyOnce()
         {
             var fakeStopwatch = new Mock<IStopwatch>();
-            var sut = new InsertionSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(fakeStopwatch.Object);
 
             sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
 
@@ -54,7 +54,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         {
             var fakeStopwatch = new Mock<IStopwatch>();
             fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new InsertionSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(fakeStopwatch.Object);
 
             await sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
 
@@ -66,7 +66,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         {
             bool wasFired = false;
             var fakeStopwatch = new Mock<IStopwatch>();
-            var sut = new InsertionSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(fakeStopwatch.Object);
             sut.Completed += (o, e) => wasFired = true;
 
             await sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
@@ -79,7 +79,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
         {
             var fakeStopwatch = new Mock<IStopwatch>();
             fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new InsertionSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(fakeStopwatch.Object);
 
             sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
 
@@ -92,7 +92,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
             var fakeStopwatch = new Mock<IStopwatch>();
             fakeStopwatch.SetupGet(x => x.ElapsedMilliseconds).Returns(Mother.GetTestElapsedTime);
 
-            var sut = new InsertionSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(fakeStopwatch.Object);
             SortCompleteEventArgs sortCompleteEventArgs = null;
             sut.Completed += (o, e) => sortCompleteEventArgs = e;
 
@@ -108,7 +108,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
             var fakeStopwatch = new Mock<IStopwatch>();
             fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
 
-            var sut = new InsertionSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(fakeStopwatch.Object);
 
             int[] result = await sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
 
@@ -121,7 +121,7 @@ namespace Sorter.UnitTests._Algorithms.Routines
             var fakeStopwatch = new Mock<IStopwatch>();
             fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
 
-            var sut = new InsertionSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(fakeStopwatch.Object);
 
             int[] result = await sut.SortAsync(_oneHundredUnsortedInts, _fakeCanSource.Object.Token);
 

@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Utilities\ClassNameLoader_Should.cs" />
     <Compile Include="_Algorithms\Routines\BubbleSort_Should.cs" />
+    <Compile Include="_Algorithms\Routines\CocktailShakerSort_Should.cs" />
+    <Compile Include="_Algorithms\Routines\GnomeSort_Should.cs" />
     <Compile Include="_Algorithms\Routines\HeapSort_Should.cs" />
     <Compile Include="_Algorithms\Routines\InsertionSort_Should.cs" />
     <Compile Include="_Algorithms\Routines\QuickSort_Should.cs" />

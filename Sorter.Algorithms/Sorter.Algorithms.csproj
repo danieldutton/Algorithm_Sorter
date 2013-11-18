@@ -38,6 +38,8 @@
     <Compile Include="Interfaces\IProgressable.cs" />
     <Compile Include="Interfaces\ISwappable.cs" />
     <Compile Include="Routines\BubbleSort.cs" />
+    <Compile Include="Routines\CocktailShakerSort.cs" />
+    <Compile Include="Routines\GnomeSort.cs" />
     <Compile Include="Routines\HeapSort.cs" />
     <Compile Include="Routines\InsertionSort.cs" />
     <Compile Include="Routines\QuickSort.cs" />
