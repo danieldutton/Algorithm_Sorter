@@ -22,7 +22,7 @@ namespace Sorter.Presentation
 
             IStreamReaderBuilder streamBuilder = new StreamReaderBuilder();
             IFileReader<int> fileReader = new DatFileReader<int>(streamBuilder); 
-            IClassNameLoader classNameLoader = new ClassNameLoader();
+            IRoutineNameLoader classNameLoader = new RoutineNameLoader();
             Application.Run(new SortForm(fileReader, classNameLoader));
         }
     }

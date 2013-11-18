@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Sorter.Utilities.Algorithms
 {
-    public class ClassNameLoader : IClassNameLoader
+    public class RoutineNameLoader : IRoutineNameLoader
     {
         public List<string> Load(string assemblyName, Type inheritsFrom)
         {

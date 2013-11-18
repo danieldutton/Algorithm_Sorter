@@ -21,7 +21,7 @@ namespace Sorter.Presentation
 
         private readonly IFileReader<int> _iFileReader;
 
-        private readonly IClassNameLoader _classNameLoader;
+        private readonly IRoutineNameLoader _classNameLoader;
 
         private SorterContext _sorter;
 
@@ -35,7 +35,7 @@ namespace Sorter.Presentation
 
         #region Constructor(s)
 
-        internal SortForm(IFileReader<int> fileReader, IClassNameLoader classNameLoader)
+        internal SortForm(IFileReader<int> fileReader, IRoutineNameLoader classNameLoader)
         {
             _iFileReader = fileReader;
             _classNameLoader = classNameLoader;

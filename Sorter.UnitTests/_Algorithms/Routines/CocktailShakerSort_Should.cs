@@ -15,25 +15,27 @@ namespace Sorter.UnitTests._Algorithms.Routines
 
         private int[] _oneHundredUnsortedInts;
 
-        private Mock<ICancellationTokenSource> _fakeCanSource;
+        private Mock<ICancellationTokenSource> _fakeCancelSource;
+
+        private Mock<IStopwatch> _fakeStopwatch;
 
         [SetUp]
         public void Init()
         {
             _tenUnsortedInts = Mother.GetTenUnsortedIntegers();
             _oneHundredUnsortedInts = Mother.GetOneHundredUnSortedIntegers();
-            _fakeCanSource = new Mock<ICancellationTokenSource>();
+            _fakeCancelSource = new Mock<ICancellationTokenSource>();
+            _fakeStopwatch = new Mock<IStopwatch>();
         }
 
         [Test]
         public void SortAsync_FireAStartedEvent()
         {
             bool wasFired = false;
-            var fakeStopwatch = new Mock<IStopwatch>();
-            var sut = new CocktailShakerSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(_fakeStopwatch.Object);
             sut.Started += (o, e) => wasFired = true;
 
-            sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
+            sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
             Assert.IsTrue(wasFired);
         }
@@ -41,35 +43,31 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public void SortAsync_CallStopwatchStartMethodExactlyOnce()
         {
-            var fakeStopwatch = new Mock<IStopwatch>();
-            var sut = new CocktailShakerSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(_fakeStopwatch.Object);
+            sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
-            sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
-
-            fakeStopwatch.Verify(x => x.Start(), Times.Once());
+            _fakeStopwatch.Verify(x => x.Start(), Times.Once());
         }
 
         [Test]
         public async void SortAsync_CallStopwatchStopMethodExactlyOnce()
         {
-            var fakeStopwatch = new Mock<IStopwatch>();
-            fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new CocktailShakerSort(fakeStopwatch.Object);
+            _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
+            var sut = new CocktailShakerSort(_fakeStopwatch.Object);
 
-            await sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
+            await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
-            fakeStopwatch.Verify(x => x.Stop(), Times.Once());
+            _fakeStopwatch.Verify(x => x.Stop(), Times.Once());
         }
 
         [Test]
         public async void SortAsync_FireACompletedEvent()
         {
             bool wasFired = false;
-            var fakeStopwatch = new Mock<IStopwatch>();
-            var sut = new CocktailShakerSort(fakeStopwatch.Object);
+            var sut = new CocktailShakerSort(_fakeStopwatch.Object);
             sut.Completed += (o, e) => wasFired = true;
 
-            await sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
+            await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
             Assert.IsTrue(wasFired);
         }
@@ -77,26 +75,23 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public void SortAsync_CallStopwatch_ElapsedMilliseconds_GetterExactlyOnce()
         {
-            var fakeStopwatch = new Mock<IStopwatch>();
-            fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new CocktailShakerSort(fakeStopwatch.Object);
+            _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
+            var sut = new CocktailShakerSort(_fakeStopwatch.Object);
 
-            sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
+            sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
-            fakeStopwatch.VerifyGet(x => x.ElapsedMilliseconds, Times.Exactly(1));
+            _fakeStopwatch.VerifyGet(x => x.ElapsedMilliseconds, Times.Exactly(1));
         }
 
         [Test]
         public async void SortAsync_FireACompletedEventWithTheCorrectElapsedTimeValue()
         {
-            var fakeStopwatch = new Mock<IStopwatch>();
-            fakeStopwatch.SetupGet(x => x.ElapsedMilliseconds).Returns(Mother.GetTestElapsedTime);
-
-            var sut = new CocktailShakerSort(fakeStopwatch.Object);
+            _fakeStopwatch.SetupGet(x => x.ElapsedMilliseconds).Returns(Mother.GetTestElapsedTime);
+            var sut = new CocktailShakerSort(_fakeStopwatch.Object);
             SortCompleteEventArgs sortCompleteEventArgs = null;
             sut.Completed += (o, e) => sortCompleteEventArgs = e;
 
-            await sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
+            await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
             Assert.AreEqual(Mother.GetTestElapsedTime(), sortCompleteEventArgs.ElapsedTimeMilliSec);
             Assert.AreEqual(10, sortCompleteEventArgs.ItemSortCount);
@@ -105,12 +100,10 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public async void SortAsync_CorrectlySortDataTenItemsGivenInTheUnsortedArrayArray()
         {
-            var fakeStopwatch = new Mock<IStopwatch>();
-            fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
+            _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
+            var sut = new CocktailShakerSort(_fakeStopwatch.Object);
 
-            var sut = new CocktailShakerSort(fakeStopwatch.Object);
-
-            int[] result = await sut.SortAsync(_tenUnsortedInts, _fakeCanSource.Object.Token);
+            int[] result = await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
             Assert.IsTrue(Mother.GetTenSortedIntegers().SequenceEqual(result));
         }
@@ -118,12 +111,10 @@ namespace Sorter.UnitTests._Algorithms.Routines
         [Test]
         public async void SortAsync_CorrectlySortDataOneHundredItemsGivenInTheUnsortedArrayArray()
         {
-            var fakeStopwatch = new Mock<IStopwatch>();
-            fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
+            _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
+            var sut = new CocktailShakerSort(_fakeStopwatch.Object);
 
-            var sut = new CocktailShakerSort(fakeStopwatch.Object);
-
-            int[] result = await sut.SortAsync(_oneHundredUnsortedInts, _fakeCanSource.Object.Token);
+            int[] result = await sut.SortAsync(_oneHundredUnsortedInts, _fakeCancelSource.Object.Token);
 
             Assert.IsTrue(Mother.GetOneHundredSortedIntegers().SequenceEqual(result));
         }
@@ -133,6 +124,8 @@ namespace Sorter.UnitTests._Algorithms.Routines
         {
             _tenUnsortedInts = null;
             _oneHundredUnsortedInts = null;
+            _fakeCancelSource = null;
+            _fakeStopwatch = null;
         }
     }
 }

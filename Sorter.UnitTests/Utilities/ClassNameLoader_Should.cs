@@ -10,12 +10,12 @@ namespace Sorter.UnitTests.Utilities
     [TestFixture]
     public class ClassNameLoader_Should
     {
-        private ClassNameLoader _sut;
+        private RoutineNameLoader _sut;
 
         [SetUp]
         public void Init()
         {
-            _sut = new ClassNameLoader();
+            _sut = new RoutineNameLoader();
         }
 
         [Test]
