@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Input\DatFileReader_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="bin\Debug\TestFiles\ran128000.dat" />
+    <None Include="bin\Debug\TestFiles\ran256000.dat" />
+    <None Include="bin\Debug\TestFiles\ran32000.dat" />
+    <None Include="bin\Debug\TestFiles\ran512000.dat" />
+    <None Include="bin\Debug\TestFiles\ran64000.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sorter.Input\Sorter.Input.csproj">
+      <Project>{7335BA52-400F-45E3-9C98-D4B8D2565310}</Project>
+      <Name>Sorter.Input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sorter.Utilities\Sorter.Utilities.csproj">
+      <Project>{DA0466E9-59D1-456D-8BB5-1E00935EB7CD}</Project>
+      <Name>Sorter.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

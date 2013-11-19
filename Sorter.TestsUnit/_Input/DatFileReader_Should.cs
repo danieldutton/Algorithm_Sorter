@@ -34,7 +34,6 @@ namespace Sorter.TestsUnit._Input
         [Test]
         public void Read_CallBuildStreamReaderOncePerFilePath()
         {
-
             const string testString = "100";
             byte[] testArray = _utf8Encoding.GetBytes((testString));
             var memoryStream = new MemoryStream(testArray);       
