@@ -43,6 +43,7 @@ namespace Sorter.TestsUnit._Algorithms.Routines
         [Test]
         public void SortAsync_CallStopwatchStartMethodExactlyOnce()
         {
+            //_fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
             var sut = new GnomeSort(_fakeStopwatch.Object);
 
             sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);

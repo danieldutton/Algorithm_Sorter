@@ -8,7 +8,7 @@ using System.Linq;
 namespace Sorter.TestsUnit.Utilities
 {
     [TestFixture]
-    public class ClassNameLoader_Should
+    public class RoutineNameLoader_Should
     {
         private RoutineNameLoader _sut;
 
@@ -42,7 +42,7 @@ namespace Sorter.TestsUnit.Utilities
         [Test]
         public void Load_ReturnAListOfCorrectAlgorithmClassNames()
         {
-            var expected = new List<string>{"BubbleSort", "HeapSort", "InsertionSort", "QuickSort", "SelectionSort", "ShellSort"};
+            var expected = new List<string>{"BubbleSort", "CocktailShakerSort", "GnomeSort", "HeapSort", "InsertionSort", "QuickSort", "SelectionSort", "ShellSort"};
             List<string> actual = _sut.Load("Sorter.Algorithms.dll", typeof (SortRoutine));
 
             Assert.IsTrue(actual.SequenceEqual(expected));
