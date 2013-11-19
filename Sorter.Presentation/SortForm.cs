@@ -3,9 +3,8 @@ using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Input.Exceptions;
 using Sorter.Input.Interfaces;
-using Sorter.Utilities.Algorithms;
-using Sorter.Utilities.Async;
 using Sorter.Utilities._Stopwatch;
+using Sorter.Utilities.Algorithms;
 using Sorter.Utilities.Async;
 using System;
 using System.Collections.Generic;
@@ -17,45 +16,34 @@ namespace Sorter.Presentation
 {
     internal partial class SortForm : Form
     {
-        #region Properties
-
         private readonly IFileReader<int> _iFileReader;
 
-        private readonly IRoutineNameLoader _classNameLoader;
+        private readonly IRoutineNameLoader _routineNameLoader;
 
         private SorterContext _sorter;
 
         private int[] _dataToSort;
 
-        private CancellationTokenSource _cancellationTokenSource;
+        private CancellationTokenSource _cancelTokenSrc;
 
-        private ICancellationTokenSource _cancellationTokenSourceWrapper;
+        private ICancellationTokenSource _cancelTokenSrcWrapper;
 
-        #endregion
 
-        #region Constructor(s)
-
-        internal SortForm(IFileReader<int> fileReader, IRoutineNameLoader classNameLoader)
+        internal SortForm(IFileReader<int> fileReader, IRoutineNameLoader routineNameLoader)
         {
             _iFileReader = fileReader;
-            _classNameLoader = classNameLoader;
-            _cancellationTokenSource = new CancellationTokenSource();
-            _cancellationTokenSourceWrapper = new CancellationTokenSourceWrapper(_cancellationTokenSource);
+            _routineNameLoader = routineNameLoader;
+            _cancelTokenSrc = new CancellationTokenSource();
+            _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);
             
             InitializeComponent();
             BindAlgorithmNamesToComboBox();
-            EnableSelectionStep1();
-            DisableSelectionStep2();
-            DisableSelectionStep3();
         }
 
-        #endregion
-
-        #region Method(s)
 
         private void BindAlgorithmNamesToComboBox()
         {
-            List<string> classNames = _classNameLoader.Load("Sorter.Algorithms.dll", typeof (SortRoutine));
+            List<string> classNames = _routineNameLoader.Load("Sorter.Algorithms.dll", typeof (SortRoutine));
 
             if (classNames.Count >= 0)
                 _comboBxAlgorithm.DataSource = classNames;
@@ -75,11 +63,7 @@ namespace Sorter.Presentation
             }
 
             if (_dataToSort == null) return;
-                PopulateListBoxWithFileNamesToSort(safeFiles);
-            
-            DisableSelectionStep1();
-            EnableSelectionStep2();
-            EnableSelectionStep3();
+                PopulateListBoxWithFileNamesToSort(safeFiles);           
         }
 
         private OpenFileDialog BuildOpenFileDialog()
@@ -122,8 +106,12 @@ namespace Sorter.Presentation
         
         private async void StartSorting_Click(object sender, EventArgs e)
         {
-            DisableSelectionStep2();
-            DisableSelectionStep3();
+            if (_lBoxSelectedFiles.Items.Count == 0)
+            {
+                MessageBox.Show("Select data to sort");
+                return;
+            }
+
             _btnCancelSort.Enabled = true;
             
             if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
@@ -134,7 +122,7 @@ namespace Sorter.Presentation
                 
                 StartProgressBar();
 
-                int[]  result = await _sorter.Sort(_dataToSort, _cancellationTokenSourceWrapper.Token);   
+                 await _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);   
             }
 
             if (_comboBxAlgorithm.SelectedValue.Equals("CocktailShakerSort"))
@@ -142,8 +130,10 @@ namespace Sorter.Presentation
                 var cocktailShakerSort = new CocktailShakerSort(new SortStopwatch());
                 cocktailShakerSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(cocktailShakerSort);
+                
                 StartProgressBar();
-                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSourceWrapper.Token);
+                
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
 
             if (_comboBxAlgorithm.SelectedValue.Equals("GnomeSort"))
@@ -151,8 +141,10 @@ namespace Sorter.Presentation
                 var gnomeSort = new GnomeSort(new SortStopwatch());
                 gnomeSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(gnomeSort);
+                
                 StartProgressBar();
-                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSourceWrapper.Token);
+                
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
 
             if (_comboBxAlgorithm.SelectedValue.Equals("HeapSort"))
@@ -163,7 +155,7 @@ namespace Sorter.Presentation
                 
                 StartProgressBar();
 
-                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSourceWrapper.Token);
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("InsertionSort"))
             {
@@ -174,7 +166,7 @@ namespace Sorter.Presentation
                 
                 StartProgressBar();
 
-                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSourceWrapper.Token);
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("QuickSort"))
             {
@@ -184,17 +176,19 @@ namespace Sorter.Presentation
                 
                 StartProgressBar();
 
-                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSourceWrapper.Token);
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("SelectionSort"))
             {
                 var selectionSort = new SelectionSort(new SortStopwatch());
                 selectionSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(selectionSort);
-                
+
                 StartProgressBar();
 
-                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSourceWrapper.Token);
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
+
+
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
             {
@@ -202,7 +196,7 @@ namespace Sorter.Presentation
                 shellSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(shellSort);
                 StartProgressBar();
-                Task<int[]> result = _sorter.Sort(_dataToSort, _cancellationTokenSourceWrapper.Token);
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
         }
 
@@ -212,40 +206,6 @@ namespace Sorter.Presentation
             _progressBar.MarqueeAnimationSpeed = 1;   
         }
 
-        private void EnableSelectionStep1()
-        {
-            _btnBrowseSrcFile.Enabled = true;
-        }
-
-        private void DisableSelectionStep1()
-        {
-            _btnBrowseSrcFile.Enabled = false;
-        }
-
-        private void EnableSelectionStep2()
-        {
-            _comboBxAlgorithm.Enabled = true;
-            _btnSort.Enabled = true;
-        }
-
-        private void DisableSelectionStep2()
-        {
-            _comboBxAlgorithm.Enabled = false;
-            _btnCancelSort.Enabled = false;
-            _btnSort.Enabled = false;
-        }
-
-        private void EnableSelectionStep3()
-        {
-            _btnSort.Enabled = true;
-            _btnReset.Enabled = true;
-        }
-
-        private void DisableSelectionStep3()
-        {
-            _btnSort.Enabled = false;
-            //_btnReset.Enabled = false;
-        }
 
         private void DisplaySortResults(object sender, SortCompleteEventArgs e)
         {
@@ -264,10 +224,6 @@ namespace Sorter.Presentation
 
         private void ResetApplication()
         {
-            EnableSelectionStep1();
-            DisableSelectionStep2();
-            DisableSelectionStep3();
-
             _lBoxSelectedFiles.Items.Clear();
             _dataToSort = null;
             _comboBxAlgorithm.SelectedIndex = 0;
@@ -275,10 +231,10 @@ namespace Sorter.Presentation
 
         private void CancelCurrentSort_Click(object sender, EventArgs e)
         {
-            _cancellationTokenSourceWrapper.Cancel();
-            _cancellationTokenSourceWrapper.Dispose();
-            _cancellationTokenSource = new CancellationTokenSource();
-            _cancellationTokenSourceWrapper = new CancellationTokenSourceWrapper(_cancellationTokenSource);
+            _cancelTokenSrcWrapper.Cancel();
+            _cancelTokenSrcWrapper.Dispose();
+            _cancelTokenSrc = new CancellationTokenSource();
+            _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);
             
             ResetApplication();
         }
@@ -287,7 +243,5 @@ namespace Sorter.Presentation
         {
             Application.Exit();
         }
-
-        #endregion
     }
 }

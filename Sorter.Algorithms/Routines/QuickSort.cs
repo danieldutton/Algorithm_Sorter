@@ -1,7 +1,7 @@
-﻿using System.Threading;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
 using Sorter.Utilities._Stopwatch;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
@@ -12,7 +12,7 @@ namespace Sorter.Algorithms.Routines
         {
         }
 
-        public override async Task<int[]> SortAsync(int[] data, CancellationToken cancellationToken)
+        public override async Task<int[]> SortAsync(int[] data, CancellationToken cancelToken)
         {
             OnStarted();
             Stopwatch.Start();
@@ -23,11 +23,11 @@ namespace Sorter.Algorithms.Routines
 
             Stopwatch.Stop();
 
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancellationToken.IsCancellationRequested));
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
 
             return result;
         }
-
+        //ToDo implement cancellation
 
         public int[] Swap(int[] data, int left, int right)
         {

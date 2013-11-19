@@ -11,7 +11,7 @@ namespace Sorter.Algorithms.Routines
         {
         }
 
-        public async override Task<int[]> SortAsync(int[] data, CancellationToken cancellationToken)
+        public async override Task<int[]> SortAsync(int[] data, CancellationToken cancelToken)
         {
             OnStarted();
             Stopwatch.Start();
@@ -23,7 +23,7 @@ namespace Sorter.Algorithms.Routines
 
                     while (i < data.Length)
                     {
-                        if (cancellationToken.IsCancellationRequested)
+                        if (cancelToken.IsCancellationRequested)
                             return;
 
                         if (data[i - 1] <= data[i])
@@ -44,11 +44,11 @@ namespace Sorter.Algorithms.Routines
                             }
                         }
                     }
-                }, cancellationToken);
+                }, cancelToken);
 
             Stopwatch.Stop();
 
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancellationToken.IsCancellationRequested));
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
 
             return data;
         }

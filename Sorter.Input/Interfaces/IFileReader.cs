@@ -2,6 +2,6 @@
 {
     public interface IFileReader<out TTypeToRead>
     {
-        TTypeToRead[] Read(params string[] filePaths);
+        TTypeToRead[] Read(string[] filePaths);
     }
 }

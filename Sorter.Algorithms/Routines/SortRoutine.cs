@@ -1,8 +1,8 @@
-﻿using System.Threading;
-using Sorter.Algorithms.EventArg;
+﻿using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
 using Sorter.Utilities._Stopwatch;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
@@ -23,7 +23,7 @@ namespace Sorter.Algorithms.Routines
             Stopwatch = stopWatch;
         }
 
-        public abstract Task<int[]> SortAsync(int[] data, CancellationToken cancellationToken); 
+        public abstract Task<int[]> SortAsync(int[] data, CancellationToken cancelToken); 
 
 
         protected virtual void OnStarted()

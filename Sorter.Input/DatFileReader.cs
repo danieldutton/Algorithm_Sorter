@@ -20,7 +20,7 @@ namespace Sorter.Input
             _streamBuilder = streamBuilder;
         }
 
-        public TTypeToRead[] Read(params string[] filePaths)
+        public TTypeToRead[] Read(string[] filePaths)
         {
             if(filePaths == null) throw new ArgumentNullException("filePaths");
    
