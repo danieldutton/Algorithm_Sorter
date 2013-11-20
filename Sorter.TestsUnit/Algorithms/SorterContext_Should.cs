@@ -6,7 +6,7 @@ using Sorter.Utilities._Stopwatch;
 using Sorter.Utilities.Async;
 using System;
 
-namespace Sorter.TestsUnit._Algorithms
+namespace Sorter.TestsUnit.Algorithms
 {
     public class SorterContext_Should
     {

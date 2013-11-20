@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Sorter.TestsUnit._Input
+namespace Sorter.TestsUnit.Input
 {
     [TestFixture]
     public class DatFileReader_Should

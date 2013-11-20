@@ -37,6 +37,7 @@ namespace Sorter.Presentation
             _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);
             
             InitializeComponent();
+            _btnCancelSort.Enabled = false;
             BindAlgorithmNames();
         }
 
@@ -216,6 +217,7 @@ namespace Sorter.Presentation
             
             sortResults.ConstructSortResults(e);
             sortResults.ShowDialog();
+            ResetApplication();
         }
 
         private void CancelCurrentSort_Click(object sender, EventArgs e)

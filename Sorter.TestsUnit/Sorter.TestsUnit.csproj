@@ -41,16 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Utilities\Algorithms\RoutineNameLoader_Should.cs" />
-    <Compile Include="_Algorithms\Routines\BubbleSort_Should.cs" />
-    <Compile Include="_Algorithms\Routines\CocktailShakerSort_Should.cs" />
-    <Compile Include="_Algorithms\Routines\GnomeSort_Should.cs" />
-    <Compile Include="_Algorithms\Routines\HeapSort_Should.cs" />
-    <Compile Include="_Algorithms\Routines\InsertionSort_Should.cs" />
-    <Compile Include="_Algorithms\Routines\QuickSort_Should.cs" />
-    <Compile Include="_Algorithms\Routines\SelectionSort_Should.cs" />
-    <Compile Include="_Algorithms\Routines\ShellSort_Should.cs" />
-    <Compile Include="_Algorithms\SorterContext_Should.cs" />
-    <Compile Include="_Input\DatFileReader_Should.cs" />
+    <Compile Include="Algorithms\Routines\BubbleSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\CocktailShakerSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\GnomeSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\HeapSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\InsertionSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\QuickSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\SelectionSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\ShellSort_Should.cs" />
+    <Compile Include="Algorithms\SorterContext_Should.cs" />
+    <Compile Include="Input\DatFileReader_Should.cs" />
     <Compile Include="Mother.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
