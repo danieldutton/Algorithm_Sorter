@@ -29,7 +29,6 @@ namespace Sorter.Presentation
         private ICancellationTokenSource _cancelTokenSrcWrapper;
 
         
-
         internal SortForm(IFileReader<int> fileReader, IRoutineNameLoader routineNameLoader)
         {
             _iFileReader = fileReader;
@@ -38,11 +37,11 @@ namespace Sorter.Presentation
             _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);
             
             InitializeComponent();
-            BindAlgorithmNamesToComboBox();
+            BindAlgorithmNames();
         }
 
 
-        private void BindAlgorithmNamesToComboBox()
+        private void BindAlgorithmNames()
         {
             List<string> classNames = _routineNameLoader.Load("Sorter.Algorithms.dll", typeof (SortRoutine));
 
@@ -50,9 +49,9 @@ namespace Sorter.Presentation
                 _comboBxAlgorithm.DataSource = classNames;
         }
 
-        private void BrowseForFilesToSort_Click(object sender, EventArgs e)
+        private void BrowseFilesToSort_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = BuildOpenFileDialog();
+            OpenFileDialog openFileDialog = ConstructOpenFileDialog();
             
             string[] safeFiles = null;
 
@@ -67,7 +66,7 @@ namespace Sorter.Presentation
                 PopulateListBoxWithFileNamesToSort(safeFiles);           
         }
 
-        private OpenFileDialog BuildOpenFileDialog()
+        private OpenFileDialog ConstructOpenFileDialog()
         {
             var openFileDialog = new OpenFileDialog
             {
@@ -108,10 +107,7 @@ namespace Sorter.Presentation
         private async void StartSorting_Click(object sender, EventArgs e)
         {
             if (_lBoxSelectedFiles.Items.Count == 0)
-            {
-                MessageBox.Show("Select data to sort");
                 return;
-            }
 
             _btnCancelSort.Enabled = true;
             
@@ -123,7 +119,7 @@ namespace Sorter.Presentation
                 
                 StartProgressBar();
 
-                 await _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);   
+                await _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);   
             }
 
             if (_comboBxAlgorithm.SelectedValue.Equals("CocktailShakerSort"))
@@ -158,6 +154,7 @@ namespace Sorter.Presentation
 
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
+
             if (_comboBxAlgorithm.SelectedValue.Equals("InsertionSort"))
             {
                 var insertionSort = new InsertionSort(new SortStopwatch());
@@ -169,6 +166,7 @@ namespace Sorter.Presentation
 
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
+
             if (_comboBxAlgorithm.SelectedValue.Equals("QuickSort"))
             {
                 var quickSort = new QuickSort(new SortStopwatch());
@@ -179,6 +177,7 @@ namespace Sorter.Presentation
 
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
+
             if (_comboBxAlgorithm.SelectedValue.Equals("SelectionSort"))
             {
                 var selectionSort = new SelectionSort(new SortStopwatch());
@@ -215,9 +214,25 @@ namespace Sorter.Presentation
                         
             var sortResults = new SortResults();
             
-            sortResults.BuildResults(e);
-            sortResults.SetCompletedValues(e);
+            sortResults.ConstructSortResults(e);
             sortResults.ShowDialog();
+        }
+
+        private void CancelCurrentSort_Click(object sender, EventArgs e)
+        {
+            if (e == null) return;
+ 
+            ResetCancellationTokenSource();           
+            _progressBar.Style = ProgressBarStyle.Continuous;               
+            ResetApplication();
+        }
+
+        private void ResetCancellationTokenSource()
+        {
+            _cancelTokenSrcWrapper.Cancel();
+            _cancelTokenSrcWrapper.Dispose();
+            _cancelTokenSrc = new CancellationTokenSource();
+            _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);  
         }
 
         private void ResetApplication_Click(object sender, EventArgs e)
@@ -230,19 +245,6 @@ namespace Sorter.Presentation
             _lBoxSelectedFiles.Items.Clear();
             _dataToSort = null;
             _comboBxAlgorithm.SelectedIndex = 0;
-        }
-
-        private void CancelCurrentSort_Click(object sender, EventArgs e)
-        {
-            if (e != null)
-            {
-                _cancelTokenSrcWrapper.Cancel();
-                _cancelTokenSrcWrapper.Dispose();
-                _cancelTokenSrc = new CancellationTokenSource();
-                _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);
-                _progressBar.Style = ProgressBarStyle.Continuous;
-                ResetApplication(); 
-            }
         }
 
         private void ExitApplication_Click(object sender, EventArgs e)

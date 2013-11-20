@@ -6,7 +6,11 @@ namespace Sorter.Utilities.Async
     {
         private readonly CancellationTokenSource _source;
 
-        public CancellationToken Token { get { return _source.Token; } }
+        public CancellationToken Token
+        {
+            get { return _source.Token; }
+        }
+
 
         public CancellationTokenSourceWrapper(CancellationTokenSource source)
         {

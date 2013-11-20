@@ -11,15 +11,15 @@ namespace Sorter.Presentation
             InitializeComponent();
         }
 
-        internal void BuildResults(SortCompleteEventArgs e)
+        internal void ConstructSortResults(SortCompleteEventArgs e)
         {
             if(e.WasCancelled) 
-                SetCancelledValues(e);
+                SetCancelledDialog(e);
             else
-                SetCompletedValues(e);   
+                SetCompletedDialog(e);   
         }
 
-        private void SetCancelledValues(SortCompleteEventArgs e)
+        private void SetCancelledDialog(SortCompleteEventArgs e)
         {
             const string msValue = " ms";
 
@@ -27,7 +27,7 @@ namespace Sorter.Presentation
             _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;
         }
 
-        internal void SetCompletedValues(SortCompleteEventArgs e)
+        internal void SetCompletedDialog(SortCompleteEventArgs e)
         {
             const string msValue = " ms";
 

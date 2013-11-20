@@ -98,7 +98,7 @@ namespace Sorter.TestsUnit._Algorithms.Routines
         }
 
         [Test]
-        public async void SortAsync_CorrectlySortDataTenItemsGivenInTheUnsortedArrayArray()
+        public async void SortAsync_CorrectlySortTenItemsGivenInTheUnsortedArray()
         {
             _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
             var sut = new CocktailShakerSort(_fakeStopwatch.Object);
@@ -109,7 +109,7 @@ namespace Sorter.TestsUnit._Algorithms.Routines
         }
 
         [Test]
-        public async void SortAsync_CorrectlySortDataOneHundredItemsGivenInTheUnsortedArrayArray()
+        public async void SortAsync_CorrectlySortOneHundredItemsGivenInTheUnsortedArray()
         {
             _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
             var sut = new CocktailShakerSort(_fakeStopwatch.Object);

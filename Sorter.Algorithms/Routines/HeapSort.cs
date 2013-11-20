@@ -36,9 +36,9 @@ namespace Sorter.Algorithms.Routines
                     }
                 }, cancelToken);
 
-            //OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
-            
             Stopwatch.Stop();
+            
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
 
             return data;
         }
@@ -67,6 +67,7 @@ namespace Sorter.Algorithms.Routines
                 }
             }
             data[left] = temp;
+            
             return data;
         }
     }

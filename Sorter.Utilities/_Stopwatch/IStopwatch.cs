@@ -2,8 +2,8 @@
 {
     public interface IStopwatch
     {
-        void Start();
-        void Stop();
         long ElapsedMilliseconds { get; }
+        void Start();
+        void Stop();   
     }
 }

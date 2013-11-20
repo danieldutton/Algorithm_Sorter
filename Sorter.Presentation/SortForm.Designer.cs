@@ -66,7 +66,7 @@
             this._btnBrowseSrcFile.TabIndex = 3;
             this._btnBrowseSrcFile.Text = "Browse";
             this._btnBrowseSrcFile.UseVisualStyleBackColor = true;
-            this._btnBrowseSrcFile.Click += new System.EventHandler(this.BrowseForFilesToSort_Click);
+            this._btnBrowseSrcFile.Click += new System.EventHandler(this.BrowseFilesToSort_Click);
             // 
             // _btnSort
             // 

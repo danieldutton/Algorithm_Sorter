@@ -19,11 +19,11 @@ namespace Sorter.Algorithms.Routines
 
             int[] result = null;
 
-            await Task.Run(() => result = Swap(data, 0, data.Length - 1));
+            await Task.Run(() => result = Swap(data, 0, data.Length - 1), cancelToken);
 
             Stopwatch.Stop();
 
-            //OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
+            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
 
             return result;
         }
