@@ -30,7 +30,6 @@ namespace Sorter.Presentation
 
         
 
-
         internal SortForm(IFileReader<int> fileReader, IRoutineNameLoader routineNameLoader)
         {
             _iFileReader = fileReader;
@@ -189,9 +188,8 @@ namespace Sorter.Presentation
                 StartProgressBar();
 
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
-                
-
             }
+
             if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
             {
                 var shellSort = new ShellSort(new SortStopwatch());
@@ -201,12 +199,12 @@ namespace Sorter.Presentation
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
         }
+
         private void StartProgressBar()
         {
             _progressBar.Style = ProgressBarStyle.Marquee;
             _progressBar.MarqueeAnimationSpeed = 1;   
         }
-
 
         private void DisplaySortResults(object sender, SortCompleteEventArgs e)
         {
