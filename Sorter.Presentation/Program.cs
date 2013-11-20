@@ -1,8 +1,6 @@
 ﻿using Sorter.Input;
 using Sorter.Input.Interfaces;
 using Sorter.Utilities.Algorithms;
-using Sorter.Utilities.Async;
-using Sorter.Utilities.Async;
 using Sorter.Utilities.Readers;
 using System;
 using System.Windows.Forms;

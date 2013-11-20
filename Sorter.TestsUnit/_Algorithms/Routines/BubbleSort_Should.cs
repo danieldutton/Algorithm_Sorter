@@ -73,12 +73,12 @@ namespace Sorter.TestsUnit._Algorithms.Routines
         }
 
         [Test]
-        public void SortAsync_CallStopwatch_ElapsedMilliseconds_GetterExactlyOnce()
+        public async void SortAsync_CallStopwatch_ElapsedMilliseconds_GetterExactlyOnce()
         {
             _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
             var sut = new BubbleSort(_fakeStopwatch.Object);
 
-            sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
+            await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
             _fakeStopwatch.VerifyGet(x => x.ElapsedMilliseconds, Times.Exactly(1));
         }

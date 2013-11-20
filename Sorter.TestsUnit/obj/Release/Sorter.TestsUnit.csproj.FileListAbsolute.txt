@@ -1,0 +1,15 @@
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Sorter.TestsUnit.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Sorter.TestsUnit.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Moq.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\nunit.framework.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Sorter.Algorithms.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Sorter.Input.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Sorter.Utilities.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Sorter.Algorithms.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Sorter.Input.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Sorter.Utilities.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\Moq.xml
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\bin\Release\nunit.framework.xml
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\obj\Release\Sorter.TestsUnit.csprojResolveAssemblyReference.cache
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\obj\Release\Sorter.TestsUnit.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.TestsUnit\obj\Release\Sorter.TestsUnit.pdb

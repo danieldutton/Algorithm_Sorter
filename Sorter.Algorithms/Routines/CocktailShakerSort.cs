@@ -53,10 +53,11 @@ namespace Sorter.Algorithms.Routines
                         }
                     } while (swapped);
 
-                    Stopwatch.Stop();
+                    
                 }, cancelToken);
 
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
+            Stopwatch.Stop();
+            //OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
 
             return data;
         }

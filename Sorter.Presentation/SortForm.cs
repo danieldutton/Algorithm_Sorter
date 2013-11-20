@@ -28,6 +28,8 @@ namespace Sorter.Presentation
 
         private ICancellationTokenSource _cancelTokenSrcWrapper;
 
+        
+
 
         internal SortForm(IFileReader<int> fileReader, IRoutineNameLoader routineNameLoader)
         {
@@ -116,7 +118,7 @@ namespace Sorter.Presentation
             
             if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
             {
-                var bubbleSort = new BubbleSort(new SortStopwatch());
+                SortRoutine bubbleSort = new BubbleSort(new SortStopwatch());
                 bubbleSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(bubbleSort);
                 
@@ -132,7 +134,7 @@ namespace Sorter.Presentation
                 _sorter = new SorterContext(cocktailShakerSort);
                 
                 StartProgressBar();
-                
+
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
 
@@ -183,11 +185,11 @@ namespace Sorter.Presentation
                 var selectionSort = new SelectionSort(new SortStopwatch());
                 selectionSort.Completed += DisplaySortResults;
                 _sorter = new SorterContext(selectionSort);
-
+                
                 StartProgressBar();
 
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
-
+                
 
             }
             if (_comboBxAlgorithm.SelectedValue.Equals("ShellSort"))
@@ -199,7 +201,6 @@ namespace Sorter.Presentation
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
         }
-
         private void StartProgressBar()
         {
             _progressBar.Style = ProgressBarStyle.Marquee;
@@ -209,11 +210,15 @@ namespace Sorter.Presentation
 
         private void DisplaySortResults(object sender, SortCompleteEventArgs e)
         {
+            Activate();
+            
             _btnCancelSort.Enabled = false;
             _progressBar.Style = ProgressBarStyle.Continuous;
+                        
+            var sortResults = new SortResults();
             
-            var sortResults = new SortResults();           
             sortResults.BuildResults(e);
+            sortResults.SetCompletedValues(e);
             sortResults.ShowDialog();
         }
 
@@ -231,12 +236,15 @@ namespace Sorter.Presentation
 
         private void CancelCurrentSort_Click(object sender, EventArgs e)
         {
-            _cancelTokenSrcWrapper.Cancel();
-            _cancelTokenSrcWrapper.Dispose();
-            _cancelTokenSrc = new CancellationTokenSource();
-            _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);
-            
-            ResetApplication();
+            if (e != null)
+            {
+                _cancelTokenSrcWrapper.Cancel();
+                _cancelTokenSrcWrapper.Dispose();
+                _cancelTokenSrc = new CancellationTokenSource();
+                _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);
+                _progressBar.Style = ProgressBarStyle.Continuous;
+                ResetApplication(); 
+            }
         }
 
         private void ExitApplication_Click(object sender, EventArgs e)

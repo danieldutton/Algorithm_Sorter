@@ -26,7 +26,6 @@ namespace Sorter.Algorithms.Routines
                         
                         Swap(data, i, data.Length - 1);    
                     }
-                        
 
                     for (int i = data.Length - 1; i >= 1; i--)
                     {
@@ -37,7 +36,7 @@ namespace Sorter.Algorithms.Routines
                     }
                 }, cancelToken);
 
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
+            //OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
             
             Stopwatch.Stop();
 

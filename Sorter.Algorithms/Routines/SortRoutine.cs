@@ -15,6 +15,7 @@ namespace Sorter.Algorithms.Routines
 
         public event EventHandler<SortCompleteEventArgs> Completed;
 
+        
         protected IStopwatch Stopwatch;
 
 
@@ -42,8 +43,6 @@ namespace Sorter.Algorithms.Routines
         {
             EventHandler<SortCompleteEventArgs> handler = Completed;
             if (handler != null) handler(this, e);
-        }
-      
+        }      
     }
-
 }

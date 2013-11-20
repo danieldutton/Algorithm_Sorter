@@ -34,9 +34,9 @@ namespace Sorter.Algorithms.Routines
                         }
                     }
                 }, cancelToken);
-
-            Stopwatch.Stop();
             
+            Stopwatch.Stop();
+                     
             OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
 
             return data;

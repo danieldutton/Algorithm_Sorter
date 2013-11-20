@@ -1,0 +1,7 @@
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\bin\Release\Sorter.Input.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\bin\Release\Sorter.Input.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\bin\Release\Sorter.Utilities.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\bin\Release\Sorter.Utilities.pdb
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\obj\Release\Sorter.Input.csprojResolveAssemblyReference.cache
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\obj\Release\Sorter.Input.dll
+C:\Users\Danny\Documents\GitHub\Algorithm_Sorter\Sorter.Input\obj\Release\Sorter.Input.pdb

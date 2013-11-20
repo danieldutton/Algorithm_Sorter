@@ -6,7 +6,7 @@ namespace Sorter.Presentation
 {
     internal partial class SortResults : Form
     {
-        internal SortResults()
+       internal SortResults()
         {
             InitializeComponent();
         }
@@ -14,12 +14,12 @@ namespace Sorter.Presentation
         internal void BuildResults(SortCompleteEventArgs e)
         {
             if(e.WasCancelled) 
-                DisplayCancelledValues(e);
+                SetCancelledValues(e);
             else
-                DisplayCompletedValues(e);   
+                SetCompletedValues(e);   
         }
 
-        private void DisplayCancelledValues(SortCompleteEventArgs e)
+        private void SetCancelledValues(SortCompleteEventArgs e)
         {
             const string msValue = " ms";
 
@@ -27,7 +27,7 @@ namespace Sorter.Presentation
             _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;
         }
 
-        private void DisplayCompletedValues(SortCompleteEventArgs e)
+        internal void SetCompletedValues(SortCompleteEventArgs e)
         {
             const string msValue = " ms";
 
