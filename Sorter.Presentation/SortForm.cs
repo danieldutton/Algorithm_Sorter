@@ -33,14 +33,15 @@ namespace Sorter.Presentation
         {
             _iFileReader = fileReader;
             _routineNameLoader = routineNameLoader;
+            
             _cancelTokenSrc = new CancellationTokenSource();
             _cancelTokenSrcWrapper = new CancellationTokenSourceWrapper(_cancelTokenSrc);
             
             InitializeComponent();
+            
             _btnCancelSort.Enabled = false;
             BindAlgorithmNames();
         }
-
 
         private void BindAlgorithmNames()
         {
@@ -64,7 +65,9 @@ namespace Sorter.Presentation
             }
 
             if (_dataToSort == null) return;
-                PopulateListBoxWithFileNamesToSort(safeFiles);           
+                PopulateListBoxWithFileNamesToSort(safeFiles);     
+      
+            DisableStepOne();
         }
 
         private OpenFileDialog ConstructOpenFileDialog()
@@ -111,6 +114,7 @@ namespace Sorter.Presentation
                 return;
 
             _btnCancelSort.Enabled = true;
+            _btnReset.Enabled = false;
             
             if (_comboBxAlgorithm.SelectedValue.Equals("BubbleSort"))
             {
@@ -211,6 +215,7 @@ namespace Sorter.Presentation
             Activate();
             
             _btnCancelSort.Enabled = false;
+            _btnReset.Enabled = true;
             _progressBar.Style = ProgressBarStyle.Continuous;
                         
             var sortResults = new SortResults();
@@ -218,6 +223,7 @@ namespace Sorter.Presentation
             sortResults.ConstructSortResults(e);
             sortResults.ShowDialog();
             ResetApplication();
+            EnableStepOne();
         }
 
         private void CancelCurrentSort_Click(object sender, EventArgs e)
@@ -247,6 +253,16 @@ namespace Sorter.Presentation
             _lBoxSelectedFiles.Items.Clear();
             _dataToSort = null;
             _comboBxAlgorithm.SelectedIndex = 0;
+        }
+
+        private void DisableStepOne()
+        {
+            _panelBrowseData.Enabled = false;
+        }
+
+        private void EnableStepOne()
+        {
+            _panelBrowseData.Enabled = true;
         }
 
         private void ExitApplication_Click(object sender, EventArgs e)
