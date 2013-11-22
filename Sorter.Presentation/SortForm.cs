@@ -138,6 +138,17 @@ namespace Sorter.Presentation
                 Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
             }
 
+            if (_comboBxAlgorithm.SelectedValue.Equals("CycleSort"))
+            {
+                var cocktailShakerSort = new CycleSort(new SortStopwatch());
+                cocktailShakerSort.Completed += DisplaySortResults;
+                _sorter = new SorterContext(cocktailShakerSort);
+
+                StartProgressBar();
+
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);
+            }
+
             if (_comboBxAlgorithm.SelectedValue.Equals("GnomeSort"))
             {
                 var gnomeSort = new GnomeSort(new SortStopwatch());

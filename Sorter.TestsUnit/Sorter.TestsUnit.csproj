@@ -40,6 +40,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Routines\CycleSort_Should.cs" />
     <Compile Include="Utilities\Algorithms\RoutineNameLoader_Should.cs" />
     <Compile Include="Algorithms\Routines\BubbleSort_Should.cs" />
     <Compile Include="Algorithms\Routines\CocktailShakerSort_Should.cs" />
