@@ -35,7 +35,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
             var sut = new BubbleSort(_fakeStopwatch.Object);
             sut.Started += (o, e) => wasFired = true;
 
-            sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
+            var result = sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
             Assert.IsTrue(wasFired);
         }
@@ -119,8 +119,6 @@ namespace Sorter.TestsUnit.Algorithms.Routines
 
             Assert.IsTrue(Mother.GetOneHundredSortedIntegers().SequenceEqual(result));
         }
-
-        //Todo Check Cancel worked
 
         [TearDown]
         public void TearDown()

@@ -42,7 +42,7 @@ namespace Sorter.TestsUnit.Utilities.Algorithms
         [Test]
         public void Load_ReturnAListOfCorrectAlgorithmClassNames()
         {
-            var expected = new List<string>{"BubbleSort", "CocktailShakerSort", "GnomeSort", "HeapSort", "InsertionSort", "QuickSort", "SelectionSort", "ShellSort"};
+            var expected = new List<string>{"BubbleSort", "CocktailShakerSort", "CycleSort", "GnomeSort", "HeapSort", "InsertionSort", "QuickSort", "SelectionSort", "ShellSort"};
             List<string> actual = _sut.Load("Sorter.Algorithms.dll", typeof (SortRoutine));
 
             Assert.IsTrue(actual.SequenceEqual(expected));

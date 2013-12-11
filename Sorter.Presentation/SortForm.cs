@@ -108,7 +108,7 @@ namespace Sorter.Presentation
             return _dataToSort;
         }
         
-        private async void StartSorting_Click(object sender, EventArgs e)
+        private void StartSorting_Click(object sender, EventArgs e)
         {
             if (_lBoxSelectedFiles.Items.Count == 0)
                 return;
@@ -124,7 +124,7 @@ namespace Sorter.Presentation
                 
                 StartProgressBar();
 
-                await _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);   
+                Task<int[]> result = _sorter.Sort(_dataToSort, _cancelTokenSrcWrapper.Token);   
             }
 
             if (_comboBxAlgorithm.SelectedValue.Equals("CocktailShakerSort"))
