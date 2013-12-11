@@ -2,11 +2,12 @@
 using NUnit.Framework;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
+using Sorter.TestsUnit;
 using Sorter.Utilities._Stopwatch;
 using Sorter.Utilities.Async;
 using System.Linq;
 
-namespace Sorter.TestsUnit.Algorithms.Routines
+namespace Sorter._UnitTests.Algorithms.Routines
 {
     [TestFixture]
     public class InsertionSort_Should
@@ -32,7 +33,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
         public void SortAsync_FireAStartedEvent()
         {
             bool wasFired = false;
-            var sut = new HeapSort(_fakeStopwatch.Object);
+            var sut = new InsertionSort(_fakeStopwatch.Object);
             sut.Started += (o, e) => wasFired = true;
 
             sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
@@ -43,7 +44,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
         [Test]
         public void SortAsync_CallStopwatchStartMethodExactlyOnce()
         {
-            var sut = new HeapSort(_fakeStopwatch.Object);
+            var sut = new InsertionSort(_fakeStopwatch.Object);
 
             sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
@@ -54,7 +55,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
         public async void SortAsync_CallStopwatchStopMethodExactlyOnce()
         {
             _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new HeapSort(_fakeStopwatch.Object);
+            var sut = new InsertionSort(_fakeStopwatch.Object);
 
             await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
@@ -65,7 +66,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
         public async void SortAsync_FireACompletedEvent()
         {
             bool wasFired = false;
-            var sut = new HeapSort(_fakeStopwatch.Object);
+            var sut = new InsertionSort(_fakeStopwatch.Object);
             sut.Completed += (o, e) => wasFired = true;
 
             await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
@@ -77,7 +78,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
         public async void SortAsync_CallStopwatch_ElapsedMilliseconds_GetterExactlyOnce()
         {
             _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new HeapSort(_fakeStopwatch.Object);
+            var sut = new InsertionSort(_fakeStopwatch.Object);
 
             await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
@@ -88,7 +89,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
         public async void SortAsync_FireACompletedEventWithTheCorrectElapsedTimeValue()
         {
             _fakeStopwatch.SetupGet(x => x.ElapsedMilliseconds).Returns(Mother.GetTestElapsedTime);
-            var sut = new HeapSort(_fakeStopwatch.Object);
+            var sut = new InsertionSort(_fakeStopwatch.Object);
             SortCompleteEventArgs sortCompleteEventArgs = null;
             sut.Completed += (o, e) => sortCompleteEventArgs = e;
 
@@ -102,7 +103,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
         public async void SortAsync_CorrectlySortTenItemsGivenInTheUnsortedArray()
         {
             _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new HeapSort(_fakeStopwatch.Object);
+            var sut = new InsertionSort(_fakeStopwatch.Object);
 
             int[] result = await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
@@ -113,7 +114,7 @@ namespace Sorter.TestsUnit.Algorithms.Routines
         public async void SortAsync_CorrectlySortOneHundredItemsGivenInTheUnsortedArray()
         {
             _fakeStopwatch.SetupAllProperties().SetReturnsDefault(It.IsAny<double>());
-            var sut = new HeapSort(_fakeStopwatch.Object);
+            var sut = new InsertionSort(_fakeStopwatch.Object);
 
             int[] result = await sut.SortAsync(_oneHundredUnsortedInts, _fakeCancelSource.Object.Token);
 

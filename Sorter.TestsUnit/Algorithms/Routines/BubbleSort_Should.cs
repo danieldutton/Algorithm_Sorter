@@ -2,11 +2,12 @@
 using NUnit.Framework;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
+using Sorter.TestsUnit;
 using Sorter.Utilities._Stopwatch;
 using Sorter.Utilities.Async;
 using System.Linq;
 
-namespace Sorter.TestsUnit.Algorithms.Routines
+namespace Sorter._UnitTests.Algorithms.Routines
 {
     [TestFixture]
     public class BubbleSort_Should

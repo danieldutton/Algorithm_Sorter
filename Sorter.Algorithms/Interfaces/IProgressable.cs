@@ -6,19 +6,14 @@ namespace Sorter.Algorithms.Interfaces
     {
         event EventHandler<TEventArgs> Started;
 
-        event EventHandler<TEventArgs> InProgress;
-
         event EventHandler<TEventArgs> Completed;
     }
 
-    public interface IProgressable<TStartArgs, TInProgArgs, TCompleteArgs> 
+    public interface IProgressable<TStartArgs, TCompleteArgs> 
         where TStartArgs : EventArgs
-        where TInProgArgs : EventArgs
         where TCompleteArgs : EventArgs
     {
         event EventHandler<TStartArgs> Started;
-
-        event EventHandler<TInProgArgs> InProgress;
 
         event EventHandler<TCompleteArgs> Completed;    
     }
