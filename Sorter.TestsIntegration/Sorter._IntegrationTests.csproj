@@ -7,8 +7,8 @@
     <ProjectGuid>{6B7A0580-04AE-4011-96CF-6578D1258FCE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sorter.TestsIntegration</RootNamespace>
-    <AssemblyName>Sorter.TestsIntegration</AssemblyName>
+    <RootNamespace>Sorter._IntegrationTests</RootNamespace>
+    <AssemblyName>Sorter._IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

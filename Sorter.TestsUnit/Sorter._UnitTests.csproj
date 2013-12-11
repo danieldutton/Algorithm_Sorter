@@ -7,8 +7,8 @@
     <ProjectGuid>{7F6D87ED-18C7-41AC-92B4-1DB47F87B3B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sorter.TestsUnit</RootNamespace>
-    <AssemblyName>Sorter.TestsUnit</AssemblyName>
+    <RootNamespace>Sorter._UnitTests</RootNamespace>
+    <AssemblyName>Sorter._UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -54,6 +54,7 @@
     <Compile Include="Input\DatFileReader_Should.cs" />
     <Compile Include="Mother.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Stopwatch\SortStopwatch_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

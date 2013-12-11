@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter.Input", "Sorter.Inpu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter.Utilities", "Sorter.Utilities\Sorter.Utilities.csproj", "{DA0466E9-59D1-456D-8BB5-1E00935EB7CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter.TestsIntegration", "Sorter.TestsIntegration\Sorter.TestsIntegration.csproj", "{6B7A0580-04AE-4011-96CF-6578D1258FCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter._IntegrationTests", "Sorter.TestsIntegration\Sorter._IntegrationTests.csproj", "{6B7A0580-04AE-4011-96CF-6578D1258FCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter.TestsUnit", "Sorter.TestsUnit\Sorter.TestsUnit.csproj", "{7F6D87ED-18C7-41AC-92B4-1DB47F87B3B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorter._UnitTests", "Sorter.TestsUnit\Sorter._UnitTests.csproj", "{7F6D87ED-18C7-41AC-92B4-1DB47F87B3B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

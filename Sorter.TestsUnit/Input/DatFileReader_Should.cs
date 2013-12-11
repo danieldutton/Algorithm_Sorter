@@ -97,8 +97,24 @@ namespace Sorter.TestsUnit.Input
             int[] actual = sut.Read(filePaths);
 
             Assert.IsTrue(actual.SequenceEqual(expected));
-        } 
+        }
 
-        //ToDo  Tidy up
+        [Test]
+        [ExpectedException(typeof(FileReadException))]
+        public void ThrowAFormatExceptionIfASystemDotExceptionOccursDuringExecution()
+        {
+            byte[] testArray = _utf8Encoding.GetBytes(Mother.GetFaultyTestString());
+            var memoryStream = new MemoryStream(testArray);
+            var streamReader = new StreamReader(memoryStream);
+            var fakeStreamBuilder = new Mock<IStreamReaderBuilder>();
+            fakeStreamBuilder.SetupGet(x => x.StreamReader).Throws<Exception>();
+            var sut = new DatFileReader<int>(fakeStreamBuilder.Object);
+
+            string[] filePaths = new[] { "file 1" };
+            int[] expected = new[] { 100, 200, 300, 400, 500, };
+            int[] actual = sut.Read(filePaths);
+
+            Assert.IsTrue(actual.SequenceEqual(expected));
+        } 
     }
 }
