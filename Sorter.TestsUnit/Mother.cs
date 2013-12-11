@@ -1,4 +1,4 @@
-﻿namespace Sorter.TestsUnit
+﻿namespace Sorter._UnitTests
 {
     public static class Mother
     {

@@ -1,7 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:Boolean x:Key="/Default/CoverageSessionsPersistenceManagerSettings/SessionPersistentData/=6D5D3939B6C34E71AFDA5CAA3F26A4E5/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/CoverageSessionsPersistenceManagerSettings/SessionPersistentData/=6D5D3939B6C34E71AFDA5CAA3F26A4E5/SessionName/@EntryValue">ThrowAnArgumentNullExceptionIfFilePathsParamIsNull</s:String>
-	<s:String x:Key="/Default/CoverageSessionsPersistenceManagerSettings/SessionPersistentData/=6D5D3939B6C34E71AFDA5CAA3F26A4E5/SnapshotLocation/@EntryValue">C:\Users\Danny\AppData\Local\Temp\ssmMibofun.tmp</s:String>
+	<s:String x:Key="/Default/CoverageSessionsPersistenceManagerSettings/SessionPersistentData/=6D5D3939B6C34E71AFDA5CAA3F26A4E5/SnapshotLocation/@EntryValue">C:\Users\Danny\AppData\Local\Temp\ssmRaqusiv.tmp</s:String>
 	
 	
 	
