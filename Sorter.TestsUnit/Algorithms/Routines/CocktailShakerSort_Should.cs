@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
-using Sorter.TestsUnit;
 using Sorter.Utilities._Stopwatch;
 using Sorter.Utilities.Async;
 using System.Linq;

@@ -7,9 +7,8 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Sorter._UnitTests;
 
-namespace Sorter.TestsUnit.Input
+namespace Sorter._UnitTests.Input
 {
     [TestFixture]
     public class DatFileReader_Should
@@ -104,9 +103,6 @@ namespace Sorter.TestsUnit.Input
         [ExpectedException(typeof(FileReadException))]
         public void ThrowAFormatExceptionIfASystemDotExceptionOccursDuringExecution()
         {
-            byte[] testArray = _utf8Encoding.GetBytes(Mother.GetFaultyTestString());
-            var memoryStream = new MemoryStream(testArray);
-            var streamReader = new StreamReader(memoryStream);
             var fakeStreamBuilder = new Mock<IStreamReaderBuilder>();
             fakeStreamBuilder.SetupGet(x => x.StreamReader).Throws<Exception>();
             var sut = new DatFileReader<int>(fakeStreamBuilder.Object);

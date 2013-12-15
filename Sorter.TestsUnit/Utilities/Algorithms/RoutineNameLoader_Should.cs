@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sorter.TestsUnit.Utilities.Algorithms
+namespace Sorter._UnitTests.Utilities.Algorithms
 {
     [TestFixture]
     public class RoutineNameLoader_Should

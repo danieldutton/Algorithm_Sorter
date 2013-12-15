@@ -2,7 +2,7 @@
 using Sorter.Input;
 using Sorter.Utilities.Readers;
 
-namespace Sorter.TestsIntegration.Input
+namespace Sorter._IntegrationTests.Input
 {
     [TestFixture]
     public class DatFileReader_Should
@@ -20,7 +20,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT32000Integers()
+        public void Read_ReadIn32000Integers()
         {
             const string filePath = @"TestFiles\ran32000.dat";
             
@@ -30,7 +30,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT32000IntegersOfTypeInt()
+        public void Read_ReadIn32000ItemsOfTypeInt()
         {
             const string filePath = @"TestFiles\ran32000.dat";
             
@@ -40,7 +40,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT64000Integers()
+        public void Read_ReadIn64000Integers()
         {
             const string filePath = @"TestFiles\ran64000.dat";
 
@@ -50,7 +50,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT64000IntegersOfTypeInt()
+        public void Read_ReadIn64000ItemsOfTypeInt()
         {
             const string filePath = @"TestFiles\ran64000.dat";
 
@@ -60,7 +60,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT128000Integers()
+        public void Read_ReadIn128000Integers()
         {
             const string filePath = @"TestFiles\ran128000.dat";
 
@@ -70,7 +70,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT128000IntegersOfTypeInt()
+        public void Read_ReadIn128000ItemsOfTypeInt()
         {
             const string filePath = @"TestFiles\ran128000.dat";
 
@@ -80,7 +80,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT256000Integers()
+        public void Read_ReadIn256000Integers()
         {
             const string filePath = @"TestFiles\ran256000.dat";
 
@@ -90,7 +90,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT256000IntegersOfTypeInt()
+        public void Read_ReadIn256000ItemsOfTypeInt()
         {
             const string filePath = @"TestFiles\ran256000.dat";
 
@@ -100,7 +100,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT512000Integers()
+        public void Read_ReadIn512000Integers()
         {
             const string filePath = @"TestFiles\ran512000.dat";
 
@@ -110,7 +110,7 @@ namespace Sorter.TestsIntegration.Input
         }
 
         [Test]
-        public void Read_ReadInT512000IntegersOfTypeInt()
+        public void Read_ReadIn512000ItemsOfTypeInt()
         {
             const string filePath = @"TestFiles\ran512000.dat";
 
