@@ -31,6 +31,12 @@ namespace Sorter.Algorithms.Routines
                             int to = 0;
                             for (int i = 0; i < data.Length; i++)
                             {
+                                if (cancelToken.IsCancellationRequested)
+                                {
+                                    OnCancelled();
+                                    return;
+                                }
+
                                 if (i != cycleStart && ((IComparable)data[i]).CompareTo(item) < 0)
                                 {
                                     to++;

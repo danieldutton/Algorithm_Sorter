@@ -22,7 +22,10 @@ namespace Sorter.Algorithms.Routines
                     for (int i = (data.Length - 1)/2; i >= 0; i--)
                     {
                         if (cancelToken.IsCancellationRequested)
+                        {
+                            OnCancelled();
                             return;
+                        }
                         
                         Swap(data, i, data.Length - 1);    
                     }

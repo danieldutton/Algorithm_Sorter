@@ -25,7 +25,10 @@ namespace Sorter.Algorithms.Routines
                     while (increment > 0)
                     {
                         if (cancelToken.IsCancellationRequested)
+                        {
+                            OnCancelled();
                             return;
+                        }
 
                         for (i = 0; i < x; i++)
                         {

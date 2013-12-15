@@ -24,7 +24,10 @@ namespace Sorter.Algorithms.Routines
                     while (i < data.Length)
                     {
                         if (cancelToken.IsCancellationRequested)
+                        {
+                            OnCancelled();
                             return;
+                        }
 
                         if (data[i - 1] <= data[i])
                         {

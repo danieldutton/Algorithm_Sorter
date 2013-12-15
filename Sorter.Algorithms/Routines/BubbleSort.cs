@@ -21,8 +21,11 @@ namespace Sorter.Algorithms.Routines
                     for (int write = 0; write < data.Length; write++)
                     {
                         if (cancelToken.IsCancellationRequested)
+                        {
+                            OnCancelled();
                             return;
-
+                        }
+                            
                         for (int sort = 0; sort < data.Length - 1; sort++)
                         {
                             if (data[sort] > data[sort + 1])

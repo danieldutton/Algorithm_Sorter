@@ -21,7 +21,10 @@ namespace Sorter.Algorithms.Routines
                     for (int j = 0; j < data.Length; j++)
                     {
                         if (cancelToken.IsCancellationRequested)
+                        {
+                            OnCancelled();
                             return;
+                        }
 
                         int key = data[j];
 
