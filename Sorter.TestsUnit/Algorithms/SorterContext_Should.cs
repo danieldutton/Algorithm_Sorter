@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System.Threading.Tasks;
+using Moq;
 using NUnit.Framework;
 using Sorter.Algorithms;
 using Sorter.Algorithms.Routines;
@@ -51,6 +52,15 @@ namespace Sorter._UnitTests.Algorithms
   
             _fakeSortRoutine.Verify(x => x.SortAsync(It.IsAny<int[]>(), It.IsAny<CancellationToken>()),
                 Times.Once());
+        }
+
+        [Test]
+        public void Sort_ReturnTheCorrectDataType()
+        {
+            var sut = new SorterContext(_fakeSortRoutine.Object);
+            Task<int[]> result= sut.Sort(new[] { 1, 2 }, _fakeCancelSource.Object.Token);
+
+            Assert.IsInstanceOf<Task<int[]>>(result);
         } 
 
         [TearDown]

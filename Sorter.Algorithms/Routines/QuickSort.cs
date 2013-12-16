@@ -32,8 +32,7 @@ namespace Sorter.Algorithms.Routines
 
             return result;
         }
-        //ToDo implement cancellation
-
+        
         public int[] Swap(int[] data, int left, int right)
         {
             if (_cancellationToken.IsCancellationRequested)
