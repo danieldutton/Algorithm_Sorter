@@ -8,18 +8,23 @@ namespace Sorter.Algorithms.Routines
 {
     public sealed class QuickSort : SortRoutine, ISwappable
     {
+        private CancellationToken _cancellationToken;
+
+
         public QuickSort(IStopwatch stopwatch) : base(stopwatch)
         {
         }
 
         public override async Task<int[]> SortAsync(int[] data, CancellationToken cancelToken)
         {
+            _cancellationToken = cancelToken;
+            
             OnStarted();
             Stopwatch.Start();
 
             int[] result = null;
 
-            await Task.Run(() => result = Swap(data, 0, data.Length - 1), cancelToken);
+            await Task.Run(() => result = Swap(data, 0, data.Length - 1), _cancellationToken);
 
             Stopwatch.Stop();
 
@@ -31,6 +36,12 @@ namespace Sorter.Algorithms.Routines
 
         public int[] Swap(int[] data, int left, int right)
         {
+            if (_cancellationToken.IsCancellationRequested)
+            {
+                OnCancelled();
+                return new[]{0};
+            }
+
             int pivot, l_hold, r_hold;
 
             l_hold = left;
