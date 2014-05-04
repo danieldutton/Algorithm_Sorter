@@ -36,17 +36,17 @@
             this._btnReset = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this._btnCancelSort = new System.Windows.Forms.Button();
-            this._panelBrowseData = new System.Windows.Forms.Panel();
+            this._panelStepOne = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this._panelAlgorithm = new System.Windows.Forms.Panel();
+            this._panelStepTwo = new System.Windows.Forms.Panel();
             this._lblInstructionsAlgo = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this._panelStepThree = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this._progressBar = new System.Windows.Forms.ProgressBar();
             this._panelButtons.SuspendLayout();
-            this._panelBrowseData.SuspendLayout();
-            this._panelAlgorithm.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this._panelStepOne.SuspendLayout();
+            this._panelStepTwo.SuspendLayout();
+            this._panelStepThree.SuspendLayout();
             this.SuspendLayout();
             // 
             // _comboBxAlgorithm
@@ -66,7 +66,7 @@
             this._btnBrowseSrcFile.TabIndex = 3;
             this._btnBrowseSrcFile.Text = "Browse";
             this._btnBrowseSrcFile.UseVisualStyleBackColor = true;
-            this._btnBrowseSrcFile.Click += new System.EventHandler(this.BrowseFilesToSort_Click);
+            this._btnBrowseSrcFile.Click += new System.EventHandler(this.BrowseTestFiles_Click);
             // 
             // _btnSort
             // 
@@ -76,7 +76,7 @@
             this._btnSort.TabIndex = 4;
             this._btnSort.Text = "Sort";
             this._btnSort.UseVisualStyleBackColor = true;
-            this._btnSort.Click += new System.EventHandler(this.StartSorting_Click);
+            this._btnSort.Click += new System.EventHandler(this.StartSort_Click);
             // 
             // _lBoxSelectedFiles
             // 
@@ -127,17 +127,17 @@
             this._btnCancelSort.UseVisualStyleBackColor = true;
             this._btnCancelSort.Click += new System.EventHandler(this.CancelCurrentSort_Click);
             // 
-            // _panelBrowseData
+            // _panelStepOne
             // 
-            this._panelBrowseData.BackColor = System.Drawing.Color.SteelBlue;
-            this._panelBrowseData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._panelBrowseData.Controls.Add(this.label1);
-            this._panelBrowseData.Controls.Add(this._btnBrowseSrcFile);
-            this._panelBrowseData.Controls.Add(this._lBoxSelectedFiles);
-            this._panelBrowseData.Location = new System.Drawing.Point(4, 4);
-            this._panelBrowseData.Name = "_panelBrowseData";
-            this._panelBrowseData.Size = new System.Drawing.Size(201, 122);
-            this._panelBrowseData.TabIndex = 9;
+            this._panelStepOne.BackColor = System.Drawing.Color.SteelBlue;
+            this._panelStepOne.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._panelStepOne.Controls.Add(this.label1);
+            this._panelStepOne.Controls.Add(this._btnBrowseSrcFile);
+            this._panelStepOne.Controls.Add(this._lBoxSelectedFiles);
+            this._panelStepOne.Location = new System.Drawing.Point(4, 4);
+            this._panelStepOne.Name = "_panelStepOne";
+            this._panelStepOne.Size = new System.Drawing.Size(201, 122);
+            this._panelStepOne.TabIndex = 9;
             // 
             // label1
             // 
@@ -150,16 +150,16 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "1.  Select data (.dat) to sort";
             // 
-            // _panelAlgorithm
+            // _panelStepTwo
             // 
-            this._panelAlgorithm.BackColor = System.Drawing.Color.Crimson;
-            this._panelAlgorithm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._panelAlgorithm.Controls.Add(this._lblInstructionsAlgo);
-            this._panelAlgorithm.Controls.Add(this._comboBxAlgorithm);
-            this._panelAlgorithm.Location = new System.Drawing.Point(211, 4);
-            this._panelAlgorithm.Name = "_panelAlgorithm";
-            this._panelAlgorithm.Size = new System.Drawing.Size(168, 60);
-            this._panelAlgorithm.TabIndex = 8;
+            this._panelStepTwo.BackColor = System.Drawing.Color.Crimson;
+            this._panelStepTwo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._panelStepTwo.Controls.Add(this._lblInstructionsAlgo);
+            this._panelStepTwo.Controls.Add(this._comboBxAlgorithm);
+            this._panelStepTwo.Location = new System.Drawing.Point(211, 4);
+            this._panelStepTwo.Name = "_panelStepTwo";
+            this._panelStepTwo.Size = new System.Drawing.Size(168, 60);
+            this._panelStepTwo.TabIndex = 8;
             // 
             // _lblInstructionsAlgo
             // 
@@ -172,17 +172,17 @@
             this._lblInstructionsAlgo.TabIndex = 7;
             this._lblInstructionsAlgo.Text = "2.  Select Sorting Algorithm";
             // 
-            // panel1
+            // _panelStepThree
             // 
-            this.panel1.BackColor = System.Drawing.Color.Crimson;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this._btnCancelSort);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this._btnSort);
-            this.panel1.Location = new System.Drawing.Point(211, 70);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(168, 56);
-            this.panel1.TabIndex = 11;
+            this._panelStepThree.BackColor = System.Drawing.Color.Crimson;
+            this._panelStepThree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._panelStepThree.Controls.Add(this._btnCancelSort);
+            this._panelStepThree.Controls.Add(this.label2);
+            this._panelStepThree.Controls.Add(this._btnSort);
+            this._panelStepThree.Location = new System.Drawing.Point(211, 70);
+            this._panelStepThree.Name = "_panelStepThree";
+            this._panelStepThree.Size = new System.Drawing.Size(168, 56);
+            this._panelStepThree.TabIndex = 11;
             // 
             // label2
             // 
@@ -202,28 +202,28 @@
             this._progressBar.Size = new System.Drawing.Size(375, 12);
             this._progressBar.TabIndex = 12;
             // 
-            // Form1
+            // SortForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(384, 188);
             this.Controls.Add(this._progressBar);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this._panelStepThree);
             this.Controls.Add(this._panelButtons);
-            this.Controls.Add(this._panelAlgorithm);
-            this.Controls.Add(this._panelBrowseData);
+            this.Controls.Add(this._panelStepTwo);
+            this.Controls.Add(this._panelStepOne);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(400, 222);
-            this.Name = "Form1";
+            this.Name = "SortForm";
             this.Text = "Sorter+";
             this._panelButtons.ResumeLayout(false);
-            this._panelBrowseData.ResumeLayout(false);
-            this._panelBrowseData.PerformLayout();
-            this._panelAlgorithm.ResumeLayout(false);
-            this._panelAlgorithm.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this._panelStepOne.ResumeLayout(false);
+            this._panelStepOne.PerformLayout();
+            this._panelStepTwo.ResumeLayout(false);
+            this._panelStepTwo.PerformLayout();
+            this._panelStepThree.ResumeLayout(false);
+            this._panelStepThree.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -236,12 +236,12 @@
         private System.Windows.Forms.ListBox _lBoxSelectedFiles;
         private System.Windows.Forms.Panel _panelButtons;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel _panelBrowseData;
-        private System.Windows.Forms.Panel _panelAlgorithm;
+        private System.Windows.Forms.Panel _panelStepOne;
+        private System.Windows.Forms.Panel _panelStepTwo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label _lblInstructionsAlgo;
         private System.Windows.Forms.Button _btnCancelSort;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel _panelStepThree;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button _btnReset;
         private System.Windows.Forms.ProgressBar _progressBar;

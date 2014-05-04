@@ -35,7 +35,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventArg\SortCompleteEventArgs.cs" />
+    <Compile Include="EventArg\SortFinishedEventArg.cs" />
     <Compile Include="Interfaces\IProgressable.cs" />
     <Compile Include="Interfaces\ISwappable.cs" />
     <Compile Include="Routines\BubbleSort.cs" />
@@ -50,6 +50,7 @@
     <Compile Include="Routines\SortRoutine.cs" />
     <Compile Include="SorterContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortRoutineFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sorter.Utilities\Sorter.Utilities.csproj">

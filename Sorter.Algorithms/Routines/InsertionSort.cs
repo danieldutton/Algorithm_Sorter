@@ -1,5 +1,5 @@
 ﻿using Sorter.Algorithms.EventArg;
-using Sorter.Utilities._Stopwatch;
+using Sorter.Utilities.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,14 +7,14 @@ namespace Sorter.Algorithms.Routines
 {
     public sealed class InsertionSort : SortRoutine
     {
-        public InsertionSort(IStopwatch stopwatch) : base(stopwatch)
+        public InsertionSort(ITimer timer) : base(timer)
         {
         }
 
         public override async Task<int[]> SortAsync(int[] data, CancellationToken cancelToken)
         {
             OnStarted();
-            Stopwatch.Start();
+            Timer.StartTimer();
 
             await Task.Run(() =>
                 {
@@ -41,9 +41,9 @@ namespace Sorter.Algorithms.Routines
                     }
                 }, cancelToken);
 
-            Stopwatch.Stop();
+            Timer.StopTimer();
 
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
+            OnComplete(new SortFinishedEventArg(Timer.TimeElapsedMs, data.Length, cancelToken.IsCancellationRequested));
 
             return data;
         }

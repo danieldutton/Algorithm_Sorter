@@ -1,6 +1,6 @@
 ﻿using Sorter.Input.Exceptions;
 using Sorter.Input.Interfaces;
-using Sorter.Utilities.Readers;
+using Sorter.Utilities.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -12,12 +12,13 @@ namespace Sorter.Input
 
         private TTypeToRead[] _dataArray;
 
-        private readonly List<TTypeToRead> _tempDataList = new List<TTypeToRead>();
+        private readonly List<TTypeToRead> _tempDataList;
 
 
         public DatFileReader(IStreamReaderBuilder streamBuilder)
         {
             _streamBuilder = streamBuilder;
+            _tempDataList = new List<TTypeToRead>();
         }
 
         public TTypeToRead[] Read(string[] filePaths)

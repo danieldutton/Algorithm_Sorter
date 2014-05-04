@@ -6,33 +6,31 @@ namespace Sorter.Presentation
 {
     internal partial class SortResults : Form
     {
-       internal SortResults()
+        private const string MillisecondSymbol = "ms";
+
+        internal SortResults()
         {
             InitializeComponent();
         }
 
-        internal void ConstructSortResults(SortCompleteEventArgs e)
+        internal void DisplaySortResults(SortFinishedEventArg sort)
         {
-            if(e.WasCancelled) 
-                SetCancelledDialog(e);
+            if(sort.WasCancelled) 
+                PopulateLabelValues_SortCancelled(sort);
             else
-                SetCompletedDialog(e);   
+                PopulateLabelValues_SortComplete(sort);   
         }
 
-        private void SetCancelledDialog(SortCompleteEventArgs e)
+        private void PopulateLabelValues_SortCancelled(SortFinishedEventArg sort)
         {
-            const string msValue = " ms";
-
             _lblItemSortCountValue.Text = "Cancelled";
-            _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;
+            _lblTimeTakenValue.Text = sort.ElapsedTimeMilliSec + MillisecondSymbol;
         }
 
-        internal void SetCompletedDialog(SortCompleteEventArgs e)
+        internal void PopulateLabelValues_SortComplete(SortFinishedEventArg sort)
         {
-            const string msValue = " ms";
-
-            _lblItemSortCountValue.Text = e.ItemSortCount.ToString();
-            _lblElapsedTimeValue.Text = e.ElapsedTimeMilliSec.ToString() + msValue;    
+            _lblItemSortCountValue.Text = sort.ItemSortCount.ToString();
+            _lblTimeTakenValue.Text = sort.ElapsedTimeMilliSec + MillisecondSymbol;    
         }
 
         private void CloseDialog_Click(object sender, EventArgs e)

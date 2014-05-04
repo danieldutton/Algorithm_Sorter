@@ -1,6 +1,6 @@
 ﻿using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
-using Sorter.Utilities._Stopwatch;
+using Sorter.Utilities.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,7 +11,7 @@ namespace Sorter.Algorithms.Routines
         private CancellationToken _cancellationToken;
 
 
-        public QuickSort(IStopwatch stopwatch) : base(stopwatch)
+        public QuickSort(ITimer timer) : base(timer)
         {
         }
 
@@ -20,15 +20,15 @@ namespace Sorter.Algorithms.Routines
             _cancellationToken = cancelToken;
             
             OnStarted();
-            Stopwatch.Start();
+            Timer.StartTimer();
 
             int[] result = null;
 
             await Task.Run(() => result = Swap(data, 0, data.Length - 1), _cancellationToken);
 
-            Stopwatch.Stop();
+            Timer.StopTimer();
 
-            OnCompleted(new SortCompleteEventArgs(Stopwatch.ElapsedMilliseconds, data.Length, cancelToken.IsCancellationRequested));
+            OnComplete(new SortFinishedEventArg(Timer.TimeElapsedMs, data.Length, cancelToken.IsCancellationRequested));
 
             return result;
         }

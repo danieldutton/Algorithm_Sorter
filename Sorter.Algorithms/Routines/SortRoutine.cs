@@ -1,26 +1,26 @@
 ﻿using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Interfaces;
-using Sorter.Utilities._Stopwatch;
+using Sorter.Utilities.Interfaces;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public abstract class SortRoutine : IProgressable<EventArgs, SortCompleteEventArgs, EventArgs>
+    public abstract class SortRoutine : IProgressable<EventArgs, SortFinishedEventArg, EventArgs>
     {
         public event EventHandler<EventArgs> Started;     
 
-        public event EventHandler<SortCompleteEventArgs> Completed;
+        public event EventHandler<SortFinishedEventArg> Complete;
         
         public event EventHandler<EventArgs> Cancelled;
 
-        protected IStopwatch Stopwatch;
+        protected ITimer Timer;
 
 
-        protected SortRoutine(IStopwatch stopWatch)
+        protected SortRoutine(ITimer timer)
         {
-            Stopwatch = stopWatch;
+            Timer = timer;
         }
 
         public abstract Task<int[]> SortAsync(int[] data, CancellationToken cancelToken); 
@@ -32,9 +32,9 @@ namespace Sorter.Algorithms.Routines
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-        protected virtual void OnCompleted(SortCompleteEventArgs e)
+        protected virtual void OnComplete(SortFinishedEventArg e)
         {
-            EventHandler<SortCompleteEventArgs> handler = Completed;
+            EventHandler<SortFinishedEventArg> handler = Complete;
             if (handler != null) handler(this, e);
         }
 

@@ -14,7 +14,7 @@ namespace Sorter.Algorithms
             _sortRoutine = sortRoutine;
         }
 
-        public async Task<int[]> Sort(int[] dataToSort, CancellationToken cancellationToken)
+        public async Task<int[]> SortAsync(int[] dataToSort, CancellationToken cancellationToken)
         {
             if(dataToSort == null) 
                 throw new ArgumentNullException("dataToSort");

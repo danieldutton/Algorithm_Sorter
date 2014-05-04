@@ -1,9 +1,10 @@
 ﻿using Sorter.Input;
 using Sorter.Input.Interfaces;
-using Sorter.Utilities.Algorithms;
-using Sorter.Utilities.Readers;
+using Sorter.Utilities;
 using System;
 using System.Windows.Forms;
+using Sorter.Utilities.Interfaces;
+using Sorter.Utilities.Wrappers;
 
 namespace Sorter.Presentation
 {
@@ -18,10 +19,12 @@ namespace Sorter.Presentation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            IStreamReaderBuilder streamBuilder = new StreamReaderBuilder();
+            IStreamReaderBuilder streamBuilder = new StreamReaderWrapper();
             IFileReader<int> fileReader = new DatFileReader<int>(streamBuilder); 
-            IRoutineNameLoader classNameLoader = new RoutineNameLoader();
-            Application.Run(new SortForm(fileReader, classNameLoader));
+            
+            ITypeNameExtractor typeNameExtractor = new TypeNameExtractor();
+            
+            Application.Run(new SortForm(fileReader, typeNameExtractor));
         }
     }
 }

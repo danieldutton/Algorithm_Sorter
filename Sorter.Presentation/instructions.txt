@@ -1,3 +1,0 @@
-﻿Test files can be found in the debug folder of the Sorter.Presentation project which will open 
-by default when clicking the browse button.
-Test files range from 32,000 random numbers to 512,000

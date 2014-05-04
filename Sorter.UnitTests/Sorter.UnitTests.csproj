@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F6D87ED-18C7-41AC-92B4-1DB47F87B3B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sorter.UnitTests</RootNamespace>
+    <AssemblyName>Sorter.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.1.1309.1617\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms\Routines\CycleSort_Should.cs" />
+    <Compile Include="Algorithms\SortRoutineFactory_Should.cs" />
+    <Compile Include="Utilities\TypeNameExtractor_Should.cs" />
+    <Compile Include="Algorithms\Routines\BubbleSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\CocktailShakerSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\GnomeSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\HeapSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\InsertionSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\QuickSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\SelectionSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\ShellSort_Should.cs" />
+    <Compile Include="Algorithms\SorterContext_Should.cs" />
+    <Compile Include="Input\DatFileReader_Should.cs" />
+    <Compile Include="Mother.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sorter.Algorithms\Sorter.Algorithms.csproj">
+      <Project>{67e1d0a1-b72c-42a7-a478-15709a366c82}</Project>
+      <Name>Sorter.Algorithms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sorter.Input\Sorter.Input.csproj">
+      <Project>{7335ba52-400f-45e3-9c98-d4b8d2565310}</Project>
+      <Name>Sorter.Input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sorter.Utilities\Sorter.Utilities.csproj">
+      <Project>{DA0466E9-59D1-456D-8BB5-1E00935EB7CD}</Project>
+      <Name>Sorter.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

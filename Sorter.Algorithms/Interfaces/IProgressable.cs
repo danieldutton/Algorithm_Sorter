@@ -18,7 +18,7 @@ namespace Sorter.Algorithms.Interfaces
     {
         event EventHandler<TStartArgs> Started;
 
-        event EventHandler<TCompleteArgs> Completed;
+        event EventHandler<TCompleteArgs> Complete;
 
         event EventHandler<TCancelledArgs> Cancelled;
     }

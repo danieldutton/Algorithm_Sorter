@@ -30,17 +30,17 @@
         {
             this._lblElapsedTime = new System.Windows.Forms.Label();
             this._lblItemSortCount = new System.Windows.Forms.Label();
-            this._lblElapsedTimeValue = new System.Windows.Forms.Label();
+            this._lblTimeTakenValue = new System.Windows.Forms.Label();
             this._lblItemSortCountValue = new System.Windows.Forms.Label();
-            this._btnClose = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
+            this._btnExit = new System.Windows.Forms.Button();
+            this._panelBlue2 = new System.Windows.Forms.Panel();
+            this._panelBlue1 = new System.Windows.Forms.Panel();
+            this._panelRed2 = new System.Windows.Forms.Panel();
+            this._panelRed1 = new System.Windows.Forms.Panel();
+            this._panelBlue2.SuspendLayout();
+            this._panelBlue1.SuspendLayout();
+            this._panelRed2.SuspendLayout();
+            this._panelRed1.SuspendLayout();
             this.SuspendLayout();
             // 
             // _lblElapsedTime
@@ -63,15 +63,15 @@
             this._lblItemSortCount.TabIndex = 3;
             this._lblItemSortCount.Text = "Items Sorted:";
             // 
-            // _lblElapsedTimeValue
+            // _lblTimeTakenValue
             // 
-            this._lblElapsedTimeValue.AutoSize = true;
-            this._lblElapsedTimeValue.ForeColor = System.Drawing.Color.White;
-            this._lblElapsedTimeValue.Location = new System.Drawing.Point(8, 5);
-            this._lblElapsedTimeValue.Name = "_lblElapsedTimeValue";
-            this._lblElapsedTimeValue.Size = new System.Drawing.Size(13, 13);
-            this._lblElapsedTimeValue.TabIndex = 6;
-            this._lblElapsedTimeValue.Text = "0";
+            this._lblTimeTakenValue.AutoSize = true;
+            this._lblTimeTakenValue.ForeColor = System.Drawing.Color.White;
+            this._lblTimeTakenValue.Location = new System.Drawing.Point(8, 5);
+            this._lblTimeTakenValue.Name = "_lblTimeTakenValue";
+            this._lblTimeTakenValue.Size = new System.Drawing.Size(13, 13);
+            this._lblTimeTakenValue.TabIndex = 6;
+            this._lblTimeTakenValue.Text = "0";
             // 
             // _lblItemSortCountValue
             // 
@@ -83,52 +83,52 @@
             this._lblItemSortCountValue.TabIndex = 7;
             this._lblItemSortCountValue.Text = "0";
             // 
-            // _btnClose
+            // _btnExit
             // 
-            this._btnClose.Location = new System.Drawing.Point(57, 60);
-            this._btnClose.MaximumSize = new System.Drawing.Size(75, 23);
-            this._btnClose.Name = "_btnClose";
-            this._btnClose.Size = new System.Drawing.Size(75, 23);
-            this._btnClose.TabIndex = 10;
-            this._btnClose.Text = "Exit";
-            this._btnClose.UseVisualStyleBackColor = true;
-            this._btnClose.Click += new System.EventHandler(this.CloseDialog_Click);
+            this._btnExit.Location = new System.Drawing.Point(57, 60);
+            this._btnExit.MaximumSize = new System.Drawing.Size(75, 23);
+            this._btnExit.Name = "_btnExit";
+            this._btnExit.Size = new System.Drawing.Size(75, 23);
+            this._btnExit.TabIndex = 10;
+            this._btnExit.Text = "Exit";
+            this._btnExit.UseVisualStyleBackColor = true;
+            this._btnExit.Click += new System.EventHandler(this.CloseDialog_Click);
             // 
-            // panel3
+            // _panelBlue2
             // 
-            this.panel3.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel3.Controls.Add(this._lblElapsedTime);
-            this.panel3.Location = new System.Drawing.Point(4, 32);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(86, 22);
-            this.panel3.TabIndex = 11;
+            this._panelBlue2.BackColor = System.Drawing.Color.SteelBlue;
+            this._panelBlue2.Controls.Add(this._lblElapsedTime);
+            this._panelBlue2.Location = new System.Drawing.Point(4, 32);
+            this._panelBlue2.Name = "_panelBlue2";
+            this._panelBlue2.Size = new System.Drawing.Size(86, 22);
+            this._panelBlue2.TabIndex = 11;
             // 
-            // panel4
+            // _panelBlue1
             // 
-            this.panel4.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel4.Controls.Add(this._lblItemSortCount);
-            this.panel4.Location = new System.Drawing.Point(4, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(86, 22);
-            this.panel4.TabIndex = 11;
+            this._panelBlue1.BackColor = System.Drawing.Color.SteelBlue;
+            this._panelBlue1.Controls.Add(this._lblItemSortCount);
+            this._panelBlue1.Location = new System.Drawing.Point(4, 4);
+            this._panelBlue1.Name = "_panelBlue1";
+            this._panelBlue1.Size = new System.Drawing.Size(86, 22);
+            this._panelBlue1.TabIndex = 11;
             // 
-            // panel8
+            // _panelRed2
             // 
-            this.panel8.BackColor = System.Drawing.Color.Crimson;
-            this.panel8.Controls.Add(this._lblElapsedTimeValue);
-            this.panel8.Location = new System.Drawing.Point(96, 32);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(97, 22);
-            this.panel8.TabIndex = 14;
+            this._panelRed2.BackColor = System.Drawing.Color.Crimson;
+            this._panelRed2.Controls.Add(this._lblTimeTakenValue);
+            this._panelRed2.Location = new System.Drawing.Point(96, 32);
+            this._panelRed2.Name = "_panelRed2";
+            this._panelRed2.Size = new System.Drawing.Size(97, 22);
+            this._panelRed2.TabIndex = 14;
             // 
-            // panel9
+            // _panelRed1
             // 
-            this.panel9.BackColor = System.Drawing.Color.Crimson;
-            this.panel9.Controls.Add(this._lblItemSortCountValue);
-            this.panel9.Location = new System.Drawing.Point(96, 4);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(97, 22);
-            this.panel9.TabIndex = 15;
+            this._panelRed1.BackColor = System.Drawing.Color.Crimson;
+            this._panelRed1.Controls.Add(this._lblItemSortCountValue);
+            this._panelRed1.Location = new System.Drawing.Point(96, 4);
+            this._panelRed1.Name = "_panelRed1";
+            this._panelRed1.Size = new System.Drawing.Size(97, 22);
+            this._panelRed1.TabIndex = 15;
             // 
             // SortResults
             // 
@@ -136,23 +136,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(197, 90);
-            this.Controls.Add(this.panel9);
-            this.Controls.Add(this.panel8);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this._btnClose);
+            this.Controls.Add(this._panelRed1);
+            this.Controls.Add(this._panelRed2);
+            this.Controls.Add(this._panelBlue1);
+            this.Controls.Add(this._panelBlue2);
+            this.Controls.Add(this._btnExit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(213, 124);
             this.Name = "SortResults";
             this.Text = "Results";
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
+            this._panelBlue2.ResumeLayout(false);
+            this._panelBlue2.PerformLayout();
+            this._panelBlue1.ResumeLayout(false);
+            this._panelBlue1.PerformLayout();
+            this._panelRed2.ResumeLayout(false);
+            this._panelRed2.PerformLayout();
+            this._panelRed1.ResumeLayout(false);
+            this._panelRed1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -161,12 +161,12 @@
 
         private System.Windows.Forms.Label _lblElapsedTime;
         private System.Windows.Forms.Label _lblItemSortCount;
-        private System.Windows.Forms.Label _lblElapsedTimeValue;
+        private System.Windows.Forms.Label _lblTimeTakenValue;
         private System.Windows.Forms.Label _lblItemSortCountValue;
-        private System.Windows.Forms.Button _btnClose;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button _btnExit;
+        private System.Windows.Forms.Panel _panelBlue2;
+        private System.Windows.Forms.Panel _panelBlue1;
+        private System.Windows.Forms.Panel _panelRed2;
+        private System.Windows.Forms.Panel _panelRed1;
     }
 }
