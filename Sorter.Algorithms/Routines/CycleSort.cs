@@ -8,7 +8,8 @@ namespace Sorter.Algorithms.Routines
 {
     public class CycleSort : SortRoutine
     {
-        public CycleSort(ITimer timer) : base(timer)
+        public CycleSort(ITimer timer) 
+            : base(timer)
         {
         }
 

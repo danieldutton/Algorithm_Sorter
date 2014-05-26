@@ -7,7 +7,8 @@ namespace Sorter.Algorithms.Routines
 {
     public sealed class SelectionSort : SortRoutine
     {
-        public SelectionSort(ITimer timer) : base(timer){}
+        public SelectionSort(ITimer timer) 
+            : base(timer){}
 
         public override async Task<int[]> SortAsync(int[] data, CancellationToken cancelToken)
         {

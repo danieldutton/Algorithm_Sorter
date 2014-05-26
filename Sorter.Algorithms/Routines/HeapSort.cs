@@ -8,7 +8,8 @@ namespace Sorter.Algorithms.Routines
 {
     public sealed class HeapSort : SortRoutine, ISwappable
     {
-        public HeapSort(ITimer timer) : base(timer)
+        public HeapSort(ITimer timer)
+            : base(timer)
         {
         }
 

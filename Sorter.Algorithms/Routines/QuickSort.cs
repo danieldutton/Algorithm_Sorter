@@ -11,7 +11,8 @@ namespace Sorter.Algorithms.Routines
         private CancellationToken _cancellationToken;
 
 
-        public QuickSort(ITimer timer) : base(timer)
+        public QuickSort(ITimer timer) 
+            : base(timer)
         {
         }
 

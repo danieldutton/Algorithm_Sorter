@@ -22,7 +22,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         public void Init()
         {
             _tenUnsortedInts = Mother.GetTenUnsortedIntegers();
-            _oneHundredUnsortedInts = Mother.GetOneHundredRandomlyPlacedSortedIntegers();
+            _oneHundredUnsortedInts = Mother.GetOneHundredRandomlyPlacedIntegers();
             _fakeCancelSource = new Mock<ICancelTokenSource>();
             _fakeStopwatch = new Mock<ITimer>();
         }

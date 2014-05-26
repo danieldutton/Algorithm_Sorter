@@ -22,7 +22,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         public void Init()
         {
             _tenUnsortedInts = Mother.GetTenUnsortedIntegers();
-            _oneHundredUnsortedInts = Mother.GetOneHundredRandomlyPlacedSortedIntegers();
+            _oneHundredUnsortedInts = Mother.GetOneHundredRandomlyPlacedIntegers();
             _fakeCancelSource = new Mock<ICancelTokenSource>();
             _fakeStopwatch = new Mock<ITimer>();
         }
@@ -34,7 +34,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
             var sut = new BubbleSort(_fakeStopwatch.Object);
             sut.Started += (o, e) => wasFired = true;
 
-            var result = sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
+            sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
             Assert.IsTrue(wasFired);
         }

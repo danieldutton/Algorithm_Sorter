@@ -15,6 +15,8 @@ namespace Sorter.Algorithms
                     break;
                 case "CocktailShakerSort": sortRoutine = new CocktailShakerSort(new Timer());
                     break;
+                case "CombSort": sortRoutine = new CombSort(new Timer());
+                    break;
                 case "CycleSort": sortRoutine = new CycleSort(new Timer());
                     break;
                 case "GnomeSort": sortRoutine = new GnomeSort(new Timer());

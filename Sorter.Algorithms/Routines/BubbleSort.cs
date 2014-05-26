@@ -7,7 +7,8 @@ namespace Sorter.Algorithms.Routines
 {
     public sealed class BubbleSort : SortRoutine
     {
-        public BubbleSort(ITimer timer) : base(timer)
+        public BubbleSort(ITimer timer)
+            : base(timer)
         {
         }
 

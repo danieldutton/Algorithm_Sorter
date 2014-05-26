@@ -7,7 +7,8 @@ namespace Sorter.Algorithms.Routines
 {
     public class GnomeSort : SortRoutine
     {
-        public GnomeSort(ITimer timer) : base(timer)
+        public GnomeSort(ITimer timer) 
+            : base(timer)
         {
         }
 

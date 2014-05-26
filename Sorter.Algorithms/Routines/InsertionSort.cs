@@ -7,7 +7,8 @@ namespace Sorter.Algorithms.Routines
 {
     public sealed class InsertionSort : SortRoutine
     {
-        public InsertionSort(ITimer timer) : base(timer)
+        public InsertionSort(ITimer timer) 
+            : base(timer)
         {
         }
 

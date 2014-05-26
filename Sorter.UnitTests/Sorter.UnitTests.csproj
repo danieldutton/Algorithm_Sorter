@@ -40,6 +40,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Routines\CombSort_Should.cs" />
     <Compile Include="Algorithms\Routines\CycleSort_Should.cs" />
     <Compile Include="Algorithms\SortRoutineFactory_Should.cs" />
     <Compile Include="Utilities\TypeNameExtractor_Should.cs" />

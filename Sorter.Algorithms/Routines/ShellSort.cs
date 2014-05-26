@@ -7,7 +7,8 @@ namespace Sorter.Algorithms.Routines
 {
     public sealed class ShellSort : SortRoutine
     {
-        public ShellSort(ITimer timer) : base(timer)
+        public ShellSort(ITimer timer) 
+            : base(timer)
         {
         }
 

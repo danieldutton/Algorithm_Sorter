@@ -36,7 +36,7 @@ namespace Sorter.UnitTests
             return sortedIntegers;
         }
 
-        public static int[] GetOneHundredRandomlyPlacedSortedIntegers()
+        public static int[] GetOneHundredRandomlyPlacedIntegers()
         {
             return new[]
                 {
