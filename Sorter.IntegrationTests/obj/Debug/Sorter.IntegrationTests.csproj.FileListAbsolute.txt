@@ -6,10 +6,8 @@ C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug
 C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\Sorter.IntegrationTests.dll
 C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\Sorter.IntegrationTests.pdb
 C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\nunit.framework.dll
-C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\Sorter.Algorithms.dll
 C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\Sorter.Input.dll
 C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\Sorter.Utilities.dll
-C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\Sorter.Algorithms.pdb
 C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\Sorter.Input.pdb
 C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\Sorter.Utilities.pdb
 C:\Users\Dan\Documents\GitHub\Algorithm_Sorter\Sorter.IntegrationTests\bin\Debug\nunit.framework.xml

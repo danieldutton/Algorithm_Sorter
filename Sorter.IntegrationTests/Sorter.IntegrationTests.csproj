@@ -59,10 +59,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sorter.Algorithms\Sorter.Algorithms.csproj">
-      <Project>{67E1D0A1-B72C-42A7-A478-15709A366C82}</Project>
-      <Name>Sorter.Algorithms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Sorter.Input\Sorter.Input.csproj">
       <Project>{7335BA52-400F-45E3-9C98-D4B8D2565310}</Project>
       <Name>Sorter.Input</Name>

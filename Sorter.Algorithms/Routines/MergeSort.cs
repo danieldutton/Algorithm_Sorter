@@ -9,6 +9,9 @@ namespace Sorter.Algorithms.Routines
 {
     public class MergeSort : SortRoutine, ISwappable
     {
+        private CancellationToken _cancellationToken;
+
+
         public MergeSort(ITimer timer) 
             : base(timer)
         {
@@ -16,6 +19,8 @@ namespace Sorter.Algorithms.Routines
 
         public override async Task<int[]> SortAsync(int[] data, CancellationToken cancelToken)
         {
+            _cancellationToken = cancelToken;
+
             OnStarted();
             Timer.StartTimer();
 
@@ -31,9 +36,10 @@ namespace Sorter.Algorithms.Routines
             return data;
         }
 
+        //add cancel to this algorithm
+
         public int[] Swap(int[] data, int left, int right)
         {
-
             if (left < right)
             {
                 int middle = (left + right) / 2;
@@ -51,6 +57,12 @@ namespace Sorter.Algorithms.Routines
                 int j = 0;
                 for (int k = left; k < right + 1; k++)
                 {
+                    if (_cancellationToken.IsCancellationRequested)
+                    {
+                        OnCancelled();
+                        return new []{0};
+                    }
+
                     if (i == leftArray.Length)
                     {
                         data[k] = rightArray[j];

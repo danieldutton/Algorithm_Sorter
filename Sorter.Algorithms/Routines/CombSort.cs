@@ -29,6 +29,12 @@ namespace Sorter.Algorithms.Routines
                     swaps = false;
                     while (i + gap < data.Length)
                     {
+                        if (cancelToken.IsCancellationRequested)
+                        {
+                            OnCancelled();
+                            return;
+                        }
+
                         int igap = i + (int)gap;
                         if (data[i] > data[igap])
                         {
