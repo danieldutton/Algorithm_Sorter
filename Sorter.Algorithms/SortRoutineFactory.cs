@@ -25,6 +25,8 @@ namespace Sorter.Algorithms
                     break;
                 case "InsertionSort": sortRoutine = new InsertionSort(new Timer());
                     break;
+                case "MergeSort": sortRoutine = new MergeSort(new Timer());
+                    break;
                 case "QuickSort": sortRoutine = new QuickSort(new Timer());
                     break;
                 case "SelectionSort": sortRoutine = new SelectionSort(new Timer());
