@@ -34,6 +34,15 @@ namespace Sorter.UnitTests.Algorithms
         }
 
         [Test]
+        public void CreateSortRoutine_ReturnANew_CombSort()
+        {
+            var combSort = SortRoutineFactory.CreateSortRoutine("CombSort")
+                as CombSort;
+
+            Assert.IsInstanceOf<CombSort>(combSort);
+        }
+
+        [Test]
         public void CreateSortRoutine_ReturnANew_CycleSort()
         {
             var cycleSort = SortRoutineFactory.CreateSortRoutine("CycleSort") 
@@ -67,6 +76,15 @@ namespace Sorter.UnitTests.Algorithms
                 as InsertionSort;
 
             Assert.IsInstanceOf<InsertionSort>(insertionSort);
+        }
+
+        [Test]
+        public void CreateSortRoutine_ReturnANew_MergeSort()
+        {
+            var mergeSort = SortRoutineFactory.CreateSortRoutine("MergeSort")
+                as MergeSort;
+
+            Assert.IsInstanceOf<MergeSort>(mergeSort);
         }
 
         [Test]
