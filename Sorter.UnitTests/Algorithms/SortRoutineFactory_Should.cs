@@ -88,6 +88,15 @@ namespace Sorter.UnitTests.Algorithms
         }
 
         [Test]
+        public void CreateSortRoutine_ReturnANew_RadixSortLSD()
+        {
+            var radixSortLSD = SortRoutineFactory.CreateSortRoutine("RadixSortLSD")
+                as RadixSortLSD;
+
+            Assert.IsInstanceOf<RadixSortLSD>(radixSortLSD);
+        }
+
+        [Test]
         public void CreateSortRoutine_ReturnANew_QuickSort()
         {
             var quickSort = SortRoutineFactory.CreateSortRoutine("QuickSort") 

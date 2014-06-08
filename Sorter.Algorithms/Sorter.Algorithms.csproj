@@ -46,6 +46,7 @@
     <Compile Include="Routines\InsertionSort.cs" />
     <Compile Include="Routines\MergeSort.cs" />
     <Compile Include="Routines\QuickSort.cs" />
+    <Compile Include="Routines\RadixSortLSD.cs" />
     <Compile Include="Routines\SelectionSort.cs" />
     <Compile Include="Routines\ShellSort.cs" />
     <Compile Include="Routines\SortRoutine.cs" />

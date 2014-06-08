@@ -36,8 +36,6 @@ namespace Sorter.Algorithms.Routines
             return data;
         }
 
-        //add cancel to this algorithm
-
         public int[] Swap(int[] data, int left, int right)
         {
             if (left < right)

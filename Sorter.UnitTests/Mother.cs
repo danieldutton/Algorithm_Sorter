@@ -60,7 +60,8 @@ namespace Sorter.UnitTests
                 "HeapSort", 
                 "InsertionSort",
                 "MergeSort",
-                "QuickSort", 
+                "QuickSort",
+                "RadixSortLSD",
                 "SelectionSort", 
                 "ShellSort"
             }; }

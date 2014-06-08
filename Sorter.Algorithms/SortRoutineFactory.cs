@@ -29,6 +29,8 @@ namespace Sorter.Algorithms
                     break;
                 case "QuickSort": sortRoutine = new QuickSort(new Timer());
                     break;
+                case "RadixSortLSD": sortRoutine = new RadixSortLSD(new Timer());
+                    break;
                 case "SelectionSort": sortRoutine = new SelectionSort(new Timer());
                     break;
                 case "ShellSort": sortRoutine = new ShellSort(new Timer());

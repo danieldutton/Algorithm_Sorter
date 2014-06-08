@@ -43,6 +43,7 @@
     <Compile Include="Algorithms\Routines\CombSort_Should.cs" />
     <Compile Include="Algorithms\Routines\CycleSort_Should.cs" />
     <Compile Include="Algorithms\Routines\MergeSort_Should.cs" />
+    <Compile Include="Algorithms\Routines\RadixSortLSD_Should.cs" />
     <Compile Include="Algorithms\SortRoutineFactory_Should.cs" />
     <Compile Include="Utilities\TypeNameExtractor_Should.cs" />
     <Compile Include="Algorithms\Routines\BubbleSort_Should.cs" />
