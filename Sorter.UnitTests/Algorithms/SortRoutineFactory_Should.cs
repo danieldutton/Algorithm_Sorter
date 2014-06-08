@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Sorter.Algorithms;
 using Sorter.Algorithms.Routines;
+using Sorter.UnitTests.Algorithms.Routines;
 
 namespace Sorter.UnitTests.Algorithms
 {
@@ -25,6 +26,15 @@ namespace Sorter.UnitTests.Algorithms
         }
 
         [Test]
+        public void CreateSortRoutine_ReturnANew_BucketSort()
+        {
+            var bucketSort = SortRoutineFactory.CreateSortRoutine("BucketSort")
+                as BucketSort;
+
+            Assert.IsInstanceOf<BucketSort>(bucketSort);
+        }
+
+        [Test]
         public void CreateSortRoutine_ReturnANew_CocktailShakerSort()
         {
             var cocktailShakerSort = SortRoutineFactory.CreateSortRoutine("CocktailShakerSort") 
@@ -40,6 +50,15 @@ namespace Sorter.UnitTests.Algorithms
                 as CombSort;
 
             Assert.IsInstanceOf<CombSort>(combSort);
+        }
+
+        [Test]
+        public void CreateSortRoutine_ReturnANew_CountingSort()
+        {
+            var countingSort = SortRoutineFactory.CreateSortRoutine("CountingSort")
+                as CountingSort;
+
+            Assert.IsInstanceOf<CountingSort>(countingSort);
         }
 
         [Test]
@@ -85,6 +104,15 @@ namespace Sorter.UnitTests.Algorithms
                 as MergeSort;
 
             Assert.IsInstanceOf<MergeSort>(mergeSort);
+        }
+
+        [Test]
+        public void CreateSortRoutine_ReturnANew_PigeonHoleSort()
+        {
+            var pigeonHoleSort = SortRoutineFactory.CreateSortRoutine("PigeonHoleSort")
+                as PigeonHoleSort;
+
+            Assert.IsInstanceOf<PigeonHoleSort>(pigeonHoleSort);
         }
 
         [Test]

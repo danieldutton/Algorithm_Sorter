@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public class RadixSortLSD : SortRoutine
+    public sealed class RadixSortLSD : SortRoutine
     {
         public RadixSortLSD(ITimer timer) 
             : base(timer)

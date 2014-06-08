@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public class CombSort : SortRoutine
+    public sealed class CombSort : SortRoutine
     {
         public CombSort(ITimer timer) 
             : base(timer)

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public class CocktailShakerSort : SortRoutine 
+    public sealed class CocktailShakerSort : SortRoutine 
     {
         public CocktailShakerSort(ITimer timer) 
             : base(timer)

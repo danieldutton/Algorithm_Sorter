@@ -52,14 +52,17 @@ namespace Sorter.UnitTests
         {
             get { return new List<string>
             {
-                "BubbleSort", 
+                "BubbleSort",
+                "BucketSort",
                 "CocktailShakerSort",
                 "CombSort",
+                "CountingSort",
                 "CycleSort", 
                 "GnomeSort", 
                 "HeapSort", 
                 "InsertionSort",
                 "MergeSort",
+                "PigeonHoleSort",
                 "QuickSort",
                 "RadixSortLSD",
                 "SelectionSort", 

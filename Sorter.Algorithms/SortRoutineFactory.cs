@@ -13,9 +13,13 @@ namespace Sorter.Algorithms
             {
                 case "BubbleSort": sortRoutine = new BubbleSort(new Timer());
                     break;
+                case "BucketSort": sortRoutine = new BucketSort(new Timer());
+                    break;
                 case "CocktailShakerSort": sortRoutine = new CocktailShakerSort(new Timer());
                     break;
                 case "CombSort": sortRoutine = new CombSort(new Timer());
+                    break;
+                case "CountingSort": sortRoutine = new CountingSort(new Timer());
                     break;
                 case "CycleSort": sortRoutine = new CycleSort(new Timer());
                     break;
@@ -26,6 +30,8 @@ namespace Sorter.Algorithms
                 case "InsertionSort": sortRoutine = new InsertionSort(new Timer());
                     break;
                 case "MergeSort": sortRoutine = new MergeSort(new Timer());
+                    break;
+                case "PigeonHoleSort": sortRoutine = new PigeonHoleSort(new Timer());
                     break;
                 case "QuickSort": sortRoutine = new QuickSort(new Timer());
                     break;

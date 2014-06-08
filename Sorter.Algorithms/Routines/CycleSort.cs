@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public class CycleSort : SortRoutine
+    public sealed class CycleSort : SortRoutine
     {
         public CycleSort(ITimer timer) 
             : base(timer)

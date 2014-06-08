@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public class GnomeSort : SortRoutine
+    public sealed class GnomeSort : SortRoutine
     {
         public GnomeSort(ITimer timer) 
             : base(timer)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public class MergeSort : SortRoutine, ISwappable
+    public sealed class MergeSort : SortRoutine, ISwappable
     {
         private CancellationToken _cancellationToken;
 
