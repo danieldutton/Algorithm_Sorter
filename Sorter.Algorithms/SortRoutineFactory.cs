@@ -31,6 +31,8 @@ namespace Sorter.Algorithms
                     break;
                 case "MergeSort": sortRoutine = new MergeSort(new Timer());
                     break;
+                case "OddEvenSort": sortRoutine = new OddEvenSort(new Timer());
+                    break;
                 case "PigeonHoleSort": sortRoutine = new PigeonHoleSort(new Timer());
                     break;
                 case "QuickSort": sortRoutine = new QuickSort(new Timer());

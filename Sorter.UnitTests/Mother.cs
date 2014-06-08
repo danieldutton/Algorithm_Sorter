@@ -62,6 +62,7 @@ namespace Sorter.UnitTests
                 "HeapSort", 
                 "InsertionSort",
                 "MergeSort",
+                "OddEvenSort",
                 "PigeonHoleSort",
                 "QuickSort",
                 "RadixSortLSD",

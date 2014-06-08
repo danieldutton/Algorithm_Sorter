@@ -47,6 +47,7 @@
     <Compile Include="Routines\HeapSort.cs" />
     <Compile Include="Routines\InsertionSort.cs" />
     <Compile Include="Routines\MergeSort.cs" />
+    <Compile Include="Routines\OddEvenSort.cs" />
     <Compile Include="Routines\PigeonHoleSort.cs" />
     <Compile Include="Routines\QuickSort.cs" />
     <Compile Include="Routines\RadixSortLSD.cs" />

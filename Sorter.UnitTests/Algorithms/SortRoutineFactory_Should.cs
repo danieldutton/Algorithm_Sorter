@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using Sorter.Algorithms;
 using Sorter.Algorithms.Routines;
-using Sorter.UnitTests.Algorithms.Routines;
 
 namespace Sorter.UnitTests.Algorithms
 {
@@ -104,6 +103,15 @@ namespace Sorter.UnitTests.Algorithms
                 as MergeSort;
 
             Assert.IsInstanceOf<MergeSort>(mergeSort);
+        }
+
+        [Test]
+        public void CreateSortRoutine_ReturnANew_OddEvenSort()
+        {
+            var oddEvenSort = SortRoutineFactory.CreateSortRoutine("OddEvenSort")
+                as OddEvenSort;
+
+            Assert.IsInstanceOf<OddEvenSort>(oddEvenSort);
         }
 
         [Test]
