@@ -40,7 +40,7 @@ namespace Sorter.Algorithms.Routines
                 }, cancelToken);
             Timer.StopTimer();
                      
-            OnComplete(new SortFinishedEventArg(Timer.TimeElapsedMs, data.Length, cancelToken.IsCancellationRequested));
+            OnComplete(new SortCompleteEventArgs(Timer.TimeElapsedMs, data.Length, cancelToken.IsCancellationRequested));
 
             
             return data;

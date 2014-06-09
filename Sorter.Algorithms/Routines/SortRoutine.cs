@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Sorter.Algorithms.Routines
 {
-    public abstract class SortRoutine : IProgressable<EventArgs, SortFinishedEventArg, EventArgs>
+    public abstract class SortRoutine : IProgressable<EventArgs, SortCompleteEventArgs, EventArgs>
     {
         public event EventHandler<EventArgs> Started;     
 
-        public event EventHandler<SortFinishedEventArg> Complete;
+        public event EventHandler<SortCompleteEventArgs> Complete;
         
         public event EventHandler<EventArgs> Cancelled;
 
@@ -32,9 +32,9 @@ namespace Sorter.Algorithms.Routines
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-        protected virtual void OnComplete(SortFinishedEventArg e)
+        protected virtual void OnComplete(SortCompleteEventArgs e)
         {
-            EventHandler<SortFinishedEventArg> handler = Complete;
+            EventHandler<SortCompleteEventArgs> handler = Complete;
             if (handler != null) handler(this, e);
         }
 

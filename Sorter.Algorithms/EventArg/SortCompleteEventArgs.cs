@@ -2,7 +2,7 @@
 
 namespace Sorter.Algorithms.EventArg
 {
-    public sealed class SortFinishedEventArg : EventArgs
+    public sealed class SortCompleteEventArgs : EventArgs
     {
         public long ElapsedTimeMilliSec { get; private set; }
 
@@ -11,7 +11,7 @@ namespace Sorter.Algorithms.EventArg
         public bool WasCancelled { get; private set; }
 
 
-        public SortFinishedEventArg(long elapsedTimeMilliSec, int itemSortCount, bool wasCancelled)
+        public SortCompleteEventArgs(long elapsedTimeMilliSec, int itemSortCount, bool wasCancelled)
         {
             ElapsedTimeMilliSec = elapsedTimeMilliSec;
             ItemSortCount = itemSortCount;

@@ -40,9 +40,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\Routines\BucketSort_Should.cs" />
     <Compile Include="Algorithms\Routines\CombSort_Should.cs" />
-    <Compile Include="Algorithms\Routines\CountingSort_Should.cs" />
     <Compile Include="Algorithms\Routines\CycleSort_Should.cs" />
     <Compile Include="Algorithms\Routines\MergeSort_Should.cs" />
     <Compile Include="Algorithms\Routines\OddEvenSort_Should.cs" />

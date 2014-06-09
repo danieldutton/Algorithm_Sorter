@@ -34,14 +34,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventArg\SortFinishedEventArg.cs" />
+    <Compile Include="EventArg\SortCompleteEventArgs.cs" />
     <Compile Include="Interfaces\IProgressable.cs" />
     <Compile Include="Interfaces\ISwappable.cs" />
     <Compile Include="Routines\BubbleSort.cs" />
-    <Compile Include="Routines\BucketSort.cs" />
     <Compile Include="Routines\CocktailShakerSort.cs" />
     <Compile Include="Routines\CombSort.cs" />
-    <Compile Include="Routines\CountingSort.cs" />
     <Compile Include="Routines\CycleSort.cs" />
     <Compile Include="Routines\GnomeSort.cs" />
     <Compile Include="Routines\HeapSort.cs" />

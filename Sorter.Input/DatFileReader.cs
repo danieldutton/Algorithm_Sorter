@@ -45,6 +45,7 @@ namespace Sorter.Input
                 }
             }
 
+            //out of memory exception handling needed and test
             catch (FormatException e)
             {
                 throw new FileReadException("Data Corrupt", e);

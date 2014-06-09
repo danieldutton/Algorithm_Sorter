@@ -73,7 +73,7 @@ namespace Sorter.Presentation
             var openFileDialog = new OpenFileDialog
             {
                 Multiselect = true,
-                Filter = "dat files(*.dat)|*.dat",
+                Filter = Properties.Resources.datFileFilter,
                 ShowReadOnly = true,
             };
 
@@ -96,7 +96,7 @@ namespace Sorter.Presentation
             }
             catch (FileReadException)
             {
-                MessageBox.Show("Error Reading Data Try Again");               
+                MessageBox.Show(Properties.Resources.dataReadErrorMessage);               
                 ResetApplicationState();
             }
 
@@ -135,7 +135,7 @@ namespace Sorter.Presentation
             _progressBar.Style = ProgressBarStyle.Continuous;    
         }
 
-        private void DisplaySortResults(object sender, SortFinishedEventArg e)
+        private void DisplaySortResults(object sender, SortCompleteEventArgs e)
         {
             Activate();
                        

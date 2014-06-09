@@ -29,21 +29,23 @@ namespace Sorter.Algorithms.Routines
                 int size = max - min + 1;
 
                 // our array of pigeonholes
-                int[] holes = new int[size];
+                long[] holes = new long[size];
 
                 // Populate the pigeonholes.
                 foreach (int x in data)
                     holes[x - min]++;
 
-                // Put the elements back into the array in order.
                 int i = 0;
+
+                if (cancelToken.IsCancellationRequested)
+                {
+                    OnCancelled();
+                    return; //OnCancelled not firing
+                }
+
                 for (int count = 0; count < size; count++)
                 {
-                    if (cancelToken.IsCancellationRequested)
-                    {
-                        OnCancelled();
-                        return; //OnCancelled not firing
-                    }
+                    
                     while (holes[count]-- > 0)
                         data[i++] = count + min;
                 }
@@ -52,7 +54,7 @@ namespace Sorter.Algorithms.Routines
 
             Timer.StopTimer();
 
-            OnComplete(new SortFinishedEventArg(Timer.TimeElapsedMs, data.Length, cancelToken.IsCancellationRequested));
+            OnComplete(new SortCompleteEventArgs(Timer.TimeElapsedMs, data.Length, cancelToken.IsCancellationRequested));
 
             return data;
         }

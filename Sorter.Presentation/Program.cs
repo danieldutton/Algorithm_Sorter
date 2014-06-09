@@ -1,10 +1,10 @@
 ﻿using Sorter.Input;
 using Sorter.Input.Interfaces;
 using Sorter.Utilities;
-using System;
-using System.Windows.Forms;
 using Sorter.Utilities.Interfaces;
 using Sorter.Utilities.Wrappers;
+using System;
+using System.Windows.Forms;
 
 namespace Sorter.Presentation
 {
@@ -15,7 +15,7 @@ namespace Sorter.Presentation
         /// </summary>
         [STAThread]
         static void Main()
-        {
+       {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

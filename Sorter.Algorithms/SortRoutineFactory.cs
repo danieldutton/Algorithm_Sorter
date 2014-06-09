@@ -13,13 +13,9 @@ namespace Sorter.Algorithms
             {
                 case "BubbleSort": sortRoutine = new BubbleSort(new Timer());
                     break;
-                case "BucketSort": sortRoutine = new BucketSort(new Timer());
-                    break;
                 case "CocktailShakerSort": sortRoutine = new CocktailShakerSort(new Timer());
                     break;
                 case "CombSort": sortRoutine = new CombSort(new Timer());
-                    break;
-                case "CountingSort": sortRoutine = new CountingSort(new Timer());
                     break;
                 case "CycleSort": sortRoutine = new CycleSort(new Timer());
                     break;

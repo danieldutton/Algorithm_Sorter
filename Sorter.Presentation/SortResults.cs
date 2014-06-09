@@ -13,7 +13,7 @@ namespace Sorter.Presentation
             InitializeComponent();
         }
 
-        internal void DisplaySortResults(SortFinishedEventArg sort)
+        internal void DisplaySortResults(SortCompleteEventArgs sort)
         {
             if(sort.WasCancelled) 
                 PopulateLabelValues_SortCancelled(sort);
@@ -21,13 +21,13 @@ namespace Sorter.Presentation
                 PopulateLabelValues_SortComplete(sort);   
         }
 
-        private void PopulateLabelValues_SortCancelled(SortFinishedEventArg sort)
+        private void PopulateLabelValues_SortCancelled(SortCompleteEventArgs sort)
         {
-            _lblItemSortCountValue.Text = "Cancelled";
+            _lblItemSortCountValue.Text = Properties.Resources.cancellationText;
             _lblTimeTakenValue.Text = sort.ElapsedTimeMilliSec + MillisecondSymbol;
         }
 
-        internal void PopulateLabelValues_SortComplete(SortFinishedEventArg sort)
+        internal void PopulateLabelValues_SortComplete(SortCompleteEventArgs sort)
         {
             _lblItemSortCountValue.Text = sort.ItemSortCount.ToString();
             _lblTimeTakenValue.Text = sort.ElapsedTimeMilliSec + MillisecondSymbol;    

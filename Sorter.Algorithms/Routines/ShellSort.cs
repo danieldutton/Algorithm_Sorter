@@ -25,12 +25,6 @@ namespace Sorter.Algorithms.Routines
 
                     while (increment > 0)
                     {
-                        if (cancelToken.IsCancellationRequested)
-                        {
-                            OnCancelled();
-                            return;
-                        }
-
                         for (i = 0; i < x; i++)
                         {
                             j = i;
@@ -43,6 +37,12 @@ namespace Sorter.Algorithms.Routines
                             }
 
                             data[j] = temp;
+
+                            if (cancelToken.IsCancellationRequested)
+                            {
+                                OnCancelled();
+                                return;
+                            }
                         }
 
                         if (increment / 2 != 0)
@@ -62,7 +62,7 @@ namespace Sorter.Algorithms.Routines
 
             Timer.StopTimer();
 
-            OnComplete(new SortFinishedEventArg(Timer.TimeElapsedMs, data.Length, cancelToken.IsCancellationRequested));
+            OnComplete(new SortCompleteEventArgs(Timer.TimeElapsedMs, data.Length, cancelToken.IsCancellationRequested));
             
             return data;
         }

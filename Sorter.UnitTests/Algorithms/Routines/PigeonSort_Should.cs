@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
 using Sorter.Utilities.Interfaces;
+using System.Linq;
 
 namespace Sorter.UnitTests.Algorithms.Routines
 {
@@ -88,13 +88,13 @@ namespace Sorter.UnitTests.Algorithms.Routines
             _fakeStopwatch.SetupGet(x => x.TimeElapsedMs).Returns(Mother.DummyElapsedTime);
 
             var sut = new PigeonHoleSort(_fakeStopwatch.Object);
-            SortFinishedEventArg sortFinishedEventArg = null;
-            sut.Complete += (o, e) => sortFinishedEventArg = e;
+            SortCompleteEventArgs sortCompleteEventArgs = null;
+            sut.Complete += (o, e) => sortCompleteEventArgs = e;
 
             await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
-            Assert.AreEqual(Mother.DummyElapsedTime, sortFinishedEventArg.ElapsedTimeMilliSec);
-            Assert.AreEqual(10, sortFinishedEventArg.ItemSortCount);
+            Assert.AreEqual(Mother.DummyElapsedTime, sortCompleteEventArgs.ElapsedTimeMilliSec);
+            Assert.AreEqual(10, sortCompleteEventArgs.ItemSortCount);
         }
 
         [Test]

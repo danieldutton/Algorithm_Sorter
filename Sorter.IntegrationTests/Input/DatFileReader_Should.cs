@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using Sorter.Input;
-using Sorter.Utilities;
 using Sorter.Utilities.Interfaces;
 using Sorter.Utilities.Wrappers;
 
