@@ -121,12 +121,20 @@
     <value>Cancelled</value>
     <comment>Text to display if sort is cancelled</comment>
   </data>
-  <data name="dataReadErrorMessage" xml:space="preserve">
+  <data name="ioErrorMessage" xml:space="preserve">
     <value>Error Reading Data Try Again</value>
     <comment>Error Message to diplsay if unable to read test data</comment>
   </data>
   <data name="datFileFilter" xml:space="preserve">
     <value>dat files(*.dat)|*.dat</value>
     <comment>OpenFileDialog filter for .dat files</comment>
+  </data>
+  <data name="outOfMemoryErrorMessage" xml:space="preserve">
+    <value>File to large.  Ran out of memory</value>
+    <comment>Error message to display if memory runs out</comment>
+  </data>
+  <data name="formatErrorMessage" xml:space="preserve">
+    <value>Data Corrupt.  Try another file.</value>
+    <comment>Error message to display if dat data is currupt</comment>
   </data>
 </root>

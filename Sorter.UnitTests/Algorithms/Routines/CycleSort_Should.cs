@@ -84,7 +84,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
         [Test]
         public async void SortAsync_FireACompletedEventWithTheCorrectElapsedTimeValue()
         {
-            _fakeStopwatch.SetupGet(x => x.TimeElapsedMs).Returns(Mother.DummyElapsedTime);
+            _fakeStopwatch.SetupGet(x => x.TimeElapsedMs).Returns(Mother.ElapsedTimeStub);
 
             var sut = new CycleSort(_fakeStopwatch.Object);
             SortCompleteEventArgs sortCompleteEventArgs = null;
@@ -92,7 +92,7 @@ namespace Sorter.UnitTests.Algorithms.Routines
 
             await sut.SortAsync(_tenUnsortedInts, _fakeCancelSource.Object.Token);
 
-            Assert.AreEqual(Mother.DummyElapsedTime, sortCompleteEventArgs.ElapsedTimeMilliSec);
+            Assert.AreEqual(Mother.ElapsedTimeStub, sortCompleteEventArgs.ElapsedTimeMilliSec);
             Assert.AreEqual(10, sortCompleteEventArgs.ItemSortCount);
         }
 

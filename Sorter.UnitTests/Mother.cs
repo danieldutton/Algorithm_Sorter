@@ -5,7 +5,7 @@ namespace Sorter.UnitTests
 {
     public static class Mother
     {
-        public static int DummyElapsedTime{
+        public static int ElapsedTimeStub{
             get { return 100; }    
         }
 
@@ -48,7 +48,7 @@ namespace Sorter.UnitTests
                 };
         }
 
-        public static List<string> ExpectedRoutineNames
+        public static List<string> ExpectedRoutineNameSequence
         {
             get { return new List<string>
             {

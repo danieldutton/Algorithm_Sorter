@@ -1,7 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Sorter.Input;
-using Sorter.Input.Exceptions;
 using Sorter.Utilities.Interfaces;
 using System;
 using System.IO;
@@ -32,7 +31,7 @@ namespace Sorter.UnitTests.Input
         }
 
         [Test]
-        public void Read_CallBuildStreamReaderOncePerFilePath()
+        public void Read_CallBuildStreamReader_OncePerFilePath()
         {
             const string testString = "100";
             byte[] testArray = _utf8Encoding.GetBytes((testString));
@@ -49,7 +48,7 @@ namespace Sorter.UnitTests.Input
         }
 
         [Test]
-        public void Read_ConvertTheStringMemoryStreamToIntegersCorrectCount()
+        public void Read_ConvertTheStringMemoryStream_ToIntegersCorrectCount()
         {
             byte[] testArray = _utf8Encoding.GetBytes(Mother.FaultFreeTestString);
             var memoryStream = new MemoryStream(testArray);
@@ -65,7 +64,7 @@ namespace Sorter.UnitTests.Input
         }
 
         [Test]
-        public void Read_MapTheStringReturnValuesToTheCorrectIntegers()
+        public void Read_MapTheStringReturnValues_ToTheCorrectIntegers()
         {
             byte[] testArray = _utf8Encoding.GetBytes(Mother.FaultFreeTestString);
             var memoryStream = new MemoryStream(testArray);
@@ -82,8 +81,8 @@ namespace Sorter.UnitTests.Input
         }
 
         [Test]
-        [ExpectedException(typeof(FileReadException))]
-        public void ThrowAFormatExceptionIfAtLeastOneDataItemHasNoNewLineBreak()
+        [ExpectedException(typeof(FormatException))]
+        public void ThrowAFormatException_IfAtLeastOneDataItemHasNoNewLineBreak()
         {
             byte[] testArray = _utf8Encoding.GetBytes(Mother.FaultyTestString);
             var memoryStream = new MemoryStream(testArray);
@@ -100,8 +99,8 @@ namespace Sorter.UnitTests.Input
         }
 
         [Test]
-        [ExpectedException(typeof(FileReadException))]
-        public void ThrowAFormatExceptionIfASystemDotExceptionOccursDuringExecution()
+        [ExpectedException(typeof(Exception))]
+        public void ThrowAFormatException_IfASystemDotExceptionOccursDuringExecution()
         {
             var fakeStreamBuilder = new Mock<IStreamReaderBuilder>();
             fakeStreamBuilder.SetupGet(x => x.StreamReader).Throws<Exception>();

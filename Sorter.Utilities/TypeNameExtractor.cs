@@ -20,7 +20,9 @@ namespace Sorter.Utilities
                 .GetTypes()
                 .Where(x => x.IsSubclassOf(inheritsFrom));
 
-            List<string> classNames = foundTypes.Select(className => className.Name).ToList();
+            List<string> classNames = foundTypes.
+                Select(className => className.Name)
+                .ToList();
 
             return classNames;
         }

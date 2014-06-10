@@ -44,7 +44,7 @@ namespace Sorter.UnitTests.Utilities
         {
             List<string> actual = _sut.Load("Sorter.Algorithms.dll", typeof (SortRoutine));
 
-            Assert.IsTrue(actual.SequenceEqual(Mother.ExpectedRoutineNames));
+            Assert.IsTrue(actual.SequenceEqual(Mother.ExpectedRoutineNameSequence));
         }
 
         [TearDown]

@@ -215,6 +215,7 @@
             this.Controls.Add(this._panelStepOne);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(400, 222);
+            this.MinimumSize = new System.Drawing.Size(400, 222);
             this.Name = "SortForm";
             this.Text = "Sorter+";
             this._panelButtons.ResumeLayout(false);

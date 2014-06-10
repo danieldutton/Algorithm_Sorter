@@ -1,12 +1,12 @@
 ﻿using Sorter.Algorithms;
 using Sorter.Algorithms.EventArg;
 using Sorter.Algorithms.Routines;
-using Sorter.Input.Exceptions;
 using Sorter.Input.Interfaces;
 using Sorter.Utilities.Interfaces;
 using Sorter.Utilities.Wrappers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,7 +39,7 @@ namespace Sorter.Presentation
             InitializeComponent();
 
             ListAvailableSortRoutines();
-            ActivateControls_SortStopped();            
+            ActivateControls_OnSortStopped();            
         }
 
 
@@ -94,13 +94,31 @@ namespace Sorter.Presentation
             {
                 _dataToSort = _fileReader.Read(filePaths);
             }
-            catch (FileReadException)
+            catch (Exception e)
             {
-                MessageBox.Show(Properties.Resources.dataReadErrorMessage);               
-                ResetApplicationState();
+                InputExceptionCheck(e);
             }
 
             return _dataToSort;
+        }
+
+        private void InputExceptionCheck(Exception e)
+        {
+            if (e is IOException)
+            {
+                MessageBox.Show(Properties.Resources.ioErrorMessage);
+                ResetApplicationState();
+            }
+            else if (e is OutOfMemoryException)
+            {
+                MessageBox.Show(Properties.Resources.outOfMemoryErrorMessage);
+                ResetApplicationState();
+            }
+            else if (e is FormatException)
+            {
+                MessageBox.Show(Properties.Resources.formatErrorMessage);
+                ResetApplicationState();
+            }   
         }
         
         private void StartSort_Click(object sender, EventArgs e)
@@ -108,7 +126,7 @@ namespace Sorter.Presentation
             if (_lBoxSelectedFiles.Items.Count == 0)
                 return;
 
-            DisableControls_SortStarted();
+            DisableControls_OnSortStarted();
 
             SortRoutine sortRoutine = SortRoutineFactory.CreateSortRoutine((string)_comboBxAlgorithm.SelectedValue);
             StartSort(sortRoutine);
@@ -143,11 +161,11 @@ namespace Sorter.Presentation
                         
             var sortResults = new SortResults();
             
-            sortResults.DisplaySortResults(e);
-            sortResults.ShowDialog();
-            
+            sortResults.DisplaySortResults(e);            
+            sortResults.ShowDialog();            
             ResetApplicationState();
-            ActivateControls_SortStopped();
+            
+            ActivateControls_OnSortStopped();
         }
 
         private void CancelCurrentSort_Click(object sender, EventArgs e)
@@ -155,7 +173,8 @@ namespace Sorter.Presentation
             ResetCancellationToken();           
             StopProgressBarAnimation();              
             ResetApplicationState();
-            ActivateControls_SortStopped();
+            
+            ActivateControls_OnSortStopped();
         }
 
         private void ResetCancellationToken()
@@ -179,7 +198,7 @@ namespace Sorter.Presentation
             _comboBxAlgorithm.SelectedIndex = 0;
         }
 
-        private void DisableControls_SortStarted()
+        private void DisableControls_OnSortStarted()
         {
             _panelStepOne.Enabled = false;
             _panelStepTwo.Enabled = false;
@@ -189,7 +208,7 @@ namespace Sorter.Presentation
             _btnReset.Enabled = false;
         }
 
-        private void ActivateControls_SortStopped()
+        private void ActivateControls_OnSortStopped()
         {
             _panelStepOne.Enabled = true;
             _panelStepTwo.Enabled = true;

@@ -70,20 +70,38 @@ namespace Sorter.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error Reading Data Try Again.
-        /// </summary>
-        internal static string dataReadErrorMessage {
-            get {
-                return ResourceManager.GetString("dataReadErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to dat files(*.dat)|*.dat.
         /// </summary>
         internal static string datFileFilter {
             get {
                 return ResourceManager.GetString("datFileFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Corrupt.  Try another file..
+        /// </summary>
+        internal static string formatErrorMessage {
+            get {
+                return ResourceManager.GetString("formatErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error Reading Data Try Again.
+        /// </summary>
+        internal static string ioErrorMessage {
+            get {
+                return ResourceManager.GetString("ioErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File to large.  Ran out of memory.
+        /// </summary>
+        internal static string outOfMemoryErrorMessage {
+            get {
+                return ResourceManager.GetString("outOfMemoryErrorMessage", resourceCulture);
             }
         }
     }
